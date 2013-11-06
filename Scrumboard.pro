@@ -6,15 +6,20 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = Scrumboard
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+        qcustomplot/qcustomplot.cpp \
+    burndownchart.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+        qcustomplot/qcustomplot.h \
+    burndownchart.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    burndownchart.ui
