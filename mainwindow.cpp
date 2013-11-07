@@ -16,5 +16,5 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    BurndownChart *r1 = new BurndownChart(this); r1->showFullScreen();
+    BurndownChart *r1 = new BurndownChart(this); r1->show();
 }
