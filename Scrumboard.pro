@@ -15,11 +15,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
         qcustomplot/qcustomplot.cpp \
-    burndownchart.cpp
+    burndownchart.cpp \
+    sbi.cpp
 
 HEADERS  += mainwindow.h \
         qcustomplot/qcustomplot.h \
-    burndownchart.h
+    burndownchart.h \
+    sbi.h
 
 FORMS    += mainwindow.ui \
-    burndownchart.ui
+    burndownchart.ui \
+    sbi.ui
