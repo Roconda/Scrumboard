@@ -15,6 +15,9 @@ public:
     explicit SBI(QWidget *parent = 0);
     ~SBI();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::SBI *ui;
 };

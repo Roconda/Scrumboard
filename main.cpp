@@ -13,9 +13,6 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    Defect d;
-    d.show();
-
     return a.exec();
 
     //QApplication app(argc, argv); // de app, deze heb je altijd
