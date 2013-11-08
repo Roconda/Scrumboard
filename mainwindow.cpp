@@ -17,10 +17,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    BurndownChart *r1 = new BurndownChart(this); r1->show();
+    BurndownChart *r1 = new BurndownChart(this);
+    r1->exec();
 }
 
 void MainWindow::on_sbiOverview_clicked()
 {
-    SBI *sbi1 = new SBI(); sbi1->show();
+    SBI *sbi1 = new SBI();
+    sbi1->exec();
 }
