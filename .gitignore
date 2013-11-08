@@ -11,3 +11,6 @@
 *.lai
 *.la
 *.a
+
+# Qtcreator user files
+Scrumboard.pro.user
