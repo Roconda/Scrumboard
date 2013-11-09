@@ -17,15 +17,19 @@ SOURCES += main.cpp\
         defect.cpp \
         qcustomplot/qcustomplot.cpp \
         burndownchart.cpp \
-        sbi.cpp
+        sbi.cpp \
+    userstorydelegate.cpp
 
 HEADERS  += mainwindow.h \
     defect.h \
     qcustomplot/qcustomplot.h \
     burndownchart.h \
-    sbi.h
+    sbi.h \
+    userstorydelegate.h
 
 FORMS    += mainwindow.ui \
     defect.ui \
     burndownchart.ui \
-    sbi.ui
+    sbi.ui \
+    userStoryCard.ui \
+    userstorycard.ui
