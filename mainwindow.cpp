@@ -3,6 +3,7 @@
 #include "burndownchart.h"
 #include "userstorydelegate.h"
 #include "sbi.h"
+#include "adddefect.h"
 
 #include <QStringListModel>
 
@@ -38,4 +39,10 @@ void MainWindow::on_sbiOverview_clicked()
 {
     SBI *sbi1 = new SBI();
     sbi1->exec();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    AddDefect *ad = new AddDefect();
+    ad->show();
 }
