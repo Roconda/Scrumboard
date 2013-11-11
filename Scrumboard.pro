@@ -31,4 +31,3 @@ FORMS    += mainwindow.ui \
     defect.ui \
     burndownchart.ui \
     sbi.ui \
-    userstorycard.ui
