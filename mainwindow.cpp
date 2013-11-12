@@ -12,16 +12,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    // instellen test data voor user stories
-    QStringListModel *model = new QStringListModel();
-    QStringList list;
-    list << "Test";
-    model->setStringList(list);
-
-    ui->userStoriesList->setModel(model);
-    // Stel de delegate in, deze doet custom view.
-    ui->userStoriesList->setItemDelegate(new userStoryDelegate);
+    QPalette Pal(palette());
+    Pal.setColor(QPalette::Background, Qt::gray);
+    this->setAutoFillBackground(true);
+    this->setPalette(Pal);
 }
 
 MainWindow::~MainWindow()

@@ -15,6 +15,7 @@ public:
     explicit BurndownChart(QWidget *parent = 0);
     ~BurndownChart();
     void loadCustomPlot();
+    void resizeEvent(QResizeEvent *);
 
 private:
     Ui::BurndownChart *ui;

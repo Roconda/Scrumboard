@@ -7,7 +7,8 @@ BurndownChart::BurndownChart(QWidget *parent) :
     ui(new Ui::BurndownChart)
 {
     ui->setupUi(this);
-
+    ui->widget->move(0,0);
+    ui->widget->resize(this->width(), this->height());
     this->loadCustomPlot();
 }
 
@@ -37,5 +38,9 @@ void BurndownChart::loadCustomPlot(){
     ui->widget->xAxis->setRange(0, 20);
     ui->widget->yAxis->setRange(0, 100);
     ui->widget->replot();
+}
+
+void BurndownChart::resizeEvent(QResizeEvent *){
+    ui->widget->resize(this->width(), this->height());
 }
 
