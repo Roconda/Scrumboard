@@ -29,10 +29,15 @@ MainWindow::MainWindow(QWidget *parent) :
     std::list<string>::iterator    iList;
     string                         sFilename;
 
-    TFSTransaction::remoteListProjects( saFilenameList );
-    for_each(begin(saFilenameList), end(saFilenameList), [&](string s) {
-        list << s.c_str();
-    });
+    try {
+        TFSTransaction::remoteListProjects( saFilenameList );
+        for_each(begin(saFilenameList), end(saFilenameList), [&](string s) {
+            list << s.c_str();
+        });
+    } catch(...) {
+
+    }
+
     /* Einde TFS test */
 
     model->setStringList(list);
@@ -40,7 +45,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->userStoriesList->setModel(model);
     // Stel de delegate in, deze doet custom view.
     //ui->userStoriesList->setItemDelegate(new userStoryDelegate);
-
 }
 
 MainWindow::~MainWindow()
