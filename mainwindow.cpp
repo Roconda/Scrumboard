@@ -5,7 +5,15 @@
 #include "sbi.h"
 #include "adddefect.h"
 
+#include "TFS/TFSTransaction.h"
+
 #include <QStringListModel>
+#include <algorithm>
+#include <iostream>
+#include <string>
+
+using std::for_each;
+using std::string;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,12 +24,28 @@ MainWindow::MainWindow(QWidget *parent) :
     // instellen test data voor user stories
     QStringListModel *model = new QStringListModel();
     QStringList list;
-    list << "Test";
+
+    /* TFS test! */
+    std::list<string>              saFilenameList;
+    std::list<string>::iterator    iList;
+    string                         sFilename;
+
+    try {
+        TFSTransaction::remoteListProjects( saFilenameList );
+        for_each(begin(saFilenameList), end(saFilenameList), [&](string s) {
+            list << s.c_str();
+        });
+    } catch(...) {
+
+    }
+
+    /* Einde TFS test */
+
     model->setStringList(list);
 
     ui->userStoriesList->setModel(model);
     // Stel de delegate in, deze doet custom view.
-    ui->userStoriesList->setItemDelegate(new userStoryDelegate);
+    //ui->userStoriesList->setItemDelegate(new userStoryDelegate);
 }
 
 MainWindow::~MainWindow()
