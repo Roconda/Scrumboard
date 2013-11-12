@@ -56,7 +56,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     BurndownChart *r1 = new BurndownChart(this);
-    r1->exec();
+    r1->show();
 }
 
 void MainWindow::on_sbiOverview_clicked()
@@ -68,5 +68,5 @@ void MainWindow::on_sbiOverview_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     AddDefect *ad = new AddDefect();
-    ad->show();
+    ad->exec();
 }
