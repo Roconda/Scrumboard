@@ -21,12 +21,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    // instellen test data voor Not started SBI's
+    QPalette Pal(palette());
+    Pal.setColor(QPalette::Background, Qt::gray);
     SBINotStartedListModel *model = new SBINotStartedListModel();
-    ui->notStartedList->setModel(model);
-
-    // Stel de delegate in, deze doet custom view.
+	ui->notStartedList->setModel(model);
+    this->setAutoFillBackground(true);
+    this->setPalette(Pal);
     //ui->userStoriesList->setItemDelegate(new userStoryDelegate);
 }
 
