@@ -23,8 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // instellen test data voor Not started SBI's
-    SBINotStartedListModel *model = new SBINotStartedListModel();
-    ui->notStartedList->setModel(model);
+    //SBINotStartedListModel *model = new SBINotStartedListModel();
+    //ui->notStartedList->setModel(model);
 
     // Stel de delegate in, deze doet custom view.
     //ui->userStoriesList->setItemDelegate(new userStoryDelegate);
@@ -43,12 +43,12 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_sbiOverview_clicked()
 {
-    SBI *sbi1 = new SBI();
+    SBI *sbi1 = new SBI(this);
     sbi1->exec();
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    AddDefect *ad = new AddDefect();
+    AddDefect *ad = new AddDefect(this);
     ad->exec();
 }
