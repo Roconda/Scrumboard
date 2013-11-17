@@ -50,7 +50,8 @@ SOURCES += main.cpp\
     TFS/general.cpp \
     TFS/Defect.cpp \
     TFS/Date.cpp \
-    TFS/Attachment.cpp
+    TFS/Attachment.cpp \
+    sbilistmodel.cpp
 
 HEADERS  += mainwindow.h \
     defect.h \
@@ -101,7 +102,8 @@ HEADERS  += mainwindow.h \
     TFS/general.h \
     TFS/Defect.h \
     TFS/Date.h \
-    TFS/Attachment.h
+    TFS/Attachment.h \
+    sbilistmodel.h
 
 FORMS    += mainwindow.ui \
     defect.ui \

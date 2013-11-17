@@ -4,6 +4,7 @@
 #include "userstorydelegate.h"
 #include "sbi.h"
 #include "adddefect.h"
+#include "sbilistmodel.h"
 
 #include "TFS/TFSTransaction.h"
 
@@ -21,29 +22,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // instellen test data voor user stories
-    QStringListModel *model = new QStringListModel();
-    QStringList list;
-
-    /* TFS test! */
-    std::list<string>              saFilenameList;
-    std::list<string>::iterator    iList;
-    string                         sFilename;
-
-    try {
-        TFSTransaction::remoteListProjects( saFilenameList );
-        for_each(begin(saFilenameList), end(saFilenameList), [&](string s) {
-            list << s.c_str();
-        });
-    } catch(...) {
-
-    }
-
-    /* Einde TFS test */
-
-    model->setStringList(list);
-
+    // instellen test data voor Not started SBI's
+    SBIListModel *model = new SBIListModel();
     ui->userStoriesList->setModel(model);
+
     // Stel de delegate in, deze doet custom view.
     //ui->userStoriesList->setItemDelegate(new userStoryDelegate);
 }
