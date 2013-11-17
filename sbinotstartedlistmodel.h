@@ -4,11 +4,11 @@
 #include <QAbstractListModel>
 #include <QStringList>
 
-class SBIListModel : public QAbstractListModel
+class SBINotStartedListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    explicit SBIListModel(QObject *parent = 0);
+    explicit SBINotStartedListModel(QObject *parent = 0);
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role) const;

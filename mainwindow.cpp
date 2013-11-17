@@ -4,7 +4,7 @@
 #include "userstorydelegate.h"
 #include "sbi.h"
 #include "adddefect.h"
-#include "sbilistmodel.h"
+#include "sbinotstartedlistmodel.h"
 
 #include "TFS/TFSTransaction.h"
 
@@ -23,8 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // instellen test data voor Not started SBI's
-    SBIListModel *model = new SBIListModel();
-    ui->userStoriesList->setModel(model);
+    SBINotStartedListModel *model = new SBINotStartedListModel();
+    ui->notStartedList->setModel(model);
 
     // Stel de delegate in, deze doet custom view.
     //ui->userStoriesList->setItemDelegate(new userStoryDelegate);
