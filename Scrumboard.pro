@@ -57,7 +57,7 @@ SOURCES += main.cpp \
     	TFS/general.cpp \
     	TFS/Defect.cpp \
     	TFS/Date.cpp \
-    	TFS/Attachment.cpp \
+        TFS/Attachment.cpp
 
 HEADERS  += mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -67,9 +67,10 @@ HEADERS  += mainwindow.h \
     adddefect.h \
     itemui.h \
     laneui.h \
-    scrumboardwidget.h
+    scrumboardwidget.h \
     sbinotstartedlistmodel.h \
     adddefect.h \
+    userstorydelegate.h \
     lanedelegate.h \
     TFS/WriteData.h \
     TFS/WorkItem.h \
@@ -112,7 +113,7 @@ HEADERS  += mainwindow.h \
     TFS/general.h \
     TFS/Defect.h \
     TFS/Date.h \
-    TFS/Attachment.h \
+    TFS/Attachment.h
 
 FORMS    += mainwindow.ui \
     defect.ui \

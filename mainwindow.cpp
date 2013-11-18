@@ -23,12 +23,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    SBINotStartedListModel *model = new SBINotStartedListModel();
+
     QPalette Pal(palette());
     Pal.setColor(QPalette::Background, Qt::gray);
-    SBINotStartedListModel *model = new SBINotStartedListModel();
     this->setAutoFillBackground(true);
-    ui->userStoriesList->setModel(model);
     this->setPalette(Pal);
+
     //ui->userStoriesList->setItemDelegate(new userStoryDelegate);
 }
 
