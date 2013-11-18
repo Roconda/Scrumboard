@@ -1,10 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "burndownchart.h"
-#include "userstorydelegate.h"
 #include "sbi.h"
 #include "adddefect.h"
 #include "sbinotstartedlistmodel.h"
+#include "laneui.h"
+#include "itemui.h"
 
 #include "TFS/TFSTransaction.h"
 
@@ -22,11 +23,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // instellen test data voor Not started SBI's
-    //SBINotStartedListModel *model = new SBINotStartedListModel();
-    //ui->notStartedList->setModel(model);
+    SBINotStartedListModel *model = new SBINotStartedListModel();
 
-    // Stel de delegate in, deze doet custom view.
+    QPalette Pal(palette());
+    Pal.setColor(QPalette::Background, Qt::gray);
+    this->setAutoFillBackground(true);
+    this->setPalette(Pal);
+
     //ui->userStoriesList->setItemDelegate(new userStoryDelegate);
 }
 
