@@ -3,6 +3,8 @@
 #include "sbi.h"
 #include <QMouseEvent>
 #include "laneui.h"
+#include "scrumboardwidget.h"
+#include "../itemhandler.h"
 
 ItemUI::ItemUI(QWidget *parent) :
     QWidget(parent),
@@ -27,12 +29,7 @@ void ItemUI::mouseDoubleClickEvent(QMouseEvent *event){
 }
 
 void ItemUI::mousePressEvent(QMouseEvent *event){
-    /*
-    LaneUI *lane = qobject_cast<LaneUI*>(parentWidget());
-    QPalette Pal(palette());
-    Pal.setColor(QPalette::Background, Qt::gray);
-    lane->setPalette(Pal);
-    */
+    ItemHandler::getInstance().moveItem(this);
 }
 
 void ItemUI::mouseMoveEvent(QMouseEvent *event){
@@ -41,5 +38,6 @@ void ItemUI::mouseMoveEvent(QMouseEvent *event){
 }
 
 void ItemUI::mouseReleaseEvent(QMouseEvent *event){
+    ItemHandler::getInstance().moveItem(this, event->pos());
     repaint();
 }

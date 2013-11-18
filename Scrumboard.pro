@@ -16,19 +16,17 @@ TEMPLATE = app
 LIBS     += -lws2_32
 
 SOURCES += main.cpp \
-        mainwindow.cpp \
-        defect.cpp \
+        View/mainwindow.cpp \
+        View/defect.cpp \
         qcustomplot/qcustomplot.cpp \
-        burndownchart.cpp \
-        sbi.cpp \
-	adddefect.cpp \
-	itemui.cpp \
-	laneui.cpp \
-	scrumboardwidget.cpp \
-        lanedelegate.cpp \
-        workitem.cpp \
+        View/burndownchart.cpp \
+        View/sbi.cpp \
+        View/adddefect.cpp \
+        View/itemui.cpp \
+        View/laneui.cpp \
+        View/scrumboardwidget.cpp \
         sbinotstartedlistmodel.cpp \
-    	adddefect.cpp \
+        View/adddefect.cpp \
     	TFS/WriteData.cpp \
     	TFS/WorkItem.cpp \
     	TFS/User.cpp \
@@ -56,21 +54,20 @@ SOURCES += main.cpp \
     	TFS/general.cpp \
     	TFS/Defect.cpp \
     	TFS/Date.cpp \
-        TFS/Attachment.cpp
+        TFS/Attachment.cpp \
+    itemhandler.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
-    defect.h \
-    burndownchart.h \
-    sbi.h \
-    adddefect.h \
-    itemui.h \
-    laneui.h \
-    scrumboardwidget.h \
-    workitem.h \
+    View/defect.h \
+    View/burndownchart.h \
+    View/sbi.h \
+    View/adddefect.h \
+    View/itemui.h \
+    View/laneui.h \
+    View/scrumboardwidget.h \
     sbinotstartedlistmodel.h \
-    adddefect.h \
-    lanedelegate.h \
+    View/adddefect.h \
     TFS/WriteData.h \
     TFS/WorkItem.h \
     TFS/User.h \
@@ -112,13 +109,14 @@ HEADERS  += mainwindow.h \
     TFS/general.h \
     TFS/Defect.h \
     TFS/Date.h \
-    TFS/Attachment.h
+    TFS/Attachment.h \
+    itemhandler.h
 
-FORMS    += mainwindow.ui \
-    defect.ui \
-    burndownchart.ui \
-    sbi.ui \
-    adddefect.ui \
-    itemui.ui \
-    laneui.ui \
-    scrumboardwidget.ui
+FORMS    += View/mainwindow.ui \
+    View/defect.ui \
+    View/burndownchart.ui \
+    View/sbi.ui \
+    View/adddefect.ui \
+    View/itemui.ui \
+    View/laneui.ui \
+    View/scrumboardwidget.ui

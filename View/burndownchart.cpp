@@ -1,6 +1,6 @@
 #include "burndownchart.h"
 #include "ui_burndownchart.h"
-#include "qcustomplot/qcustomplot.h"
+#include "../qcustomplot/qcustomplot.h"
 
 BurndownChart::BurndownChart(QWidget *parent) :
     QDialog(parent),
