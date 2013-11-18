@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "burndownchart.h"
-#include "userstorydelegate.h"
 #include "sbi.h"
 #include "adddefect.h"
 #include "sbinotstartedlistmodel.h"
