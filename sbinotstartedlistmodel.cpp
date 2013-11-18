@@ -2,6 +2,7 @@
 #include "TFS/TFSTransaction.h"
 
 #include <algorithm>
+#include <iostream>
 #include <string>
 #include <iostream>
 
