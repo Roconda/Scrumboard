@@ -9,14 +9,7 @@ class WorkItem : public QWidget
 public:
     explicit WorkItem(QWidget *parent = 0);
 
-protected:
-    void mouseDoubleClickEvent(QMouseEvent *event);
-    void mousePressEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
 
-    void paintEvent(QPaintEvent *e);
-    void drawWidget(QPainter &qp);
 
 private:
   QWidget *m_parent;

@@ -19,9 +19,9 @@ SOURCES += main.cpp\
         burndownchart.cpp \
         sbi.cpp \
     adddefect.cpp \
-    lanedelegate.cpp \
-    workitem.cpp \
-    notstartedlane.cpp
+    itemui.cpp \
+    laneui.cpp \
+    scrumboardwidget.cpp
 
 HEADERS  += mainwindow.h \
     defect.h \
@@ -29,12 +29,15 @@ HEADERS  += mainwindow.h \
     burndownchart.h \
     sbi.h \
     adddefect.h \
-    lanedelegate.h \
-    workitem.h \
-    notstartedlane.h
+    itemui.h \
+    laneui.h \
+    scrumboardwidget.h
 
 FORMS    += mainwindow.ui \
     defect.ui \
     burndownchart.ui \
     sbi.ui \
-    adddefect.ui
+    adddefect.ui \
+    itemui.ui \
+    laneui.ui \
+    scrumboardwidget.ui

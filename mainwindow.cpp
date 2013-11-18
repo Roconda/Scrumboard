@@ -4,6 +4,8 @@
 #include "userstorydelegate.h"
 #include "sbi.h"
 #include "adddefect.h"
+#include "laneui.h"
+#include "itemui.h"
 
 #include <QStringListModel>
 
