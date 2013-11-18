@@ -25,7 +25,8 @@ SOURCES += main.cpp \
 	itemui.cpp \
 	laneui.cpp \
 	scrumboardwidget.cpp \
-        lanedelegate.cpp \
+    	userstorydelegate.cpp \
+	lanedelegate.cpp \
         workitem.cpp \
         sbinotstartedlistmodel.cpp \
     	adddefect.cpp \
@@ -67,7 +68,6 @@ HEADERS  += mainwindow.h \
     itemui.h \
     laneui.h \
     scrumboardwidget.h
-    userstorydelegate.h \
     sbinotstartedlistmodel.h \
     adddefect.h \
     lanedelegate.h \

@@ -26,8 +26,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QPalette Pal(palette());
     Pal.setColor(QPalette::Background, Qt::gray);
     SBINotStartedListModel *model = new SBINotStartedListModel();
-	ui->notStartedList->setModel(model);
     this->setAutoFillBackground(true);
+    ui->userStoriesList->setModel(model);
     this->setPalette(Pal);
     //ui->userStoriesList->setItemDelegate(new userStoryDelegate);
 }
