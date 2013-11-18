@@ -25,7 +25,6 @@ SOURCES += main.cpp \
 	itemui.cpp \
 	laneui.cpp \
 	scrumboardwidget.cpp \
-    	userstorydelegate.cpp \
 	lanedelegate.cpp \
         workitem.cpp \
         sbinotstartedlistmodel.cpp \
@@ -70,7 +69,6 @@ HEADERS  += mainwindow.h \
     scrumboardwidget.h \
     sbinotstartedlistmodel.h \
     adddefect.h \
-    userstorydelegate.h \
     lanedelegate.h \
     TFS/WriteData.h \
     TFS/WorkItem.h \
