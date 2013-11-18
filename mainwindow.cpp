@@ -5,6 +5,8 @@
 #include "sbi.h"
 #include "adddefect.h"
 #include "sbinotstartedlistmodel.h"
+#include "laneui.h"
+#include "itemui.h"
 
 #include "TFS/TFSTransaction.h"
 

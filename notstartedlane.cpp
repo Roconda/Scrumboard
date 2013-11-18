@@ -1,11 +1,11 @@
 #include "notstartedlane.h"
 #include <QtGui>
-#include "workitem.h"
+#include "itemui.h"
 
-WorkItem *wi;
+ItemUI *wi;
 
 NotStartedLane::NotStartedLane(QWidget *parent):
     LaneDelegate(parent)
 {
-    wi = new WorkItem(this);
+    wi = new ItemUI(this);
 }

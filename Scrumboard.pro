@@ -21,6 +21,10 @@ SOURCES += main.cpp \
         qcustomplot/qcustomplot.cpp \
         burndownchart.cpp \
         sbi.cpp \
+	adddefect.cpp \
+	itemui.cpp \
+	laneui.cpp \
+	scrumboardwidget.cpp \
         lanedelegate.cpp \
         workitem.cpp \
         sbinotstartedlistmodel.cpp \
@@ -59,6 +63,10 @@ HEADERS  += mainwindow.h \
     defect.h \
     burndownchart.h \
     sbi.h \
+    adddefect.h \
+    itemui.h \
+    laneui.h \
+    scrumboardwidget.h
     userstorydelegate.h \
     sbinotstartedlistmodel.h \
     adddefect.h \
@@ -110,4 +118,7 @@ FORMS    += mainwindow.ui \
     defect.ui \
     burndownchart.ui \
     sbi.ui \
-    adddefect.ui
+    adddefect.ui \
+    itemui.ui \
+    laneui.ui \
+    scrumboardwidget.ui
