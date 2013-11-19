@@ -1,6 +1,6 @@
-#include "sbi.h"
+#include "View/sbi.h"
 #include "ui_sbi.h"
-#include "defect.h"
+#include "View/defect.h"
 
 SBI::SBI(QWidget *parent) :
     QDialog(parent),

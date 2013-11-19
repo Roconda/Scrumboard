@@ -1,11 +1,11 @@
-#include "mainwindow.h"
+#include "View/mainwindow.h"
 #include "ui_mainwindow.h"
-#include "burndownchart.h"
-#include "sbi.h"
-#include "adddefect.h"
+#include "View/burndownchart.h"
+#include "View/sbi.h"
+#include "View/adddefect.h"
 #include "sbinotstartedlistmodel.h"
-#include "laneui.h"
-#include "itemui.h"
+#include "View/laneui.h"
+#include "View/itemui.h"
 
 #include "TFS/TFSTransaction.h"
 
