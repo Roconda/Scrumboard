@@ -120,3 +120,5 @@ FORMS    += View/mainwindow.ui \
     View/itemui.ui \
     View/laneui.ui \
     View/scrumboardwidget.ui
+
+RC_FILE	+= scrumbag.rc
