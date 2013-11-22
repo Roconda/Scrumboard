@@ -24,13 +24,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     SBINotStartedListModel *model = new SBINotStartedListModel();
 
-    QPalette Pal(palette());
-    Pal.setColor(QPalette::Background, Qt::gray);
-    this->setAutoFillBackground(true);
-    this->setPalette(Pal);
-
-    ItemHandler::getInstance().setScrumboard(ui->widget);
-
     //ui->userStoriesList->setItemDelegate(new userStoryDelegate);
 }
 

@@ -14,8 +14,6 @@ class ScrumboardWidget : public QWidget
 
 public:
     explicit ScrumboardWidget(QWidget *parent = 0);
-    void moveItem(ItemUI* item);
-    void moveItem(ItemUI* item, QPoint pos);
     ~ScrumboardWidget();
 
 private:

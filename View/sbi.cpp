@@ -16,6 +16,8 @@ SBI::~SBI()
 
 void SBI::on_pushButton_clicked()
 {
+    /*
     Defect *defect = new Defect();
     defect->show();
+    */
 }
