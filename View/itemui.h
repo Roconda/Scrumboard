@@ -2,6 +2,7 @@
 #define ITEMUI_H
 
 #include <QWidget>
+#include <QDataWidgetMapper>
 
 namespace Ui {
 class ItemUI;
@@ -13,16 +14,17 @@ class ItemUI : public QWidget
 
 public:
     explicit ItemUI(QWidget *parent = 0);
+    void setModel(QString s);
     ~ItemUI();
 
 private:
     Ui::ItemUI *ui;
+    QDataWidgetMapper *mapper;
 
 protected:
     void mouseDoubleClickEvent(QMouseEvent *event);
-    void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
+
 };
 
 #endif // ITEMUI_H
