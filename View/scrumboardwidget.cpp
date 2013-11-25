@@ -12,7 +12,7 @@ ScrumboardWidget::ScrumboardWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     SBINotStartedListModel *model = new SBINotStartedListModel;
-    ui->NotStarted_2->setModel(model);
+    ui->NotStarted->setModel(model);
 
 }
 

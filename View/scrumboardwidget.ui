@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -462,13 +462,20 @@
         </widget>
        </item>
        <item>
-        <widget class="LaneUI" name="NotStarted_2" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+        <widget class="QScrollArea" name="scrollArea_2">
+         <property name="widgetResizable">
+          <bool>true</bool>
          </property>
+         <widget class="LaneUI" name="NotStarted">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>164</width>
+            <height>328</height>
+           </rect>
+          </property>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -489,13 +496,20 @@
         </widget>
        </item>
        <item>
-        <widget class="LaneUI" name="Started_2" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+        <widget class="QScrollArea" name="scrollArea_3">
+         <property name="widgetResizable">
+          <bool>true</bool>
          </property>
+         <widget class="LaneUI" name="Started">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>165</width>
+            <height>328</height>
+           </rect>
+          </property>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -516,13 +530,20 @@
         </widget>
        </item>
        <item>
-        <widget class="LaneUI" name="ToVerify_2" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+        <widget class="QScrollArea" name="scrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
          </property>
+         <widget class="LaneUI" name="toVerify">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>164</width>
+            <height>328</height>
+           </rect>
+          </property>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -543,13 +564,20 @@
         </widget>
        </item>
        <item>
-        <widget class="LaneUI" name="Done_2" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+        <widget class="QScrollArea" name="scrollArea_4">
+         <property name="widgetResizable">
+          <bool>true</bool>
          </property>
+         <widget class="LaneUI" name="Done">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>164</width>
+            <height>328</height>
+           </rect>
+          </property>
+         </widget>
         </widget>
        </item>
       </layout>

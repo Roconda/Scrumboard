@@ -32,6 +32,7 @@ void LaneUI::dropEvent(QDropEvent *event)
     ItemMimeData* data = (ItemMimeData*) event->mimeData();
     ItemUI* item = data->getItemUI();
     item->setParent(this);
+    this->layout()->addWidget(item);
     item->show();
     event->accept();
 }
@@ -48,7 +49,7 @@ void LaneUI::setModel(QAbstractListModel *model){
         it->setTitle(model->data(model->index(i,0), Qt::UserRole).toString());
         it->setDescription(model->data(model->index(i,0), Qt::UserRole + 1).toString());
         it->setID(model->data(model->index(i,0), Qt::UserRole + 2).toString());
-        it->move(5, i * 125 + 5 * i + 5);
+        ui->gridLayout->addWidget(it);
     }
 
 }
