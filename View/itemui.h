@@ -14,7 +14,9 @@ class ItemUI : public QWidget
 
 public:
     explicit ItemUI(QWidget *parent = 0);
-    void setModel(QString s);
+    void setTitle(QString s);
+    void setID(QString s);
+    void setDescription(QString s);
     ~ItemUI();
 
 private:

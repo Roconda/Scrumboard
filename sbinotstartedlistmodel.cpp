@@ -16,6 +16,10 @@ SBINotStartedListModel::SBINotStartedListModel(QObject *parent)
     /* TFS test! */
     std::list<string> saFilenameList;
 
+    SBIList << QString("test");
+    SBIList << QString("test");
+    SBIList << QString("test");
+
     try {
         TFSTransaction::remoteListProjects( saFilenameList );
         for_each(begin(saFilenameList), end(saFilenameList), [&](string s) {
@@ -40,10 +44,12 @@ QVariant SBINotStartedListModel::data(const QModelIndex &index, int role) const
     if (index.row() >= SBIList.size())
         throw std::out_of_range("Index out of range");
 
-    if (role == Qt::DisplayRole)
+    if (role == TitleRole)
         return SBIList[index.row()];
-    else if (role == Qt::ToolTipRole)
-        return QString("Tooltip test!");
+    else if (role == DescriptionRole)
+        return QString("Beschrijving");
+    else if (role == IDRole)
+        return QString("42");
     else
         return QVariant();
 }
