@@ -3,7 +3,7 @@
 
 #define TFS_PORT_NUMBER 8880
 //#define TFS_ADDRESS     "tfs.aii.avans.nl"
-#define TFS_ADDRESS     "www.bert-en-ria.nl"
+#define TFS_ADDRESS     "37.251.30.56"
 //#define TFS_ADDRESS     "localhost"
 
 
