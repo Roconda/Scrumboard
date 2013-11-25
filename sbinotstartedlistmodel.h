@@ -23,7 +23,12 @@ public:
 
 
 private:
-    QStringList SBIList;
+    struct sbiItem {
+        QString titel;
+        QString description;
+        int id;
+    } ;
+    QList<sbiItem> SBIList;
 };
 
 #endif // SBINOTSTARTEDLISTMODEL_H
