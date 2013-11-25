@@ -38,6 +38,17 @@ void ItemUI::mouseMoveEvent(QMouseEvent *event)
     }
 }
 
-void ItemUI::setModel(QString s){
-    ui->label->setText(s);
+void ItemUI::setTitle(QString s)
+{
+    ui->titleLabel->setText(s);
+}
+
+void ItemUI::setID(QString s)
+{
+    ui->idLabel->setText(s);
+}
+
+void ItemUI::setDescription(QString s)
+{
+    ui->descriptionLabel->setText(s);
 }

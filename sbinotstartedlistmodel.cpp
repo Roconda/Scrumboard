@@ -12,6 +12,17 @@ SBINotStartedListModel::SBINotStartedListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     // TODO TFS connectie, data vullen etc
+    sbiItem t1, t2;
+    t1.id = 2;
+    t1.titel = "Test1";
+    t1.description = "Beschrijving1";
+
+    t2.id = 42;
+    t2.titel = "De titel";
+    t2.description = "Test 12345";
+
+    SBIList.push_back(t1);
+    SBIList.push_back(t2);
 
     /* TFS test! */
     std::list<string> saFilenameList;
@@ -19,7 +30,8 @@ SBINotStartedListModel::SBINotStartedListModel(QObject *parent)
     try {
         TFSTransaction::remoteListProjects( saFilenameList );
         for_each(begin(saFilenameList), end(saFilenameList), [&](string s) {
-            SBIList << s.c_str();
+            sbiItem temp;
+            temp.titel = s.c_str();
         });
     } catch(...) {
         std::cerr << "Kon geen verbinding maken met de TFS server";
@@ -40,10 +52,12 @@ QVariant SBINotStartedListModel::data(const QModelIndex &index, int role) const
     if (index.row() >= SBIList.size())
         throw std::out_of_range("Index out of range");
 
-    if (role == Qt::DisplayRole)
-        return SBIList[index.row()];
-    else if (role == Qt::ToolTipRole)
-        return QString("Tooltip test!");
+    if (role == TitleRole)
+        return SBIList[index.row()].titel;
+    else if (role == DescriptionRole)
+        return SBIList[index.row()].description;
+    else if (role == IDRole)
+        return SBIList[index.row()].id;
     else
         return QVariant();
 }

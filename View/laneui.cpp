@@ -45,7 +45,9 @@ void LaneUI::setModel(QAbstractListModel *model){
     int i =0;
     for(i; i < model->rowCount(); i++){
         ItemUI *it = new ItemUI(this);
-        it->setModel(model->data(model->index(i,0)).toString());
+        it->setTitle(model->data(model->index(i,0), Qt::UserRole).toString());
+        it->setDescription(model->data(model->index(i,0), Qt::UserRole + 1).toString());
+        it->setID(model->data(model->index(i,0), Qt::UserRole + 2).toString());
         it->move(5, i * 125 + 5 * i + 5);
     }
 
