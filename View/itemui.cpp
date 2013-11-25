@@ -33,7 +33,9 @@ void ItemUI::mouseMoveEvent(QMouseEvent *event)
     QPixmap map = QWidget::grab(this->rect());
     drag->setPixmap(map);
     this->hide();
-    drag->exec();
+    if(!(drag->exec())){
+        this->show();
+    }
 }
 
 void ItemUI::setModel(QString s){
