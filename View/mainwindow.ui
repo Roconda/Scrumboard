@@ -27,6 +27,18 @@
        <number>0</number>
       </property>
       <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Sprint #</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -46,22 +58,27 @@
        <widget class="QComboBox" name="comboBox">
         <item>
          <property name="text">
-          <string>All sprints</string>
+          <string>Dustin</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Sprint 1</string>
+          <string>Rick</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Sprint 2</string>
+          <string>Sander</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Sprint 3</string>
+          <string>Tim</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Victor</string>
          </property>
         </item>
        </widget>
@@ -84,7 +101,7 @@
          <bool>false</bool>
         </property>
         <property name="placeholderText">
-         <string/>
+         <string extracomment="Zoek op naam, titel, omschrijving .."/>
         </property>
        </widget>
       </item>
@@ -92,6 +109,17 @@
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_9">
+        <item>
+         <widget class="QSlider" name="verticalSlider">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
       <item>
        <widget class="ScrumboardWidget" name="widget" native="true">
         <property name="sizePolicy">
