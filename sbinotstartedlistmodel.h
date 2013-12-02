@@ -11,7 +11,10 @@ public:
     enum SBIDisplayRoles {
             TitleRole = Qt::UserRole,
             DescriptionRole,
-            IDRole
+            IDRole,
+            RemainingHoursRole,
+            PriorityRole,
+            UserRole
     };
 
     explicit SBINotStartedListModel(QObject *parent = 0);
@@ -27,6 +30,9 @@ private:
         QString titel;
         QString description;
         int id;
+        QString remainingHours;
+        QString priority;
+        QString user;
     } ;
     QList<sbiItem> SBIList;
 };

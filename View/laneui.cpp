@@ -2,6 +2,7 @@
 #include "ui_laneui.h"
 #include "itemui.h"
 #include "../itemmimedata.h"
+#include "../sbinotstartedlistmodel.h"
 
 LaneUI::LaneUI(QWidget *parent) :
     QWidget(parent),
@@ -46,9 +47,11 @@ void LaneUI::setModel(QAbstractListModel *model){
     int i =0;
     for(i; i < model->rowCount(); i++){
         ItemUI *it = new ItemUI(this);
-        it->setTitle(model->data(model->index(i,0), Qt::UserRole).toString());
-        it->setDescription(model->data(model->index(i,0), Qt::UserRole + 1).toString());
-        it->setID(model->data(model->index(i,0), Qt::UserRole + 2).toString());
+        it->setTitle(model->data(model->index(i,0), SBINotStartedListModel::TitleRole).toString());
+        it->setID(model->data(model->index(i,0), SBINotStartedListModel::IDRole).toString());
+        it->setRemainingHours(model->data(model->index(i,0), SBINotStartedListModel::RemainingHoursRole).toString());
+        it->setPriority(model->data(model->index(i,0), SBINotStartedListModel::PriorityRole).toString());
+        it->setUser(model->data(model->index(i,0), SBINotStartedListModel::UserRole).toString());
         ui->gridLayout->addWidget(it);
     }
 

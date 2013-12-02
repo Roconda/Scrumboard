@@ -16,7 +16,9 @@ public:
     explicit ItemUI(QWidget *parent = 0);
     void setTitle(QString s);
     void setID(QString s);
-    void setDescription(QString s);
+    void setRemainingHours(QString s);
+    void setPriority(QString s);
+    void setUser(QString s);
     ~ItemUI();
 
 private:

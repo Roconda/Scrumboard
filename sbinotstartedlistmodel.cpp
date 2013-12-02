@@ -16,10 +16,16 @@ SBINotStartedListModel::SBINotStartedListModel(QObject *parent)
     t1.id = 2;
     t1.titel = "Test1";
     t1.description = "Beschrijving1";
+    t1.remainingHours = "10/40";
+    t1.priority = "High";
+    t1.user = "Sander";
 
     t2.id = 42;
     t2.titel = "De titel";
     t2.description = "Test 12345";
+    t2.remainingHours = "20/25";
+    t2.priority = "Low";
+    t2.user = "Tim";
 
     SBIList.push_back(t1);
     SBIList.push_back(t2);
@@ -58,6 +64,12 @@ QVariant SBINotStartedListModel::data(const QModelIndex &index, int role) const
         return SBIList[index.row()].description;
     else if (role == IDRole)
         return SBIList[index.row()].id;
+    else if (role == RemainingHoursRole)
+        return SBIList[index.row()].remainingHours;
+    else if (role == PriorityRole)
+        return SBIList[index.row()].priority;
+    else if (role == UserRole)
+        return SBIList[index.row()].user;
     else
         return QVariant();
 }

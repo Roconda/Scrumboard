@@ -45,10 +45,17 @@ void ItemUI::setTitle(QString s)
 
 void ItemUI::setID(QString s)
 {
-    ui->idLabel->setText(s);
+    ui->idLabel->setText("#" + s);
 }
-
-void ItemUI::setDescription(QString s)
+void ItemUI::setRemainingHours(QString s)
 {
-    ui->descriptionLabel->setText(s);
+    ui->hoursLabel->setText(s + " uur");
+}
+void ItemUI::setPriority(QString s)
+{
+    ui->priorityLabel->setText(s);
+}
+void ItemUI::setUser(QString s)
+{
+    ui->userLabel->setText(s);
 }
