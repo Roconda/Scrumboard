@@ -11,11 +11,6 @@ using std::string;
 SBINotStartedListModel::SBINotStartedListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-<<<<<<< HEAD
-=======
-    // TODO TFS connectie, data vullen etc
-
->>>>>>> f090450460bebbd91ce571701624ce8285ea205a
     /* TFS test! */
     //TFSTransaction::remoteWriteProject("Project van Rick");
 
@@ -26,14 +21,11 @@ SBINotStartedListModel::SBINotStartedListModel(QObject *parent)
         for_each(begin(saFilenameList), end(saFilenameList), [&](string s) {
             sbiItem temp;
             temp.titel = s.c_str();
-<<<<<<< HEAD
             //TODO:Haal data uit TFS
             temp.id = 1;
             temp.remainingHours = "20/25";
             temp.priority = "High";
             temp.user = "User1";
-=======
->>>>>>> f090450460bebbd91ce571701624ce8285ea205a
             SBIList.push_back(temp);
         });
     } catch(...) {
