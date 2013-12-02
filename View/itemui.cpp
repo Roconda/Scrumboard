@@ -1,17 +1,17 @@
 #include "itemui.h"
 #include "ui_itemui.h"
 #include "sbi.h"
-#include <QMouseEvent>
-#include "../itemhandler.h"
-#include <QDrag>
 #include "../itemmimedata.h"
+
+#include <QDrag>
+#include <QMouseEvent>
+
 
 ItemUI::ItemUI(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ItemUI)
 {
     ui->setupUi(this);
-
 }
 
 ItemUI::~ItemUI()

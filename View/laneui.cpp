@@ -32,14 +32,12 @@ void LaneUI::dropEvent(QDropEvent *event)
     event->setDropAction(Qt::MoveAction);
     ItemMimeData* data = (ItemMimeData*) event->mimeData();
     ItemUI* item = data->getItemUI();
-    item->setParent(this);
-    this->layout()->addWidget(item);
+    if(item->parentWidget() != this){
+        item->setParent(this);
+        this->layout()->addWidget(item);
+    }
     item->show();
     event->accept();
-}
-
-void LaneUI::addItem(ItemUI *item){
-    item->setParent(this);
 }
 
 void LaneUI::setModel(QAbstractListModel *model){

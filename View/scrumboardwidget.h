@@ -2,7 +2,6 @@
 #define SCRUMBOARDWIDGET_H
 
 #include <QWidget>
-#include "itemui.h"
 
 namespace Ui {
 class ScrumboardWidget;

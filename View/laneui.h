@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QMouseEvent>
 #include <QAbstractListModel>
-#include "itemui.h";
 
 namespace Ui {
 class LaneUI;
@@ -19,7 +18,6 @@ public:
     void dragEnterEvent(QDragEnterEvent *event);
     void dragLeaveEvent(QDragLeaveEvent *event);
     void dropEvent(QDropEvent *);
-    void addItem(ItemUI* item);
     void setModel(QAbstractListModel *model);
 
     ~LaneUI();
