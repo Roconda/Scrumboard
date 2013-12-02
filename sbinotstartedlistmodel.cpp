@@ -1,20 +1,24 @@
-#include "sbinotstartedlistmodel.h"
-#include "TFS/TFSTransaction.h"
-
 #include <algorithm>
 #include <iostream>
 #include <string>
 #include <iostream>
 
+#include "sbinotstartedlistmodel.h"
+#include "TFS/TFSTransaction.h"
+#include "tfswrapper.h"
+
 using std::string;
+using std::cerr;
 
 SBINotStartedListModel::SBINotStartedListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     // TODO TFS connectie, data vullen etc
 
+    /* wrapper test/voorbeeld */
+    TFSWrapper wrapper = TFSWrapper::instance();
+
     /* TFS test! */
-    //TFSTransaction::remoteWriteProject("Project van Rick");
 
     std::list<string> saFilenameList;
 
@@ -26,7 +30,7 @@ SBINotStartedListModel::SBINotStartedListModel(QObject *parent)
             SBIList.push_back(temp);
         });
     } catch(...) {
-        std::cerr << "Kon geen verbinding maken met de TFS server";
+        cerr << "Kon geen verbinding maken met de TFS server";
     }
 
     /* Einde TFS test */

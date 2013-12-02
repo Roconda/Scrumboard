@@ -55,7 +55,8 @@ SOURCES += main.cpp \
     	TFS/Defect.cpp \
     	TFS/Date.cpp \
         TFS/Attachment.cpp \
-    itemmimedata.cpp
+    itemmimedata.cpp \
+    tfswrapper.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -110,7 +111,8 @@ HEADERS  += View/mainwindow.h \
     TFS/Defect.h \
     TFS/Date.h \
     TFS/Attachment.h \
-    itemmimedata.h
+    itemmimedata.h \
+    tfswrapper.h
 
 FORMS    += View/mainwindow.ui \
     View/defect.ui \
