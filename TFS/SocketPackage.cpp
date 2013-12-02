@@ -20,7 +20,7 @@
 #define READ_MAX_TIME       30000
 
 //  comment the next line in case you use Qt:
-#define RUN_READ_IN_THREAD
+//#define RUN_READ_IN_THREAD
 
 SocketPackage::SocketPackage()
 {
