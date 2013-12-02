@@ -27,6 +27,11 @@ SBINotStartedListModel::SBINotStartedListModel(QObject *parent)
         for_each(begin(saFilenameList), end(saFilenameList), [&](string s) {
             sbiItem temp;
             temp.titel = s.c_str();
+            //TODO:Haal data uit TFS
+            temp.id = 1;
+            temp.remainingHours = "20/25";
+            temp.priority = "High";
+            temp.user = "User1";
             SBIList.push_back(temp);
         });
     } catch(...) {
@@ -55,6 +60,12 @@ QVariant SBINotStartedListModel::data(const QModelIndex &index, int role) const
         return SBIList[index.row()].description;
     else if (role == IDRole)
         return SBIList[index.row()].id;
+    else if (role == RemainingHoursRole)
+        return SBIList[index.row()].remainingHours;
+    else if (role == PriorityRole)
+        return SBIList[index.row()].priority;
+    else if (role == UserRole)
+        return SBIList[index.row()].user;
     else
         return QVariant();
 }
