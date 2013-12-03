@@ -28,8 +28,10 @@ public:
       return INSTANCE;
    }
    Project *getSelectedProject();
+   void saveSelectedProject();
+   Sprint *setSelectedSprint(size_t index);
    Sprint *getSelectedSprint();
-   void SaveSelectedProject();
+   size_t getSelectedSprintIndex();
 };
 
 #endif // TFSWRAPPER_H

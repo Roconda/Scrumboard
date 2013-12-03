@@ -6,25 +6,20 @@
 #include "../sbilistmodel.h"
 #include "../itemhandler.h"
 
-#include "../TFS/TFSTransaction.h"
-
-#include <QStringListModel>
-#include <algorithm>
-#include <iostream>
-#include <string>
-
-
-using std::for_each;
-using std::string;
+#include "../tfswrapper.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    SBIListModel *model = new SBIListModel();
 
-    //ui->userStoriesList->setItemDelegate(new userStoryDelegate);
+    // Stel het sprint nummer in.
+    TFSWrapper wrapper = TFSWrapper::instance();
+    size_t sprintIndex = wrapper.getSelectedSprintIndex();
+
+    QString titleString("Sprint #");
+    ui->sprint_titleLabel->setText(titleString + ('1' + sprintIndex));
 }
 
 MainWindow::~MainWindow()
