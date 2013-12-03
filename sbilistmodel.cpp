@@ -2,13 +2,18 @@
 #include <iostream>
 #include <string>
 #include <iostream>
+#include <vector>
 
 #include "sbilistmodel.h"
-#include "TFS/TFSTransaction.h"
 #include "tfswrapper.h"
+#include "TFS/TFSTransaction.h"
+#include "TFS/Project.h"
+#include "TFS/Sprint.h"
+#include "TFS/WorkItem.h"
 
 using std::string;
 using std::cerr;
+using std::vector;
 
 SBIListModel::SBIListModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -18,27 +23,22 @@ SBIListModel::SBIListModel(QObject *parent)
     /* wrapper test/voorbeeld */
     TFSWrapper wrapper = TFSWrapper::instance();
 
-    /* TFS test! */
+    // FIXME haal data uit gekozen sprint, niet de eerste.
+    Sprint *s = wrapper.getSelectedProject()->getSprint(0);
+    auto wia = s->getWorkItemArray();
 
-    std::list<string> saFilenameList;
-
-    try {
-        TFSTransaction::remoteListProjects( saFilenameList );
-        for_each(begin(saFilenameList), end(saFilenameList), [&](string s) {
+    for_each(begin(wia), end(wia), [&](WorkItem *wi){
+        if (wi) {
             sbiItem temp;
-            temp.titel = s.c_str();
-            //TODO:Haal data uit TFS
-            temp.id = 1;
-            temp.remainingHours = "20/25";
-            temp.priority = "High";
-            temp.user = "User1";
+            temp.titel = wi->getTitle();
+            temp.id = wi->getWorkItemNumber();
+            temp.description = wi->getDescription();
+            temp.remainingHours = "TODO";
+            temp.priority = "TODO";
+            temp.user = "TODO";
             SBIList.push_back(temp);
-        });
-    } catch(...) {
-        cerr << "Kon geen verbinding maken met de TFS server";
-    }
-
-    /* Einde TFS test */
+        }
+    });
 }
 
 int SBIListModel::rowCount(const QModelIndex &parent) const
