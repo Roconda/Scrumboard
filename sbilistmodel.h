@@ -5,9 +5,11 @@
 #include <QStringList>
 #include <vector>
 
-#include "TFS/WorkItem.h"
-
 using std::vector;
+
+// forward declarations
+class WorkItem;
+
 
 class SBIListModel : public QAbstractListModel
 {

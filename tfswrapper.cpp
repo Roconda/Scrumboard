@@ -7,7 +7,7 @@
 
 using std::cout;
 
-TFSWrapper::TFSWrapper()
+TFSWrapper::TFSWrapper() : selectedSprint(5)
 {
     // FIXME zorg voor project kies functionaliteit.
     this->selectedProject = TFSTransaction::remoteReadProject("the_orginal_kitten_mittens");
@@ -21,4 +21,12 @@ Project *TFSWrapper::getSelectedProject()
 void TFSWrapper::SaveSelectedProject()
 {
     // TODO sla project op, als je geen verbinding hebt local, en als je verbinding hebt remote
+}
+
+Sprint *TFSWrapper::getSelectedSprint()
+{
+    if (this->selectedProject)
+        return this->selectedProject->getSprint(this->selectedSprint);
+    else
+        return nullptr;
 }

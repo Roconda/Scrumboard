@@ -8,6 +8,7 @@
 #include "tfswrapper.h"
 #include "TFS/TFSTransaction.h"
 #include "TFS/Project.h"
+#include "TFS/WorkItem.h"
 #include "TFS/Sprint.h"
 
 using std::string;
@@ -17,34 +18,18 @@ using std::vector;
 SBIListModel::SBIListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    // TODO TFS connectie, data vullen etc
-
     /* wrapper test/voorbeeld */
     TFSWrapper wrapper = TFSWrapper::instance();
 
-    // FIXME haal data uit gekozen sprint, niet de eerste.
-    Sprint *s = wrapper.getSelectedProject()->getSprint(0);
+    Sprint *s = wrapper.getSelectedSprint();
 
-    auto wia = s->getWorkItemArray();
-
-    for_each(begin(wia), end(wia), [&](WorkItem *wi){
-        if (wi)
-            this->SBIList.push_back(wi);
-    });
-
-    // oud:
-//    for_each(begin(wia), end(wia), [&](WorkItem *wi){
-//        if (wi) {
-//            sbiItem temp;
-//            temp.titel = wi->getTitle();
-//            temp.id = wi->getWorkItemNumber();
-//            temp.description = wi->getDescription();
-//            temp.remainingHours = "TODO";
-//            temp.priority = "TODO";
-//            temp.user = "TODO";
-//            SBIList.push_back(temp);
-//        }
-//    });
+    if (s) {
+        auto wia = s->getWorkItemArray();
+        for_each(begin(wia), end(wia), [&](WorkItem *wi){
+            if (wi)
+                this->SBIList.push_back(wi);
+        });
+    }
 }
 
 int SBIListModel::rowCount(const QModelIndex &parent) const
