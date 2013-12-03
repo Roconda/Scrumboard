@@ -25,7 +25,6 @@ SOURCES += main.cpp \
         View/itemui.cpp \
         View/laneui.cpp \
         View/scrumboardwidget.cpp \
-        sbinotstartedlistmodel.cpp \
         View/adddefect.cpp \
     	TFS/WriteData.cpp \
     	TFS/WorkItem.cpp \
@@ -56,7 +55,8 @@ SOURCES += main.cpp \
     	TFS/Date.cpp \
         TFS/Attachment.cpp \
     itemmimedata.cpp \
-    tfswrapper.cpp
+    tfswrapper.cpp \
+    sbilistmodel.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -67,7 +67,6 @@ HEADERS  += View/mainwindow.h \
     View/itemui.h \
     View/laneui.h \
     View/scrumboardwidget.h \
-    sbinotstartedlistmodel.h \
     View/adddefect.h \
     TFS/WriteData.h \
     TFS/WorkItem.h \
@@ -112,7 +111,8 @@ HEADERS  += View/mainwindow.h \
     TFS/Date.h \
     TFS/Attachment.h \
     itemmimedata.h \
-    tfswrapper.h
+    tfswrapper.h \
+    sbilistmodel.h
 
 FORMS    += View/mainwindow.ui \
     View/defect.ui \

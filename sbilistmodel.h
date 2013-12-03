@@ -1,10 +1,10 @@
-#ifndef SBINOTSTARTEDLISTMODEL_H
-#define SBINOTSTARTEDLISTMODEL_H
+#ifndef SBILISTMODEL_H
+#define SBILISTMODEL_H
 
 #include <QAbstractListModel>
 #include <QStringList>
 
-class SBINotStartedListModel : public QAbstractListModel
+class SBIListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
@@ -17,7 +17,7 @@ public:
             UserRole
     };
 
-    explicit SBINotStartedListModel(QObject *parent = 0);
+    explicit SBIListModel(QObject *parent = 0);
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role) const;
@@ -37,4 +37,4 @@ private:
     QList<sbiItem> SBIList;
 };
 
-#endif // SBINOTSTARTEDLISTMODEL_H
+#endif // SBILISTMODEL_H

@@ -1,13 +1,13 @@
 #include "scrumboardwidget.h"
 #include "ui_scrumboardwidget.h"
-#include "../sbinotstartedlistmodel.h"
+#include "../sbilistmodel.h"
 
 ScrumboardWidget::ScrumboardWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ScrumboardWidget)
 {
     ui->setupUi(this);
-    SBINotStartedListModel *model = new SBINotStartedListModel;
+    SBIListModel *model = new SBIListModel();
     ui->NotStarted->setModel(model);
 }
 

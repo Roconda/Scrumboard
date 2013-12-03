@@ -3,7 +3,7 @@
 #include "View/burndownchart.h"
 #include "View/sbi.h"
 #include "View/adddefect.h"
-#include "sbinotstartedlistmodel.h"
+#include "sbilistmodel.h"
 #include "View/laneui.h"
 #include "View/itemui.h"
 
@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    SBINotStartedListModel *model = new SBINotStartedListModel();
+    SBIListModel *model = new SBIListModel();
 
     QPalette Pal(palette());
     Pal.setColor(QPalette::Background, Qt::gray);

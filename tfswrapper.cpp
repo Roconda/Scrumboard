@@ -10,13 +10,7 @@ using std::cout;
 TFSWrapper::TFSWrapper()
 {
     // FIXME zorg voor project kies functionaliteit.
-    this->selectedProject = TFSTransaction::remoteReadProject("Project van Rick");
-
-    Sprint spr;
-    spr.setName("Sprint van Rick");
-    std::cout << "Sprintnaam: " << spr.getName();
-//    this->selectedProject->addSprint(spr); <<<<<< crash komt hier
-    TFSTransaction::remoteWriteProject("Project van Rick");
+    this->selectedProject = TFSTransaction::remoteReadProject("the_orginal_kitten_mittens");
 }
 
 Project *TFSWrapper::getSelectedProject()

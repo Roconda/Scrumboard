@@ -3,14 +3,14 @@
 #include <string>
 #include <iostream>
 
-#include "sbinotstartedlistmodel.h"
+#include "sbilistmodel.h"
 #include "TFS/TFSTransaction.h"
 #include "tfswrapper.h"
 
 using std::string;
 using std::cerr;
 
-SBINotStartedListModel::SBINotStartedListModel(QObject *parent)
+SBIListModel::SBIListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     // TODO TFS connectie, data vullen etc
@@ -41,12 +41,12 @@ SBINotStartedListModel::SBINotStartedListModel(QObject *parent)
     /* Einde TFS test */
 }
 
-int SBINotStartedListModel::rowCount(const QModelIndex &parent) const
+int SBIListModel::rowCount(const QModelIndex &parent) const
 {
     return SBIList.size();
 }
 
-QVariant SBINotStartedListModel::data(const QModelIndex &index, int role) const
+QVariant SBIListModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
         throw std::exception("Index is invalid");
@@ -70,7 +70,7 @@ QVariant SBINotStartedListModel::data(const QModelIndex &index, int role) const
         return QVariant();
 }
 
-QVariant SBINotStartedListModel::headerData(int section, Qt::Orientation orientation,
+QVariant SBIListModel::headerData(int section, Qt::Orientation orientation,
                                             int role) const
 {
     if (role != Qt::DisplayRole)
