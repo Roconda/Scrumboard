@@ -3,6 +3,11 @@
 
 #include <QAbstractListModel>
 #include <QStringList>
+#include <vector>
+
+#include "TFS/WorkItem.h"
+
+using std::vector;
 
 class SBIListModel : public QAbstractListModel
 {
@@ -26,15 +31,7 @@ public:
 
 
 private:
-    struct sbiItem {
-        QString titel;
-        QString description;
-        int id;
-        QString remainingHours;
-        QString priority;
-        QString user;
-    } ;
-    QList<sbiItem> SBIList;
+    vector<WorkItem*> SBIList;
 };
 
 #endif // SBILISTMODEL_H

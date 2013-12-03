@@ -9,7 +9,6 @@
 #include "TFS/TFSTransaction.h"
 #include "TFS/Project.h"
 #include "TFS/Sprint.h"
-#include "TFS/WorkItem.h"
 
 using std::string;
 using std::cerr;
@@ -25,20 +24,27 @@ SBIListModel::SBIListModel(QObject *parent)
 
     // FIXME haal data uit gekozen sprint, niet de eerste.
     Sprint *s = wrapper.getSelectedProject()->getSprint(0);
+
     auto wia = s->getWorkItemArray();
 
     for_each(begin(wia), end(wia), [&](WorkItem *wi){
-        if (wi) {
-            sbiItem temp;
-            temp.titel = wi->getTitle();
-            temp.id = wi->getWorkItemNumber();
-            temp.description = wi->getDescription();
-            temp.remainingHours = "TODO";
-            temp.priority = "TODO";
-            temp.user = "TODO";
-            SBIList.push_back(temp);
-        }
+        if (wi)
+            this->SBIList.push_back(wi);
     });
+
+    // oud:
+//    for_each(begin(wia), end(wia), [&](WorkItem *wi){
+//        if (wi) {
+//            sbiItem temp;
+//            temp.titel = wi->getTitle();
+//            temp.id = wi->getWorkItemNumber();
+//            temp.description = wi->getDescription();
+//            temp.remainingHours = "TODO";
+//            temp.priority = "TODO";
+//            temp.user = "TODO";
+//            SBIList.push_back(temp);
+//        }
+//    });
 }
 
 int SBIListModel::rowCount(const QModelIndex &parent) const
@@ -54,18 +60,24 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
     if (index.row() >= SBIList.size())
         throw std::out_of_range("Index out of range");
 
+    if (SBIList[index.row()] == nullptr)
+        return QVariant();
+
     if (role == TitleRole)
-        return SBIList[index.row()].titel;
+        return SBIList[index.row()]->getTitle();
     else if (role == DescriptionRole)
-        return SBIList[index.row()].description;
+        return SBIList[index.row()]->getDescription();
     else if (role == IDRole)
-        return SBIList[index.row()].id;
+        return SBIList[index.row()]->getWorkItemNumber();
     else if (role == RemainingHoursRole)
-        return SBIList[index.row()].remainingHours;
+        // FIXME remaininghours opvragen.
+        return QString("TODO");
     else if (role == PriorityRole)
-        return SBIList[index.row()].priority;
+        // FIXME priority opvragen.
+        return QString("TODO");
     else if (role == UserRole)
-        return SBIList[index.row()].user;
+        // FIXME users opvragen.
+        return QString("TODO");
     else
         return QVariant();
 }

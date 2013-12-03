@@ -3,7 +3,7 @@
 #include "burndownchart.h"
 #include "sbi.h"
 #include "adddefect.h"
-#include "../sbinotstartedlistmodel.h"
+#include "../sbilistmodel.h"
 #include "../itemhandler.h"
 
 #include "../TFS/TFSTransaction.h"
@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    SBINotStartedListModel *model = new SBINotStartedListModel();
+    SBIListModel *model = new SBIListModel();
 
     //ui->userStoriesList->setItemDelegate(new userStoryDelegate);
 }
