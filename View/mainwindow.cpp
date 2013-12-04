@@ -5,6 +5,7 @@
 #include "adddefect.h"
 #include "../sbilistmodel.h"
 #include "../itemhandler.h"
+#include "../TFS/Project.h"
 
 #include "../tfswrapper.h"
 
@@ -20,6 +21,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QString titleString("Sprint #");
     ui->sprint_titleLabel->setText(titleString + ('1' + sprintIndex));
+
+    // Edit scrollbar's item count to the amount of sprints
+    // TODO: check how many sprints there actually are
+    ui->sprintSlider->setMaximum(wrapper.getSelectedProject()->getSprintArray().size()-1);
+    ui->sprintSlider->setValue(sprintIndex);
 }
 
 MainWindow::~MainWindow()
