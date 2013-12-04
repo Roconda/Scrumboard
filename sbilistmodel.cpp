@@ -9,7 +9,9 @@
 #include "TFS/TFSTransaction.h"
 #include "TFS/Project.h"
 #include "TFS/WorkItem.h"
+#include "TFS/SprintBacklogItem.h"
 #include "TFS/Sprint.h"
+#include "TFS/User.h"
 
 using std::string;
 using std::cerr;
@@ -27,7 +29,7 @@ SBIListModel::SBIListModel(QObject *parent)
         auto wia = s->getWorkItemArray();
         for_each(begin(wia), end(wia), [&](WorkItem *wi){
             if (wi)
-                this->SBIList.push_back(wi);
+                this->SBIList.push_back( (SprintBacklogItem *) wi );
         });
     }
 }
@@ -56,14 +58,18 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
         return SBIList[index.row()]->getWorkItemNumber();
     else if (role == RemainingHoursRole)
         // FIXME remaininghours opvragen.
-        return QString("TODO");
+        return QString("<REMAININGHOURS>");
     else if (role == PriorityRole)
         // FIXME priority opvragen.
-        return QString("TODO");
-    else if (role == UserRole)
-        // FIXME users opvragen.
-        return QString("TODO");
-    else
+        return QString("<PRIORITY>");
+    else if (role == UserRole) {
+        // FIXME user opvragen.
+        User *u = SBIList[index.row()]->getUser();
+        if (u)
+            return QString(u->getName());
+        else
+            return QString("<USERNAME>");
+    } else
         return QVariant();
 }
 

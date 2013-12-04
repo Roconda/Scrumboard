@@ -8,7 +8,7 @@
 using std::vector;
 
 // forward declarations
-class WorkItem;
+class SprintBacklogItem;
 
 
 class SBIListModel : public QAbstractListModel
@@ -33,7 +33,7 @@ public:
 
 
 private:
-    vector<WorkItem*> SBIList;
+    vector<SprintBacklogItem*> SBIList;
 };
 
 #endif // SBILISTMODEL_H
