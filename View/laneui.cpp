@@ -42,8 +42,10 @@ void LaneUI::dropEvent(QDropEvent *event)
 
 void LaneUI::setModel(QAbstractListModel *model){
     this->model = model;
-    int i =0;
-    for(i; i < model->rowCount(); i++){
+
+    // TODO clear current widgets
+
+    for(int i = 0; i < model->rowCount(); i++){
         ItemUI *it = new ItemUI(this);
         it->setTitle(model->data(model->index(i,0), SBIListModel::TitleRole).toString());
         it->setID(model->data(model->index(i,0), SBIListModel::IDRole).toString());

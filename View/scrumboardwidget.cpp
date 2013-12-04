@@ -7,11 +7,18 @@ ScrumboardWidget::ScrumboardWidget(QWidget *parent) :
     ui(new Ui::ScrumboardWidget)
 {
     ui->setupUi(this);
-    SBIListModel *model = new SBIListModel();
-    ui->NotStarted->setModel(model);
+    SBIListModel model;
+
+    ui->NotStarted->setModel(&model);
 }
 
 ScrumboardWidget::~ScrumboardWidget()
 {
     delete ui;
+}
+
+void ScrumboardWidget::updateSprintData()
+{
+    SBIListModel model;
+    ui->NotStarted->setModel(&model);
 }

@@ -9,6 +9,8 @@ namespace Ui {
 class LaneUI;
 }
 
+class ItemUI;
+
 class LaneUI : public QWidget
 {
     Q_OBJECT

@@ -23,9 +23,16 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_sprintSlider_sliderMoved(int position);
+
+// members
 private:
     Ui::MainWindow *ui;
     static ItemHandler itemhandler;
+
+// functions
+private:
+    void updateSprintIndex(int newposition);
 };
 
 #endif // MAINWINDOW_H
