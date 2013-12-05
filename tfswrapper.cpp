@@ -4,11 +4,17 @@
 #include "TFS/TFSTransaction.h"
 #include "TFS/Project.h"
 #include "TFS/Sprint.h"
+#include "TFS/StatusType.h"
+
+
+#include "createtestdata.h"
 
 using std::cout;
 
 TFSWrapper::TFSWrapper() : selectedSprint(0)
 {
+    //CreateTestData t;
+
     // FIXME zorg voor project kies functionaliteit.
     this->selectedProject = TFSTransaction::remoteReadProject("Sinterklaas Package Distribution Software");
 }
