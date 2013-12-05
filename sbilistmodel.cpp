@@ -41,6 +41,8 @@ int SBIListModel::rowCount(const QModelIndex &parent) const
 
 QVariant SBIListModel::data(const QModelIndex &index, int role) const
 {
+    QMap<QString, QVariant> sbiData;
+
     if (!index.isValid())
         throw std::exception("Index is invalid");
 
@@ -50,27 +52,19 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
     if (SBIList[index.row()] == nullptr)
         return QVariant();
 
-    if (role == TitleRole)
-        return SBIList[index.row()]->getTitle();
-    else if (role == DescriptionRole)
-        return SBIList[index.row()]->getDescription();
-    else if (role == IDRole)
-        return SBIList[index.row()]->getWorkItemNumber();
-    else if (role == RemainingHoursRole)
-        // FIXME remaininghours opvragen.
-        return QString("<REMAININGHOURS>");
-    else if (role == PriorityRole)
-        // FIXME priority opvragen.
-        return QString("<PRIORITY>");
-    else if (role == UserRole) {
-        // FIXME user opvragen.
-        User *u = SBIList[index.row()]->getUser();
-        if (u)
-            return QString(u->getName());
-        else
-            return QString("<USERNAME>");
-    } else
-        return QVariant();
+    sbiData.insert("Title", SBIList[index.row()]->getTitle());
+    sbiData.insert("Description", SBIList[index.row()]->getDescription());
+    sbiData.insert("WorkItemNumber", SBIList[index.row()]->getWorkItemNumber());
+    sbiData.insert("RemainingHours", QString("<REMAININGHOURS>"));
+    sbiData.insert("Priority", QString("<PRIORITY>"));
+
+    User *u = SBIList[index.row()]->getUser();
+    if (u)
+        sbiData.insert("UserName", QString(u->getName()));
+    else
+        sbiData.insert("UserName", QString("<USERNAME>"));
+
+    return sbiData;
 }
 
 QVariant SBIListModel::headerData(int section, Qt::Orientation orientation,

@@ -46,12 +46,16 @@ void LaneUI::setModel(QAbstractListModel *model){
     // TODO clear current widgets
 
     for(int i = 0; i < model->rowCount(); i++){
+        QVariant sbiDataVariant = model->data(model->index(i,0));
+        QMap<QString, QVariant> sbiData = sbiDataVariant.toMap();
+
         ItemUI *it = new ItemUI(this);
-        it->setTitle(model->data(model->index(i,0), SBIListModel::TitleRole).toString());
-        it->setID(model->data(model->index(i,0), SBIListModel::IDRole).toString());
-        it->setRemainingHours(model->data(model->index(i,0), SBIListModel::RemainingHoursRole).toString());
-        it->setPriority(model->data(model->index(i,0), SBIListModel::PriorityRole).toString());
-        it->setUser(model->data(model->index(i,0), SBIListModel::UserRole).toString());
+        it->setTitle(sbiData.find("Title")->toString());
+        it->setID(sbiData.find("WorkItemNumber")->toString());
+        it->setRemainingHours(sbiData.find("RemainingHours")->toString());
+        it->setPriority(sbiData.find("Priority")->toString());
+        it->setUser(sbiData.find("UserName")->toString());
+
         ui->gridLayout->addWidget(it);
     }
 
