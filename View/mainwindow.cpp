@@ -5,11 +5,9 @@
 #include "adddefect.h"
 #include "../sbilistmodel.h"
 #include "../itemhandler.h"
-
+#include "../tfswrapper.h"
 #include "../TFS/Project.h"
 #include "../TFS/Sprint.h"
-
-#include "../tfswrapper.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,8 +21,10 @@ MainWindow::MainWindow(QWidget *parent) :
     updateSprintIndex(sprintindex);
 
     // Edit scrollbar's item count to the amount of sprints
-    // TODO: check how many sprints there actually are
-    ui->sprintSlider->setMaximum(wrapper.getSelectedProject()->getSprintArray().size()-1);
+    int sprintSize = 0;
+    for(Sprint* sprint : wrapper.getSelectedProject()->getSprintArray()) if(sprint != NULL) sprintSize++;
+
+    ui->sprintSlider->setRange(1, sprintSize);
     ui->sprintSlider->setValue(sprintindex);
 }
 
@@ -35,13 +35,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateSprintIndex(int newposition)
 {
-    QString titleString("Sprint #");
     TFSWrapper wrapper = TFSWrapper::instance();
-
     wrapper.setSelectedSprint(newposition);
 
-    ui->sprint_titleLabel->setText(titleString + ('0' + newposition));
+    QString msg = QString("Sprint #%1").arg(newposition);
+
     ui->widget->updateSprintData();
+    ui->sprint_titleLabel->setText(msg);
+
 }
 
 void MainWindow::on_pushButton_clicked()
