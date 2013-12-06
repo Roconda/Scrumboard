@@ -84,6 +84,9 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QComboBox::AdjustToContents</enum>
+   </property>
    <item>
     <property name="text">
      <string>Als gebruiker wil ik alle SBI’s op het bord kunnen zien van 1 sprint</string>
@@ -91,8 +94,7 @@
    </item>
    <item>
     <property name="text">
-     <string>Als gebruiker wil een een defect toe kunnen voegen
-</string>
+     <string>Als gebruiker wil een een defect toe kunnen voegen</string>
     </property>
    </item>
   </widget>

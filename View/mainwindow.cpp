@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent) :
     size_t sprintindex = wrapper.getSelectedSprintIndex();
     updateSprintIndex(sprintindex);
 
+    this->setStyleSheet("QPushButton, QComboBox, QSlider, QLineEdit { padding: 8 8 8 8 } ");
+
     // Edit scrollbar's item count to the amount of sprints
     int sprintSize = 0;
     for(Sprint* sprint : wrapper.getSelectedProject()->getSprintArray()) if(sprint != NULL) sprintSize++;
@@ -53,13 +55,13 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_sbiOverview_clicked()
 {
-    SBI *sbi1 = new SBI();
+    SBI *sbi1 = new SBI(this);
     sbi1->exec();
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    AddDefect *ad = new AddDefect();
+    AddDefect *ad = new AddDefect(this);
     ad->exec();
 }
 
