@@ -11,18 +11,20 @@ using std::vector;
 class SprintBacklogItem;
 
 
+
+namespace SBIDisplayRoles {
+    enum SBIDisplayRoles {
+            NotStarted = Qt::UserRole,
+            Started,
+            ToVerify,
+            Done
+    };
+}
+
 class SBIListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    enum SBIDisplayRoles {
-            TitleRole = Qt::UserRole,
-            DescriptionRole,
-            IDRole,
-            RemainingHoursRole,
-            PriorityRole,
-            UserRole
-    };
 
     explicit SBIListModel(QObject *parent = 0);
 

@@ -6,7 +6,8 @@
 
 LaneUI::LaneUI(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::LaneUI)
+    ui(new Ui::LaneUI),
+    displayrole(SBIDisplayRoles::NotStarted)
 {
     ui->setupUi(this);
     setAcceptDrops(true);
@@ -40,13 +41,21 @@ void LaneUI::dropEvent(QDropEvent *event)
     event->accept();
 }
 
+void LaneUI::setDisplayRole(SBIDisplayRoles::SBIDisplayRoles displayrole)
+{
+    this->displayrole = displayrole;
+}
+
 void LaneUI::setModel(QAbstractListModel *model){
     this->model = model;
 
     // TODO clear current widgets
 
     for(int i = 0; i < model->rowCount(); i++){
-        QVariant sbiDataVariant = model->data(model->index(i,0));
+        QVariant sbiDataVariant = model->data(model->index(i,0), this->displayrole);
+        if (sbiDataVariant == QVariant())
+            continue;
+
         QMap<QString, QVariant> sbiData = sbiDataVariant.toMap();
 
         ItemUI *it = new ItemUI(this);
