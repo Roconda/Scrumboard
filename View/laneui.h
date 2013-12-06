@@ -5,6 +5,7 @@
 #include <QMouseEvent>
 #include <QAbstractListModel>
 
+
 namespace Ui {
 class LaneUI;
 }
@@ -27,6 +28,7 @@ public:
 private:
     Ui::LaneUI *ui;
     QAbstractListModel *model;
+
 };
 
 #endif // LANEUI_H

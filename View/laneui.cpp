@@ -3,6 +3,7 @@
 #include "itemui.h"
 #include "../itemmimedata.h"
 #include "../sbilistmodel.h"
+#include "scrumboardwidget.h"
 
 LaneUI::LaneUI(QWidget *parent) :
     QWidget(parent),
@@ -35,6 +36,7 @@ void LaneUI::dropEvent(QDropEvent *event)
     if(item->parentWidget() != this){
         item->setParent(this);
         this->layout()->addWidget(item);
+        ScrumboardWidgetHandler::setStatusForSBI(item, this);
     }
     item->show();
     event->accept();
