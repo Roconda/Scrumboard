@@ -57,18 +57,17 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
     else if (role == IDRole)
         return SBIList[index.row()]->getWorkItemNumber();
     else if (role == RemainingHoursRole)
-        // FIXME remaininghours opvragen.
-        return QString("<REMAININGHOURS>");
-    else if (role == PriorityRole)
-        // FIXME priority opvragen.
-        return QString("<PRIORITY>");
+    {
+        QString remaining = QString::number(SBIList[index.row()]->getRemainingWork());
+        QString total = QString::number(SBIList[index.row()]->getBaselineWork());
+        return QString(total + "/" + remaining);
+    }
     else if (role == UserRole) {
-        // FIXME user opvragen.
         User *u = SBIList[index.row()]->getUser();
         if (u)
             return QString(u->getName());
         else
-            return QString("<USERNAME>");
+            return QString("Not assigned");
     } else
         return QVariant();
 }

@@ -51,10 +51,6 @@ void ItemUI::setRemainingHours(QString s)
 {
     ui->hoursLabel->setText(s + " uur");
 }
-void ItemUI::setPriority(QString s)
-{
-    ui->priorityLabel->setText(s);
-}
 void ItemUI::setUser(QString s)
 {
     ui->userLabel->setText(s);
