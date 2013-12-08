@@ -534,24 +534,11 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="priorityLabel">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>50</y>
-     <width>111</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="userLabel">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>70</y>
+     <y>50</y>
      <width>111</width>
      <height>20</height>
     </rect>

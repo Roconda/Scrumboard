@@ -5,6 +5,8 @@
 #include <QMouseEvent>
 #include <QAbstractListModel>
 
+#include "../sbilistmodel.h"
+
 namespace Ui {
 class LaneUI;
 }
@@ -24,9 +26,12 @@ public:
 
     ~LaneUI();
 
+    void setDisplayRole(SBIDisplayRoles::SBIDisplayRoles displayrole);
+
 private:
     Ui::LaneUI *ui;
     QAbstractListModel *model;
+    SBIDisplayRoles::SBIDisplayRoles displayrole;
 };
 
 #endif // LANEUI_H

@@ -5,11 +5,9 @@
 #include "adddefect.h"
 #include "../sbilistmodel.h"
 #include "../itemhandler.h"
-
+#include "../tfswrapper.h"
 #include "../TFS/Project.h"
 #include "../TFS/Sprint.h"
-
-#include "../tfswrapper.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,9 +20,13 @@ MainWindow::MainWindow(QWidget *parent) :
     size_t sprintindex = wrapper.getSelectedSprintIndex();
     updateSprintIndex(sprintindex);
 
+    this->setStyleSheet("QPushButton, QComboBox, QSlider, QLineEdit { padding: 8 8 8 8 } ");
+
     // Edit scrollbar's item count to the amount of sprints
-    // TODO: check how many sprints there actually are
-    ui->sprintSlider->setMaximum(wrapper.getSelectedProject()->getSprintArray().size()-1);
+    int sprintSize = 0;
+    for(Sprint* sprint : wrapper.getSelectedProject()->getSprintArray()) if(sprint != NULL) sprintSize++;
+
+    ui->sprintSlider->setRange(1, sprintSize);
     ui->sprintSlider->setValue(sprintindex);
 }
 
@@ -35,13 +37,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateSprintIndex(int newposition)
 {
-    QString titleString("Sprint #");
     TFSWrapper wrapper = TFSWrapper::instance();
-
     wrapper.setSelectedSprint(newposition);
 
-    ui->sprint_titleLabel->setText(titleString + ('0' + newposition));
+    QString msg = QString("Sprint #%1").arg(newposition);
+
     ui->widget->updateSprintData();
+    ui->sprint_titleLabel->setText(msg);
+
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -52,13 +55,13 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_sbiOverview_clicked()
 {
-    SBI *sbi1 = new SBI();
+    SBI *sbi1 = new SBI(this);
     sbi1->exec();
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    AddDefect *ad = new AddDefect();
+    AddDefect *ad = new AddDefect(this);
     ad->exec();
 }
 

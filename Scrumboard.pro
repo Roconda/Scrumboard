@@ -56,7 +56,8 @@ SOURCES += main.cpp \
         TFS/Attachment.cpp \
     itemmimedata.cpp \
     tfswrapper.cpp \
-    sbilistmodel.cpp
+    sbilistmodel.cpp \
+    createtestdata.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -112,7 +113,8 @@ HEADERS  += View/mainwindow.h \
     TFS/Attachment.h \
     itemmimedata.h \
     tfswrapper.h \
-    sbilistmodel.h
+    sbilistmodel.h \
+    createtestdata.h
 
 FORMS    += View/mainwindow.ui \
     View/defect.ui \

@@ -20,7 +20,7 @@ ItemUI::~ItemUI()
 }
 
 void ItemUI::mouseDoubleClickEvent(QMouseEvent *event){
-    SBI *sbi1 = new SBI();
+    SBI *sbi1 = new SBI(this);
     sbi1->exec();
 }
 

@@ -12,6 +12,8 @@
 #include "TFS/SprintBacklogItem.h"
 #include "TFS/Sprint.h"
 #include "TFS/User.h"
+#include "TFS/Status.h"
+#include "TFS/StatusType.h"
 
 using std::string;
 using std::cerr;
@@ -50,26 +52,37 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
     if (SBIList[index.row()] == nullptr)
         return QVariant();
 
-    if (role == TitleRole)
-        return SBIList[index.row()]->getTitle();
-    else if (role == DescriptionRole)
-        return SBIList[index.row()]->getDescription();
-    else if (role == IDRole)
-        return SBIList[index.row()]->getWorkItemNumber();
-    else if (role == RemainingHoursRole)
-    {
+    Status *stat = SBIList[index.row()]->getStatus(0);
+
+    QMap<QString, QVariant> temp;
+
+    if (stat) {
+        QMap<QString, QVariant> sbiData;
+
+        sbiData.insert("Title", SBIList[index.row()]->getTitle());
+        sbiData.insert("Description", SBIList[index.row()]->getDescription());
+        sbiData.insert("WorkItemNumber", SBIList[index.row()]->getWorkItemNumber());
         QString remaining = QString::number(SBIList[index.row()]->getRemainingWork());
         QString total = QString::number(SBIList[index.row()]->getBaselineWork());
-        return QString(total + "/" + remaining);
-    }
-    else if (role == UserRole) {
+        sbiData.insert("RemainingHours", QString(total + "/" + remaining));
+
         User *u = SBIList[index.row()]->getUser();
         if (u)
-            return QString(u->getName());
+            sbiData.insert("UserName", QString(u->getName()));
         else
-            return QString("Not assigned");
-    } else
-        return QVariant();
+            sbiData.insert("UserName", QString("Not assigned"));
+
+        if (strcmp(stat->getStatusType()->getName(), "Not Started") == 0 && role == SBIDisplayRoles::NotStarted)
+            return sbiData;
+        else if (strcmp(stat->getStatusType()->getName(), "Started") == 0 && role == SBIDisplayRoles::Started)
+            return sbiData;
+        else if (strcmp(stat->getStatusType()->getName(), "To Verfy") == 0 && role == SBIDisplayRoles::ToVerify)
+            return sbiData;
+        else if (strcmp(stat->getStatusType()->getName(), "Done") == 0 && role == SBIDisplayRoles::Done)
+            return sbiData;
+        else
+            return QVariant();
+    }
 }
 
 QVariant SBIListModel::headerData(int section, Qt::Orientation orientation,
