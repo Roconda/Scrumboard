@@ -65,6 +65,7 @@ void LaneUI::setModel(QAbstractListModel *model){
         it->setID(sbiData.find("WorkItemNumber")->toString());
         it->setRemainingHours(sbiData.find("RemainingHours")->toString());
         it->setUser(sbiData.find("UserName")->toString());
+        it->setPriority(sbiData.find("Priority")->toString());
         ui->gridLayout->addWidget(it);
     }
 

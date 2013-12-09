@@ -4,6 +4,8 @@
 #include <QAbstractListModel>
 #include <QStringList>
 #include <vector>
+#include "../TFS/SprintBacklogItem.h"
+#include "../TFS/ProductBacklogItem.h"
 
 using std::vector;
 
@@ -36,6 +38,7 @@ public:
 
 private:
     vector<SprintBacklogItem*> SBIList;
+    vector<ProductBacklogItem*> PBIList;
 };
 
 #endif // SBILISTMODEL_H
