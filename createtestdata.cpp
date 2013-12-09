@@ -205,8 +205,16 @@ CreateTestData::CreateTestData()
         pbi1->addBacklogItem(*task4);
         pbi1->addBacklogItem(*task5);
         pbi1->addBacklogItem(*task6);
+        // voeg sbi toe aan sprint
+        sprint1->addWorkItem(*task1);
+        sprint1->addWorkItem(*task2);
+        sprint1->addWorkItem(*task3);
+        sprint1->addWorkItem(*task4);
+        sprint1->addWorkItem(*task5);
+        sprint1->addWorkItem(*task6);
         // voeg pbi toe aan sprint
         sprint1->addWorkItem(*pbi1);
+
 
         // ------------------------------ //
         // -------- SERVER -------- //
