@@ -27,12 +27,11 @@ void ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
             WorkItem *workitem = tfs.getSelectedSprint()->getWorkItem(i);
             if(workitem){
                 workitem->accept(visitor);
-                visitor.visit((SprintBacklogItem &)workitem);
             }
         }
-        vector<SprintBacklogItem*> *SBIlist = &visitor.getList();
-        for(vector<SprintBacklogItem*>::const_iterator it = SBIlist->begin(); it != SBIlist->end(); ++it){
-            SprintBacklogItem *SBIitem = *it._Ptr;
+        vector<SprintBacklogItem*> &SBIlist = visitor.getList();
+        for(vector<SprintBacklogItem*>::const_iterator it = SBIlist.begin(); it != SBIlist.end(); ++it){
+            SprintBacklogItem *SBIitem = *it;
             if(SBIitem->getWorkItemNumber() == item->getID().toInt()){
                 Status *status = new Status();
                 StatusType::ItemStorage::iterator iType;

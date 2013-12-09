@@ -10,7 +10,7 @@ class SBIVisitor : public TFSVisitor
 public:
     SBIVisitor();
     void visit(SprintBacklogItem& sbi);
-    vector<SprintBacklogItem*> getList();
+    vector<SprintBacklogItem*>& getList();
 
 private:
     vector<SprintBacklogItem*> SBIlist;

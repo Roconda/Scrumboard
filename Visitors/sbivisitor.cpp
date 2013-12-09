@@ -9,6 +9,6 @@ void SBIVisitor::visit(SprintBacklogItem& sbi){
     SBIlist.push_back(&sbi);
 }
 
-vector<SprintBacklogItem*> SBIVisitor::getList(){
+vector<SprintBacklogItem*>& SBIVisitor::getList(){
     return SBIlist;
 }
