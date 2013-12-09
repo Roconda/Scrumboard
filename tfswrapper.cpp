@@ -13,7 +13,7 @@ using std::cout;
 
 TFSWrapper::TFSWrapper() : selectedSprint(0)
 {
-    //CreateTestData t;
+    CreateTestData t;
 
     // FIXME zorg voor project kies functionaliteit.
     this->selectedProject = TFSTransaction::remoteReadProject("Sinterklaas Package Distribution Software");
