@@ -54,13 +54,14 @@ SOURCES += main.cpp \
     	TFS/Defect.cpp \
     	TFS/Date.cpp \
         TFS/Attachment.cpp \
-		itemmimedata.cpp \
-		tfswrapper.cpp \
-		Model/sbilistmodel.cpp \
-		createtestdata.cpp \
-		scrumboardwidgethandler.cpp \
-		Model/pbilistmodel.cpp \
-		Visitors/sbivisitor.cpp
+    itemmimedata.cpp \
+    tfswrapper.cpp \
+    Model/sbilistmodel.cpp \
+    createtestdata.cpp \
+    scrumboardwidgethandler.cpp \
+    Model/pbilistmodel.cpp \
+    Visitors/sbivisitor.cpp \
+    Visitors/pbivisitor.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -121,6 +122,7 @@ HEADERS  += View/mainwindow.h \
     Model/pbilistmodel.h \
     scrumboardwidgethandler.h \
     Visitors/sbivisitor.h \
+    Visitors/pbivisitor.h
 
 FORMS    += View/mainwindow.ui \
     View/defect.ui \

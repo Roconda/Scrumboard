@@ -453,7 +453,7 @@
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>&lt;TITLES&gt;</string>
    </property>
   </widget>
   <widget class="Line" name="line">
@@ -518,7 +518,7 @@
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>&lt;ID&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="hoursLabel">
@@ -531,7 +531,7 @@
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>&lt;HOURS&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="userLabel">
@@ -544,7 +544,20 @@
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>&lt;USER&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="priorityLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>70</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;PRIO&gt;</string>
    </property>
   </widget>
  </widget>

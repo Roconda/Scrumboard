@@ -4,7 +4,7 @@
 #include "../tfswrapper.h"
 #include "../TFS/Sprint.h"
 #include "../TFS/ProductBacklogItem.h"
-#include "../Visitors/sbivisitor.h"
+#include "../Visitors/pbivisitor.h"
 
 using std::for_each;
 
@@ -14,11 +14,15 @@ PBIListModel::PBIListModel(QObject *parent)
     /* wrapper test/voorbeeld */
     TFSWrapper wrapper = TFSWrapper::instance();
 
-    SBIVisitor pbivis;
+    PBIVisitor pbivis;
+
     auto wia = wrapper.getSelectedSprint()->getWorkItemArray();
     for_each(begin(wia), end(wia), [&](WorkItem *pbi) {
-        this->PBIList.push_back((ProductBacklogItem *) pbi);
+        if (pbi) {
+            pbi->accept(pbivis);
+        }
     });
+    this->PBIList = pbivis.getList();
 }
 
 int PBIListModel::rowCount(const QModelIndex &parent) const

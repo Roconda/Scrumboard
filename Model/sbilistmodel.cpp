@@ -16,6 +16,7 @@
 #include "../TFS/Status.h"
 #include "../TFS/StatusType.h"
 #include "../Visitors/sbivisitor.h"
+#include "../Visitors/pbivisitor.h"
 
 using std::string;
 using std::cerr;
@@ -33,12 +34,14 @@ SBIListModel::SBIListModel(QObject *parent)
         vector<WorkItem*> pbis = s->getWorkItemArray();
 
         SBIVisitor sbivis;
+        PBIVisitor pbivis;
 
         for_each(begin(pbis), end(pbis), [&](WorkItem *wi){
             if (wi)
                 wi->accept(sbivis);
         });
         this->SBIList = sbivis.getList();
+        this->PBIList = pbivis.getList();
     }
 }
 
@@ -71,6 +74,19 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
         QString remaining = QString::number(SBIList[index.row()]->getRemainingWork());
         QString total = QString::number(SBIList[index.row()]->getBaselineWork());
         sbiData.insert("RemainingHours", QString(total + "/" + remaining));
+
+        for(int i = 0; i < PBIList.size(); i++) {
+            if(ProductBacklogItem* pbi = PBIList.at(i)) {
+                auto array = pbi->getBacklogItemArray();
+                for(int j = 0; j < array.size(); j++) {
+                    if(auto sbi = array.at(j)) {
+                        if(sbi == SBIList[index.row()]) {
+                            sbiData.insert("Priority", pbi->getPriority());
+                        }
+                    }
+                }
+            }
+        }
 
         User *u = SBIList[index.row()]->getUser();
         if (u)

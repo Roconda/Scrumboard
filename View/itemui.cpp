@@ -78,6 +78,9 @@ void ItemUI::setUser(QString s)
 {
     ui->userLabel->setText(s);
 }
+void ItemUI::setPriority(QString s) {
+    ui->priorityLabel->setText(s);
+}
 
 QString ItemUI::getID(){
     return ui->idLabel->text();
