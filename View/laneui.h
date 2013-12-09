@@ -5,7 +5,7 @@
 #include <QMouseEvent>
 #include <QAbstractListModel>
 
-#include "../sbilistmodel.h"
+#include "../model/sbilistmodel.h"
 
 namespace Ui {
 class LaneUI;

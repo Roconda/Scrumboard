@@ -3,7 +3,8 @@
 #include "burndownchart.h"
 #include "sbi.h"
 #include "adddefect.h"
-#include "../sbilistmodel.h"
+#include "../Model/sbilistmodel.h"
+#include "../Model/pbilistmodel.h"
 #include "../itemhandler.h"
 #include "../tfswrapper.h"
 #include "../TFS/Project.h"
@@ -28,6 +29,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->sprintSlider->setRange(1, sprintSize);
     ui->sprintSlider->setValue(sprintindex);
+
+    // add PBIListmodel to PBIcombobox
+    PBIListModel pbilm;
+    ui->PBIcombobox->setModel(&pbilm);
 }
 
 MainWindow::~MainWindow()

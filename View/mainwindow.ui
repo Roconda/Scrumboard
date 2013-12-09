@@ -55,6 +55,9 @@
        </spacer>
       </item>
       <item>
+       <widget class="QComboBox" name="PBIcombobox"/>
+      </item>
+      <item>
        <widget class="QComboBox" name="comboBox">
         <item>
          <property name="text">
@@ -171,7 +174,7 @@
      <x>0</x>
      <y>0</y>
      <width>1141</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

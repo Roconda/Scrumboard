@@ -189,7 +189,8 @@ CreateTestData::CreateTestData()
         task6->setDescription("Vergadering over feedback van Hoofdpiet");
 
         task6->setUser(user1);
-            // ...
+
+        task6->addStatus(*status4);
 
         // --- Derde iteratie --- //
             // ...

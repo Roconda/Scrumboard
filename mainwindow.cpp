@@ -3,7 +3,7 @@
 #include "View/burndownchart.h"
 #include "View/sbi.h"
 #include "View/adddefect.h"
-#include "sbilistmodel.h"
+#include "Model/sbilistmodel.h"
 #include "View/laneui.h"
 #include "View/itemui.h"
 

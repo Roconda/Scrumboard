@@ -2,8 +2,13 @@
 #define PBILISTMODEL_H
 
 #include <QAbstractListModel>
+#include <vector>
 
-class PBIListModel : QAbstractListModel
+#include "../TFS/ProductBacklogItem.h"
+
+using std::vector;
+
+class PBIListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
@@ -13,6 +18,8 @@ public:
     QVariant data(const QModelIndex &index, int role) const;
     QVariant headerData(int section, Qt::Orientation orientation,
                         int role = Qt::DisplayRole) const;
+private:
+    vector<ProductBacklogItem*> PBIList;
 };
 
 #endif // PBILISTMODEL_H

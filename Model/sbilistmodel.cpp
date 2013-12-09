@@ -5,16 +5,17 @@
 #include <vector>
 
 #include "sbilistmodel.h"
-#include "tfswrapper.h"
-#include "TFS/TFSTransaction.h"
-#include "TFS/Project.h"
-#include "TFS/WorkItem.h"
-#include "TFS/SprintBacklogItem.h"
-#include "TFS/ProductBacklogItem.h"
-#include "TFS/Sprint.h"
-#include "TFS/User.h"
-#include "TFS/Status.h"
-#include "TFS/StatusType.h"
+#include "../tfswrapper.h"
+#include "../TFS/TFSTransaction.h"
+#include "../TFS/Project.h"
+#include "../TFS/WorkItem.h"
+#include "../TFS/SprintBacklogItem.h"
+#include "../TFS/ProductBacklogItem.h"
+#include "../TFS/Sprint.h"
+#include "../TFS/User.h"
+#include "../TFS/Status.h"
+#include "../TFS/StatusType.h"
+#include "../Visitors/sbivisitor.h"
 
 using std::string;
 using std::cerr;
@@ -31,14 +32,15 @@ SBIListModel::SBIListModel(QObject *parent)
     if (s) {
         vector<WorkItem*> pbis = s->getWorkItemArray();
 
-        ProductBacklogItem *pbi = (ProductBacklogItem*) pbis.at(0);
-        if (pbi) {
-            auto wia = pbi->getBacklogItemArray();
-            for_each(begin(wia), end(wia), [&](WorkItem *wi){
-                if (wi)
-                    this->SBIList.push_back( (SprintBacklogItem *) wi );
-            });
-        }
+        SBIVisitor sbivis;
+
+        for_each(begin(pbis), end(pbis), [&](WorkItem *wi){
+            if (wi) {
+                wi->accept(sbivis);
+                this->SBIList.push_back( (SprintBacklogItem *) wi );
+            }
+        });
+        this->SBIList = sbivis.getList();
     }
 }
 

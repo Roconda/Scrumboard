@@ -2,7 +2,7 @@
 #include "ui_laneui.h"
 #include "itemui.h"
 #include "../itemmimedata.h"
-#include "../sbilistmodel.h"
+#include "../model/sbilistmodel.h"
 #include "scrumboardwidget.h"
 
 LaneUI::LaneUI(QWidget *parent) :

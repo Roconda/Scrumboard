@@ -1,6 +1,6 @@
 #include "scrumboardwidget.h"
 #include "ui_scrumboardwidget.h"
-#include "../sbilistmodel.h"
+#include "../model/sbilistmodel.h"
 #include "laneui.h"
 
 ScrumboardWidget::ScrumboardWidget(QWidget *parent) :

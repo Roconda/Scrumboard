@@ -25,9 +25,8 @@ void ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
         SBIVisitor visitor;
         for(int i = 0; i < tfs.getSelectedSprint()->getWorkItemArray().size(); i++){
             WorkItem *workitem = tfs.getSelectedSprint()->getWorkItem(i);
-            if(workitem){
+            if(workitem)
                 workitem->accept(visitor);
-            }
         }
         vector<SprintBacklogItem*> &SBIlist = visitor.getList();
         for(vector<SprintBacklogItem*>::const_iterator it = SBIlist.begin(); it != SBIlist.end(); ++it){
