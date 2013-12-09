@@ -16,7 +16,8 @@ ScrumboardWidget::ScrumboardWidget(QWidget *parent) :
     ui->Done->setDisplayRole(SBIDisplayRoles::Done);
 
     ui->NotStarted->setModel(&model);
-    ui->Started->setModel(&model);
+	handler = new ScrumboardWidgetHandler(this);
+	
     ui->toVerify->setModel(&model);
     ui->Done->setModel(&model);
 }
@@ -30,4 +31,18 @@ void ScrumboardWidget::updateSprintData()
 {
     SBIListModel model;
     //ui->NotStarted->setModel(&model);
+}
+
+QString ScrumboardWidget::compareLane(LaneUI *lane){
+    if(lane == ui->NotStarted){
+        return QString("NotStarted");
+    }else if(lane == ui->Done){
+        return QString("Done");
+    }else if(lane == ui->Started){
+        return QString("Started");
+    }else if(lane == ui->toVerify){
+        return QString("ToVerify");
+    }else{
+        return QString("Undefined");
+    }
 }
