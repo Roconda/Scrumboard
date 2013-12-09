@@ -19,6 +19,7 @@ public:
     void setRemainingHours(QString s);
     void setPriority(QString s);
     void setUser(QString s);
+    QString getID();
     ~ItemUI();
 
 private:

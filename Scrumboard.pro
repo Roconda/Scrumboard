@@ -58,7 +58,9 @@ SOURCES += main.cpp \
     tfswrapper.cpp \
     sbilistmodel.cpp \
     createtestdata.cpp \
-    pbilistmodel.cpp
+    scrumboardwidgethandler.cpp \
+    pbilistmodel.cpp \
+    Visitors/sbivisitor.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -116,7 +118,9 @@ HEADERS  += View/mainwindow.h \
     tfswrapper.h \
     sbilistmodel.h \
     createtestdata.h \
-    pbilistmodel.h
+    pbilistmodel.h \
+    scrumboardwidgethandler.h \
+    Visitors/sbivisitor.h
 
 FORMS    += View/mainwindow.ui \
     View/defect.ui \
@@ -128,3 +132,5 @@ FORMS    += View/mainwindow.ui \
     View/scrumboardwidget.ui
 
 RC_FILE	+= scrumbag.rc
+
+OTHER_FILES +=

@@ -55,3 +55,7 @@ void ItemUI::setUser(QString s)
 {
     ui->userLabel->setText(s);
 }
+
+QString ItemUI::getID(){
+    return ui->idLabel->text();
+}
