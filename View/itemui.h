@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include <QDataWidgetMapper>
+#include <QGraphicsDropShadowEffect>
+#include <QEvent>
+#include <QObject>
 
 namespace Ui {
 class ItemUI;
@@ -25,10 +28,14 @@ public:
 private:
     Ui::ItemUI *ui;
     QDataWidgetMapper *mapper;
+    QGraphicsDropShadowEffect* shadow;
+    static const signed short DEAULT_SHADOW_BLUR = 5;
+    static const signed short HOVER_SHADOW_BLUR = 15;
 
 protected:
     void mouseDoubleClickEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
+    bool eventFilter(QObject *object, QEvent *event);
+
 
 };
 

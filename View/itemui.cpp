@@ -5,6 +5,8 @@
 
 #include <QDrag>
 #include <QMouseEvent>
+#include <QGraphicsDropShadowEffect>
+#include <QDebug>
 
 
 ItemUI::ItemUI(QWidget *parent) :
@@ -12,6 +14,13 @@ ItemUI::ItemUI(QWidget *parent) :
     ui(new Ui::ItemUI)
 {
     ui->setupUi(this);
+
+    // Enable events and set a shadow
+    installEventFilter(this);
+    shadow = new QGraphicsDropShadowEffect();
+    shadow->setBlurRadius(ItemUI::DEAULT_SHADOW_BLUR);
+
+    setGraphicsEffect(shadow);
 }
 
 ItemUI::~ItemUI()
@@ -24,18 +33,32 @@ void ItemUI::mouseDoubleClickEvent(QMouseEvent *event){
     sbi1->exec();
 }
 
-void ItemUI::mouseMoveEvent(QMouseEvent *event)
-{
-    QDrag *drag = new QDrag(this);
-    ItemMimeData *mimeData = new ItemMimeData;
-    mimeData->setItemUI(this);
-    drag->setMimeData(mimeData);
-    QPixmap map = QWidget::grab(this->rect());
-    drag->setPixmap(map);
-    this->hide();
-    if(!(drag->exec())){
-        this->show();
-    }
+bool ItemUI::eventFilter(QObject *object, QEvent *event){
+        // hover events
+        if(object==this && (event->type()==QEvent::Enter || event->type()==QEvent::Leave)) {
+            if(event->type()==QEvent::Enter) {
+                shadow->setBlurRadius(ItemUI::DEAULT_SHADOW_BLUR);
+                this->setGraphicsEffect(shadow);
+            }else
+                shadow->setBlurRadius(ItemUI::HOVER_SHADOW_BLUR);
+        }
+
+        // move event
+        if(object==this && (event->type()==QEvent::MouseMove)){
+            QDrag *drag = new QDrag(this);
+            ItemMimeData *mimeData = new ItemMimeData;
+            mimeData->setItemUI(this);
+            drag->setMimeData(mimeData);
+            QPixmap map = QWidget::grab(this->rect());
+            drag->setPixmap(map);
+            this->hide();
+            if(!(drag->exec())){
+                this->show();
+            }
+            shadow->setBlurRadius(ItemUI::DEAULT_SHADOW_BLUR);
+        }
+
+        return true;
 }
 
 void ItemUI::setTitle(QString s)
