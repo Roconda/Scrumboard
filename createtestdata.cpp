@@ -123,6 +123,7 @@ CreateTestData::CreateTestData()
         // --- Eerste iteratie --- //
 
         ProductBacklogItem *pbi1 = new ProductBacklogItem();
+        pbi1->setTitle("PBI1");
 
         // Task 1
         SprintBacklogItem* task1 = new SprintBacklogItem();

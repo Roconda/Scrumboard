@@ -37,10 +37,8 @@ SBIListModel::SBIListModel(QObject *parent)
         PBIVisitor pbivis;
 
         for_each(begin(pbis), end(pbis), [&](WorkItem *wi){
-            if (wi) {
+            if (wi)
                 wi->accept(sbivis);
-                wi->accept(pbivis);
-            }
         });
         this->SBIList = sbivis.getList();
         this->PBIList = pbivis.getList();

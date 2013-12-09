@@ -31,8 +31,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->sprintSlider->setValue(sprintindex);
 
     // add PBIListmodel to PBIcombobox
-    PBIListModel pbilm;
-    ui->PBIcombobox->setModel(&pbilm);
+    PBIListModel *pbilm = new PBIListModel();
+    ui->PBIcombobox->setModel(pbilm);
 }
 
 MainWindow::~MainWindow()
