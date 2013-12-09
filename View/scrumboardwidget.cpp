@@ -16,7 +16,7 @@ ScrumboardWidget::ScrumboardWidget(QWidget *parent) :
     ui->Done->setDisplayRole(SBIDisplayRoles::Done);
 
     ui->NotStarted->setModel(&model);
-	handler = new ScrumboardWidgetHandler(this);
+    handler = new ScrumboardWidgetHandler(this);
 	
     ui->toVerify->setModel(&model);
     ui->Done->setModel(&model);
