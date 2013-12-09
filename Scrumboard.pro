@@ -7,16 +7,16 @@
 QT       += core gui
 
 
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = Scrumboard
 TEMPLATE = app
 
-LIBS     += -lws2_32
+win32-msvc*: QMAKE_LFLAGS += /VERBOSE
+LIBS     += -lws2_32 -L./
 
 SOURCES += main.cpp \
-        View/mainwindow.cpp \
+		View/mainwindow.cpp \
         View/defect.cpp \
         qcustomplot/qcustomplot.cpp \
         View/burndownchart.cpp \
@@ -54,13 +54,13 @@ SOURCES += main.cpp \
     	TFS/Defect.cpp \
     	TFS/Date.cpp \
         TFS/Attachment.cpp \
-    itemmimedata.cpp \
-    tfswrapper.cpp \
-    Model/sbilistmodel.cpp \
-    createtestdata.cpp \
-    scrumboardwidgethandler.cpp \
-    Model/pbilistmodel.cpp \
-    Visitors/sbivisitor.cpp
+		itemmimedata.cpp \
+		tfswrapper.cpp \
+		Model/sbilistmodel.cpp \
+		createtestdata.cpp \
+		scrumboardwidgethandler.cpp \
+		Model/pbilistmodel.cpp \
+		Visitors/sbivisitor.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -120,7 +120,7 @@ HEADERS  += View/mainwindow.h \
     createtestdata.h \
     Model/pbilistmodel.h \
     scrumboardwidgethandler.h \
-    Visitors/sbivisitor.h
+    Visitors/sbivisitor.h \
 
 FORMS    += View/mainwindow.ui \
     View/defect.ui \
