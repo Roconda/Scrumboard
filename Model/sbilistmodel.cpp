@@ -35,10 +35,8 @@ SBIListModel::SBIListModel(QObject *parent)
         SBIVisitor sbivis;
 
         for_each(begin(pbis), end(pbis), [&](WorkItem *wi){
-            if (wi) {
+            if (wi)
                 wi->accept(sbivis);
-                this->SBIList.push_back( (SprintBacklogItem *) wi );
-            }
         });
         this->SBIList = sbivis.getList();
     }
