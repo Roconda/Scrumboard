@@ -102,7 +102,7 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
             return sbiData;
         else if (strcmp(stat->getStatusType()->getName(), "Started") == 0 && role == SBIDisplayRoles::Started)
             return sbiData;
-        else if (strcmp(stat->getStatusType()->getName(), "To Verfy") == 0 && role == SBIDisplayRoles::ToVerify)
+        else if (strcmp(stat->getStatusType()->getName(), "To Verify") == 0 && role == SBIDisplayRoles::ToVerify)
             return sbiData;
         else if (strcmp(stat->getStatusType()->getName(), "Done") == 0 && role == SBIDisplayRoles::Done)
             return sbiData;

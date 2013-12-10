@@ -26,7 +26,7 @@ Project *TFSWrapper::getSelectedProject()
 
 void TFSWrapper::saveSelectedProject()
 {
-    // TODO sla project op, als je geen verbinding hebt local, en als je verbinding hebt remote
+
 }
 
 Sprint *TFSWrapper::setSelectedSprint(size_t index)

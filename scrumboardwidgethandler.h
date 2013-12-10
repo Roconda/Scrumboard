@@ -7,11 +7,24 @@
 class ScrumboardWidgetHandler
 {
 public:
-    explicit ScrumboardWidgetHandler(QWidget *parent = 0);
-    static void setStatusForSBI(ItemUI* item, LaneUI* lane);
+    static ScrumboardWidgetHandler& getInstance()
+            {
+                static ScrumboardWidgetHandler    instance; // Guaranteed to be destroyed.
+                                      // Instantiated on first use.
+                return instance;
+            }
+
+    void setStatusForSBI(ItemUI* item, LaneUI* lane);
+    void setParent(QWidget *parent){
+        this->parent = parent;
+    }
 
 private:
-    static QWidget *parent;
+    QWidget *parent;
+
+    ScrumboardWidgetHandler() {};
+    ScrumboardWidgetHandler(ScrumboardWidgetHandler const&);
+    void operator=(ScrumboardWidgetHandler const&);
 };
 
 #endif // SCRUMBOARDWIDGETHANDLER_H

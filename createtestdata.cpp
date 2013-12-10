@@ -33,7 +33,7 @@ CreateTestData::CreateTestData()
 
         StatusType *statusType1 = StatusType::withName("Not Started");
         StatusType *statusType2 = StatusType::withName("Started");
-        StatusType *statusType3 = StatusType::withName("To Verfy");
+        StatusType *statusType3 = StatusType::withName("To Verify");
         StatusType *statusType4 = StatusType::withName("Done");
 
         statusType1->addNextStatusType(*statusType2);

@@ -13,10 +13,6 @@ using std::pair;
 
 
 TFSWrapper tfs = TFSWrapper::instance();
-QWidget *ScrumboardWidgetHandler::parent;
-ScrumboardWidgetHandler::ScrumboardWidgetHandler(QWidget *parent){
-    this->parent = parent;
-}
 
 void ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
     ScrumboardWidget *scrumboard = dynamic_cast<ScrumboardWidget *>(parent);
@@ -31,7 +27,9 @@ void ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
         vector<SprintBacklogItem*> &SBIlist = visitor.getList();
         for(vector<SprintBacklogItem*>::const_iterator it = SBIlist.begin(); it != SBIlist.end(); ++it){
             SprintBacklogItem *SBIitem = *it;
-            if(SBIitem->getWorkItemNumber() == item->getID().toInt()){
+            QString itemID = item->getID();
+            itemID.remove(0,1);
+            if(SBIitem->getWorkItemNumber() == itemID.toInt()){
                 Status *status = new Status();
                 StatusType::ItemStorage::iterator iType;
                 for(iType = StatusType::getStorage().begin(); iType != StatusType::getStorage().end(); ++iType){
@@ -40,12 +38,13 @@ void ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
                     if(st->getName() == laneName){
                         status->setStatusType(*st);
                         SBIitem->addStatus(*status);
+                        //tfs save project?
                     }
                 }
             }
         }
 
     }else{
-        //exception
+        //exception LaneUI name does not exist!
     }
 }
