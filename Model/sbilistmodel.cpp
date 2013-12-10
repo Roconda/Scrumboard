@@ -38,7 +38,10 @@ SBIListModel::SBIListModel(QObject *parent)
 
         for_each(begin(pbis), end(pbis), [&](WorkItem *wi){
             if (wi)
+            {
                 wi->accept(sbivis);
+                wi->accept(pbivis);
+            }
         });
         this->SBIList = sbivis.getList();
         this->PBIList = pbivis.getList();
@@ -75,12 +78,13 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
         QString total = QString::number(SBIList[index.row()]->getBaselineWork());
         sbiData.insert("RemainingHours", QString(total + "/" + remaining));
 
+        auto test = SBIList[index.row()];
         for(int i = 0; i < PBIList.size(); i++) {
             if(ProductBacklogItem* pbi = PBIList.at(i)) {
                 auto array = pbi->getBacklogItemArray();
                 for(int j = 0; j < array.size(); j++) {
-                    if(auto sbi = array.at(j)) {
-                        if(sbi == SBIList[index.row()]) {
+                    if(SprintBacklogItem* sbi = array.at(j)) {
+                        if(sbi->getWorkItemNumber() == test->getWorkItemNumber()) {
                             sbiData.insert("Priority", pbi->getPriority());
                         }
                     }

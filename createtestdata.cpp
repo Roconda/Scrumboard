@@ -124,6 +124,7 @@ CreateTestData::CreateTestData()
 
         ProductBacklogItem *pbi1 = new ProductBacklogItem();
         pbi1->setTitle("PBI1");
+        pbi1->setPriority(90);
 
         // Task 1
         SprintBacklogItem* task1 = new SprintBacklogItem();
