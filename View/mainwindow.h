@@ -23,9 +23,9 @@ private slots:
 
     void on_pushButton_2_clicked();
 
-    void on_sprintSlider_sliderMoved(int position);
-
 // members
+    void on_sprintSlider_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
     static ItemHandler itemhandler;

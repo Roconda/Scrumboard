@@ -70,8 +70,7 @@ void MainWindow::on_pushButton_2_clicked()
     ad->exec();
 }
 
-void MainWindow::on_sprintSlider_sliderMoved(int position)
+void MainWindow::on_sprintSlider_valueChanged(int value)
 {
-    /* update de sprintindex label */
-     updateSprintIndex(position);
+    updateSprintIndex(value);
 }
