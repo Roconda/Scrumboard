@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 
+TARGET = Scrumboard
 DEPENDPATH += . Model qcustomplot TFS View Visitors
 INCLUDEPATH += . TFS View Model Visitors qcustomplot
 
@@ -11,6 +11,9 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 win32-msvc*: QMAKE_LFLAGS += /VERBOSE
+LIBS  += -lws2_32 -L./
+
+RC_FILE += scrumbag.rc
 
 # Input
 HEADERS += centralwidgetcontrol.h \
