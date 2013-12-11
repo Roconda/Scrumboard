@@ -9,11 +9,13 @@
 #include "TFS/Status.h"
 #include "TFS/StatusType.h"
 #include "TFS/Project.h"
+#include "TFS/RemainingWorkHistory.h"
+#include <QDate>
+
 using std::pair;
 
 
 TFSWrapper tfs = TFSWrapper::instance();
-
 bool ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
     ScrumboardWidget *scrumboard = dynamic_cast<ScrumboardWidget *>(parent);
     QString laneName = scrumboard->compareLane(lane);
@@ -36,8 +38,18 @@ bool ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
                     StatusType *st = x.second;
                     if(st->getName() == laneName){
                         if(acceptStatus(SBIitem->getStatus(SBIitem->sizeStatus() -1)->getStatusType()->getName(), laneName)){
+                            if(laneName == "Done"){
+                                RemainingWorkHistory *history = new RemainingWorkHistory();
+                                history->setDay(QDate::currentDate().day());
+                                history->setMonth(QDate::currentDate().month());
+                                history->setYear(QDate::currentDate().year());
+                                SBIitem->addRemainingWorkHistory(*history);
+                            }
                             Status *status = new Status();
                             status->setStatusType(*st);
+                            status->setDay(QDate::currentDate().day());
+                            status->setMonth(QDate::currentDate().month());
+                            status->setYear(QDate::currentDate().year());
                             SBIitem->addStatus(*status);
                             tfs.saveSelectedProject();
                             return true;
