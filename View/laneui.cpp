@@ -35,9 +35,12 @@ void LaneUI::dropEvent(QDropEvent *event)
     ItemMimeData* data = (ItemMimeData*) event->mimeData();
     ItemUI* item = data->getItemUI();
     if(item->parentWidget() != this){
-        item->setParent(this);
-        this->layout()->addWidget(item);
-        ScrumboardWidgetHandler::getInstance().setStatusForSBI(item, this);
+        if(ScrumboardWidgetHandler::getInstance().setStatusForSBI(item, this)){
+            item->setParent(this);
+            this->layout()->addWidget(item);
+        }else{
+            event->ignore();
+        }
     }
     item->show();
     event->accept();

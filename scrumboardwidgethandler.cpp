@@ -14,7 +14,7 @@ using std::pair;
 
 TFSWrapper tfs = TFSWrapper::instance();
 
-void ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
+bool ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
     ScrumboardWidget *scrumboard = dynamic_cast<ScrumboardWidget *>(parent);
     QString laneName = scrumboard->compareLane(lane);
     if(laneName != QString("Undefined")){
@@ -30,15 +30,20 @@ void ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
             QString itemID = item->getID();
             itemID.remove(0,1);
             if(SBIitem->getWorkItemNumber() == itemID.toInt()){
-                Status *status = new Status();
                 StatusType::ItemStorage::iterator iType;
                 for(iType = StatusType::getStorage().begin(); iType != StatusType::getStorage().end(); ++iType){
                     pair<std::string, StatusType*> x = *iType;
                     StatusType *st = x.second;
                     if(st->getName() == laneName){
-                        status->setStatusType(*st);
-                        SBIitem->addStatus(*status);
-                        tfs.saveSelectedProject();
+                        if(acceptStatus(SBIitem->getStatus(SBIitem->sizeStatus() -1)->getStatusType()->getName(), laneName)){
+                            Status *status = new Status();
+                            status->setStatusType(*st);
+                            SBIitem->addStatus(*status);
+                            tfs.saveSelectedProject();
+                            return true;
+                        }else{
+                            return false;
+                        }
                     }
                 }
             }
@@ -46,5 +51,22 @@ void ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
 
     }else{
         //exception LaneUI name does not exist!
+        return false;
+    }
+}
+
+bool ScrumboardWidgetHandler::acceptStatus(QString currentLane, QString toLane){
+    if(currentLane == "Not Started" && toLane == "Started"){
+        return true;
+    }else if(currentLane == "Started" && toLane == "Not Started"){
+        return true;
+    }else if(currentLane == "Started" && toLane == "To Verify"){
+        return true;
+    }else if(currentLane == "To Verify" && toLane == "Done"){
+        return true;
+    }else if(currentLane == "To Verify" && toLane == "Started"){
+        return true;
+    }else{
+        return false;
     }
 }

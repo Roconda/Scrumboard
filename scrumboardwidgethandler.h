@@ -14,13 +14,14 @@ public:
                 return instance;
             }
 
-    void setStatusForSBI(ItemUI* item, LaneUI* lane);
+    bool setStatusForSBI(ItemUI* item, LaneUI* lane);
     void setParent(QWidget *parent){
         this->parent = parent;
     }
 
 private:
     QWidget *parent;
+    bool acceptStatus(QString currentLane, QString toLane);
 
     ScrumboardWidgetHandler() {};
     ScrumboardWidgetHandler(ScrumboardWidgetHandler const&);
