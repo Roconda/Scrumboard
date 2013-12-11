@@ -82,3 +82,22 @@ bool ScrumboardWidgetHandler::acceptStatus(QString currentLane, QString toLane){
         return false;
     }
 }
+
+SprintBacklogItem* ScrumboardWidgetHandler::getItemForID(int *id){
+    SBIVisitor visitor;
+    for(int i = 0; i < tfs.getSelectedSprint()->getWorkItemArray().size(); i++){
+        WorkItem *workitem = tfs.getSelectedSprint()->getWorkItem(i);
+        if(workitem)
+            workitem->accept(visitor);
+    }
+
+    vector<SprintBacklogItem*> &SBIlist = visitor.getList();
+    for(vector<SprintBacklogItem*>::const_iterator it = SBIlist.begin(); it != SBIlist.end(); ++it){
+        SprintBacklogItem *SBIitem = *it;
+        if(SBIitem->getWorkItemNumber() == id){
+            return SBIitem;
+        }
+    }
+
+    return NULL;
+}
