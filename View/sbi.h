@@ -15,11 +15,23 @@ public:
     explicit SBI(QWidget *parent = 0);
     ~SBI();
 
+    void setPoints(double points);
+    void setHours(double hours);
+
+    void setStatus(QString status);
+    void setCurrentUser(QString currentUser);
+
 private slots:
     void on_pushButton_clicked();
 
 private:
     Ui::SBI *ui;
+
+    double points;
+    double hours;
+
+    QString status;
+    QString currentUser;
 };
 
 #endif // SBI_H

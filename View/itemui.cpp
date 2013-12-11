@@ -2,6 +2,11 @@
 #include "ui_itemui.h"
 #include "sbi.h"
 #include "../itemmimedata.h"
+#include "../scrumboardwidgethandler.h"
+#include "../TFS/User.h"
+#include "../TFS/Status.h"
+#include "../TFS/StatusType.h"
+#include "../TFS/SprintBacklogItem.h"
 
 #include <QDrag>
 #include <QMouseEvent>
@@ -28,11 +33,6 @@ ItemUI::~ItemUI()
     delete ui;
 }
 
-void ItemUI::mouseDoubleClickEvent(QMouseEvent *event){
-    SBI *sbi1 = new SBI(this);
-    sbi1->exec();
-}
-
 bool ItemUI::eventFilter(QObject *object, QEvent *event){
         // hover events
         if(object==this && (event->type()==QEvent::Enter || event->type()==QEvent::Leave)) {
@@ -56,6 +56,28 @@ bool ItemUI::eventFilter(QObject *object, QEvent *event){
                 this->show();
             }
             shadow->setBlurRadius(ItemUI::DEAULT_SHADOW_BLUR);
+        }
+
+        // double click event
+        if (object == this && (event->type()==QEvent::MouseButtonDblClick)) {
+            SBI *sbi = new SBI(this);
+
+
+            QString itemID = ui->idLabel->text();
+            itemID.remove(0, 1);
+
+            SprintBacklogItem* currentItem = ScrumboardWidgetHandler::getInstance().getItemForID(itemID.toInt());
+            if (currentItem) {
+                sbi->setPoints(currentItem->getCompletedWork());
+                sbi->setHours(currentItem->getRemainingWork());
+
+                sbi->setStatus(currentItem->getStatus(itemID.toInt())->getStatusType()->getName());
+                sbi->setCurrentUser(currentItem->getUser()->getName());
+
+                sbi->exec();
+            } else {
+                qDebug() << "Cannot find item!";
+            }
         }
 
         return true;

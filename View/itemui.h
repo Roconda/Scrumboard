@@ -33,7 +33,6 @@ private:
     static const signed short HOVER_SHADOW_BLUR = 15;
 
 protected:
-    void mouseDoubleClickEvent(QMouseEvent *event);
     bool eventFilter(QObject *object, QEvent *event);
 
 

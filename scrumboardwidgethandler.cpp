@@ -83,7 +83,7 @@ bool ScrumboardWidgetHandler::acceptStatus(QString currentLane, QString toLane){
     }
 }
 
-SprintBacklogItem* ScrumboardWidgetHandler::getItemForID(int *id){
+SprintBacklogItem* ScrumboardWidgetHandler::getItemForID(int id){
     SBIVisitor visitor;
     for(int i = 0; i < tfs.getSelectedSprint()->getWorkItemArray().size(); i++){
         WorkItem *workitem = tfs.getSelectedSprint()->getWorkItem(i);
