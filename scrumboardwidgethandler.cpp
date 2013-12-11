@@ -38,7 +38,7 @@ void ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
                     if(st->getName() == laneName){
                         status->setStatusType(*st);
                         SBIitem->addStatus(*status);
-                        //tfs save project?
+                        tfs.saveSelectedProject();
                     }
                 }
             }

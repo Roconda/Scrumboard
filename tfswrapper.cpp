@@ -26,7 +26,7 @@ Project *TFSWrapper::getSelectedProject()
 
 void TFSWrapper::saveSelectedProject()
 {
-
+    TFSTransaction::remoteWriteProject("Sinterklaas Package Distribution Software");
 }
 
 Sprint *TFSWrapper::setSelectedSprint(size_t index)

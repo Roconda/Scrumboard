@@ -64,7 +64,7 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
     if (SBIList[index.row()] == nullptr)
         return QVariant();
 
-    Status *stat = SBIList[index.row()]->getStatus(0);
+    Status *stat = SBIList[index.row()]->getStatus(SBIList[index.row()]->sizeStatus() -1);
 
     QMap<QString, QVariant> temp;
 
