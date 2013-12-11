@@ -15,6 +15,7 @@ public:
             }
 
     bool setStatusForSBI(ItemUI* item, LaneUI* lane);
+    SprintBacklogItem* getItemForID(int* id);
     void setParent(QWidget *parent){
         this->parent = parent;
     }
