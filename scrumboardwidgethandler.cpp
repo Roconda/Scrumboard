@@ -94,7 +94,7 @@ SprintBacklogItem* ScrumboardWidgetHandler::getItemForID(int id){
     vector<SprintBacklogItem*> &SBIlist = visitor.getList();
     for(vector<SprintBacklogItem*>::const_iterator it = SBIlist.begin(); it != SBIlist.end(); ++it){
         SprintBacklogItem *SBIitem = *it;
-        if(SBIitem->getWorkItemNumber() == *id){
+        if(SBIitem->getWorkItemNumber() == id){
             return SBIitem;
         }
     }

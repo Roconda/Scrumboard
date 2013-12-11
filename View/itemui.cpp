@@ -71,8 +71,15 @@ bool ItemUI::eventFilter(QObject *object, QEvent *event){
                 sbi->setPoints(currentItem->getCompletedWork());
                 sbi->setHours(currentItem->getRemainingWork());
 
-                sbi->setStatus(currentItem->getStatus(itemID.toInt())->getStatusType()->getName());
-                sbi->setCurrentUser(currentItem->getUser()->getName());
+                if (currentItem->getStatus(itemID.toInt()))
+                    sbi->setStatus(currentItem->getStatus(itemID.toInt())->getStatusType()->getName());
+                else
+                    qDebug() << "error! no status found!";
+
+                if (currentItem->getUser())
+                    sbi->setCurrentUser(currentItem->getUser()->getName());
+                else
+                    sbi->setCurrentUser("Not Assigned");
 
                 sbi->exec();
             } else {
