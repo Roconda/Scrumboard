@@ -21,22 +21,24 @@ bool ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
     QString laneName = scrumboard->compareLane(lane);
     if(laneName != QString("Undefined")){
         QString itemID = item->getID().remove(0,1);
-
         SprintBacklogItem* SBIitem = this->getItemForID(itemID.toInt());
+
+        //if SBIitem exist
         if(SBIitem){
             StatusType::ItemStorage::iterator iType;
             for(iType = StatusType::getStorage().begin(); iType != StatusType::getStorage().end(); ++iType){
                 pair<std::string, StatusType*> x = *iType;
                 StatusType *st = x.second;
+
+                //compare status name from lane with status name from storage
                 if(st->getName() == laneName){
+                    //Is this drag allowed?
                     if(acceptStatus(SBIitem->getStatus(SBIitem->sizeStatus() -1)->getStatusType()->getName(), laneName)){
+                        //if item is doing to done lane
                         if(laneName == "Done"){
-                            RemainingWorkHistory *history = new RemainingWorkHistory();
-                            history->setDay(QDate::currentDate().day());
-                            history->setMonth(QDate::currentDate().month());
-                            history->setYear(QDate::currentDate().year());
-                            SBIitem->addRemainingWorkHistory(*history);
+                            setItemDone(SBIitem);
                         }
+
                         Status *status = new Status();
                         status->setStatusType(*st);
                         status->setDay(QDate::currentDate().day());
@@ -55,6 +57,16 @@ bool ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
         //exception LaneUI name does not exist!
         return false;
     }
+}
+
+void ScrumboardWidgetHandler::setItemDone(SprintBacklogItem* SBIitem){
+    RemainingWorkHistory *history = new RemainingWorkHistory();
+    history->setDay(QDate::currentDate().day());
+    history->setMonth(QDate::currentDate().month());
+    history->setYear(QDate::currentDate().year());
+    SBIitem->addRemainingWorkHistory(*history);
+    SBIitem->setRemainingWork(0.0);
+    SBIitem->setCompletedWork(SBIitem->getBaselineWork());
 }
 
 bool ScrumboardWidgetHandler::acceptStatus(QString currentLane, QString toLane){

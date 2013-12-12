@@ -23,6 +23,7 @@ public:
 private:
     QWidget *parent;
     bool acceptStatus(QString currentLane, QString toLane);
+    void setItemDone(SprintBacklogItem* SBIitem);
 
     ScrumboardWidgetHandler() {};
     ScrumboardWidgetHandler(ScrumboardWidgetHandler const&);
