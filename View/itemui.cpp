@@ -3,6 +3,7 @@
 #include "sbi.h"
 #include "../itemmimedata.h"
 #include "../scrumboardwidgethandler.h"
+
 #include "../TFS/User.h"
 #include "../TFS/Status.h"
 #include "../TFS/StatusType.h"
@@ -62,7 +63,6 @@ bool ItemUI::eventFilter(QObject *object, QEvent *event){
         if (object == this && (event->type()==QEvent::MouseButtonDblClick)) {
             SBI *sbi = new SBI(this);
 
-
             QString itemID = ui->idLabel->text();
             itemID.remove(0, 1);
 
@@ -72,9 +72,12 @@ bool ItemUI::eventFilter(QObject *object, QEvent *event){
                 sbi->setHours(currentItem->getRemainingWork());
 
                 if (currentItem->getStatus(itemID.toInt()))
-                    sbi->setStatus(currentItem->getStatus(itemID.toInt())->getStatusType()->getName());
+                    sbi->setStatus(currentItem->getStatus(currentItem->sizeStatus() - 1)->getStatusType()->getName());
                 else
-                    qDebug() << "error! no status found!";
+                {
+                    QString err = QString("error! no status found for item id: %1").arg(itemID);
+                    qDebug() << err;
+                }
 
                 if (currentItem->getUser())
                     sbi->setCurrentUser(currentItem->getUser()->getName());
