@@ -18,16 +18,23 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="lbl_points">
+       <widget class="QLabel" name="lbl_remaining_hours">
         <property name="text">
          <string>Punten:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="lbl_remaining_hours">
+       <widget class="QLabel" name="lbl_completed_hours">
         <property name="text">
          <string>Uren:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbl_total_hours">
+        <property name="text">
+         <string>TextLabel</string>
         </property>
        </widget>
       </item>

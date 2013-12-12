@@ -22,16 +22,19 @@ void SBI::on_pushButton_clicked()
     */
 }
 
-void SBI::setPoints(double points)
+void SBI::setRemainingHours(double hours)
 {
-    this->points = points;
-    ui->lbl_points->setText(QString("Punten: %1").arg(points));
+    ui->lbl_remaining_hours->setText(QString("Aantal resterende uren: %1").arg(hours));
 }
 
-void SBI::setHours(double hours)
+void SBI::setCompletedHours(double hours)
 {
-    this->hours = hours;
-    ui->lbl_remaining_hours->setText(QString("Uren: %1").arg(hours));
+    ui->lbl_completed_hours->setText(QString("Aantal voldane uren: %1").arg(hours));
+}
+
+void SBI::setTotalHours(double hours)
+{
+    ui->lbl_total_hours->setText(QString("Totaal aantal uren: %1").arg(hours));
 }
 
 void SBI::setStatus(QString status)

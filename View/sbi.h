@@ -15,8 +15,9 @@ public:
     explicit SBI(QWidget *parent = 0);
     ~SBI();
 
-    void setPoints(double points);
-    void setHours(double hours);
+    void setRemainingHours(double hours);
+    void setCompletedHours(double hours);
+    void setTotalHours(double hours);
 
     void setStatus(QString status);
     void setCurrentUser(QString currentUser);
@@ -27,8 +28,9 @@ private slots:
 private:
     Ui::SBI *ui;
 
-    double points;
-    double hours;
+    double remainingHours;
+    double completedHours;
+    double totalHours;
 
     QString status;
     QString currentUser;

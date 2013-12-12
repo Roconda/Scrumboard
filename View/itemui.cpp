@@ -68,16 +68,14 @@ bool ItemUI::eventFilter(QObject *object, QEvent *event){
 
             SprintBacklogItem* currentItem = ScrumboardWidgetHandler::getInstance().getItemForID(itemID.toInt());
             if (currentItem) {
-                sbi->setPoints(currentItem->getCompletedWork());
-                sbi->setHours(currentItem->getRemainingWork());
+                sbi->setRemainingHours(currentItem->getRemainingWork());
+                sbi->setCompletedHours(currentItem->getCompletedWork());
+                sbi->setTotalHours(currentItem->getBaselineWork());
 
                 if (currentItem->getStatus(itemID.toInt()))
                     sbi->setStatus(currentItem->getStatus(currentItem->sizeStatus() - 1)->getStatusType()->getName());
                 else
-                {
-                    QString err = QString("error! no status found for item id: %1").arg(itemID);
-                    qDebug() << err;
-                }
+                    qDebug() << QString("Warning! No status found for item id: %1").arg(itemID);;
 
                 if (currentItem->getUser())
                     sbi->setCurrentUser(currentItem->getUser()->getName());
@@ -86,7 +84,7 @@ bool ItemUI::eventFilter(QObject *object, QEvent *event){
 
                 sbi->exec();
             } else {
-                qDebug() << "Cannot find item!";
+                qDebug() << QString("Error! Cannot find item with id '%1'!").arg(itemID);
             }
         }
 
