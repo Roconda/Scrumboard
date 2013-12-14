@@ -2,6 +2,8 @@
 #define TFSWRAPPER_H
 #include "TFS/User.h"
 
+#include <QObject>
+
 // forward declarations
 class Project;
 class Sprint;
@@ -18,15 +20,17 @@ private:
 // functions
 private:
     TFSWrapper();
+    TFSWrapper(const TFSWrapper &other);
+    TFSWrapper &operator=(const TFSWrapper &other);
 
 // members
 public:
 
 // functions
 public:
-   static TFSWrapper& instance()
+   static TFSWrapper* instance()
    {
-      static TFSWrapper INSTANCE;
+       static TFSWrapper *INSTANCE = new TFSWrapper;
       return INSTANCE;
    }
    Project* getSelectedProject();
