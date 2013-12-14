@@ -447,25 +447,30 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>30</y>
+     <y>20</y>
      <width>111</width>
-     <height>20</height>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Segoe Print</family>
+     <pointsize>8</pointsize>
+     <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
    <property name="text">
     <string>&lt;TITLES&gt;</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="idLabel">
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>10</y>
+     <y>0</y>
      <width>31</width>
      <height>20</height>
     </rect>
@@ -473,6 +478,8 @@
    <property name="font">
     <font>
      <family>Segoe Print</family>
+     <pointsize>6</pointsize>
+     <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
    <property name="text">
@@ -482,15 +489,17 @@
   <widget class="QLabel" name="hoursLabel">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>50</y>
-     <width>111</width>
+     <x>70</x>
+     <y>100</y>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Segoe Print</family>
+     <pointsize>6</pointsize>
+     <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
    <property name="text">
@@ -501,14 +510,16 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>70</y>
-     <width>111</width>
+     <y>100</y>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Segoe Print</family>
+     <pointsize>6</pointsize>
+     <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
    <property name="text">
@@ -519,14 +530,16 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>90</y>
-     <width>111</width>
+     <y>0</y>
+     <width>41</width>
      <height>20</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Segoe Print</family>
+     <pointsize>6</pointsize>
+     <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
    <property name="text">
