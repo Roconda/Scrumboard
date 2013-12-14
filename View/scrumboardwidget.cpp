@@ -31,7 +31,10 @@ ScrumboardWidget::~ScrumboardWidget()
 void ScrumboardWidget::updateSprintData()
 {
     SBIListModel model;
-    //ui->NotStarted->setModel(&model);
+    ui->NotStarted->setModel(&model);
+    ui->Started->setModel(&model);
+    ui->toVerify->setModel(&model);
+    ui->Done->setModel(&model);
 }
 
 QString ScrumboardWidget::compareLane(LaneUI *lane){
