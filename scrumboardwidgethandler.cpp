@@ -15,7 +15,7 @@
 using std::pair;
 
 
-TFSWrapper *tfs = TFSWrapper::instance();
+TFSWrapper tfs = TFSWrapper::instance();
 bool ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
     ScrumboardWidget *scrumboard = dynamic_cast<ScrumboardWidget *>(parent);
     QString laneName = scrumboard->compareLane(lane);
@@ -45,7 +45,7 @@ bool ScrumboardWidgetHandler::setStatusForSBI(ItemUI *item, LaneUI *lane){
                         status->setMonth(QDate::currentDate().month());
                         status->setYear(QDate::currentDate().year());
                         SBIitem->addStatus(*status);
-                        tfs->saveSelectedProject();
+                        tfs.saveSelectedProject();
                         return true;
                     }else{
                         return false;
@@ -87,8 +87,8 @@ bool ScrumboardWidgetHandler::acceptStatus(QString currentLane, QString toLane){
 
 SprintBacklogItem* ScrumboardWidgetHandler::getItemForID(int id){
     SBIVisitor visitor;
-    for(int i = 0; i < tfs->getSelectedSprint()->getWorkItemArray().size(); i++){
-        WorkItem *workitem = tfs->getSelectedSprint()->getWorkItem(i);
+    for(int i = 0; i < tfs.getSelectedSprint()->getWorkItemArray().size(); i++){
+        WorkItem *workitem = tfs.getSelectedSprint()->getWorkItem(i);
         if(workitem)
             workitem->accept(visitor);
     }
