@@ -68,6 +68,8 @@ bool ItemUI::eventFilter(QObject *object, QEvent *event){
 
             SprintBacklogItem* currentItem = ScrumboardWidgetHandler::getInstance().getItemForID(itemID.toInt());
             if (currentItem) {
+                sbi->setTitle(currentItem->getTitle());
+                sbi->setDescription(currentItem->getDescription());
                 sbi->setRemainingHours(currentItem->getRemainingWork());
                 sbi->setCompletedHours(currentItem->getCompletedWork());
                 sbi->setTotalHours(currentItem->getBaselineWork());

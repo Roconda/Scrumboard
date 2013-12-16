@@ -22,6 +22,17 @@ void SBI::on_pushButton_clicked()
     */
 }
 
+
+void SBI::setTitle(QString title)
+{
+    ui->lbl_title->setText(QString("Titel: %1").arg(title));
+}
+
+void SBI::setDescription(QString description)
+{
+    ui->lbl_description->setText(QString("Omschrijving: %1").arg(description));
+}
+
 void SBI::setRemainingHours(double hours)
 {
     ui->lbl_remaining_hours->setText(QString("Aantal resterende uren: %1").arg(hours));

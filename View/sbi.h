@@ -15,6 +15,9 @@ public:
     explicit SBI(QWidget *parent = 0);
     ~SBI();
 
+    void setTitle(QString title);
+    void setDescription(QString description);
+
     void setRemainingHours(double hours);
     void setCompletedHours(double hours);
     void setTotalHours(double hours);
