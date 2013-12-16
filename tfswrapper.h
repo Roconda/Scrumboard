@@ -3,10 +3,11 @@
 
 #include <QObject>
 
+#include "tfssignalobject.h"
+
 // forward declarations
 class Project;
 class Sprint;
-
 
 class TFSWrapper
 {
@@ -18,17 +19,16 @@ private:
 // functions
 private:
     TFSWrapper();
-    TFSWrapper(const TFSWrapper &other);
-    TFSWrapper &operator=(const TFSWrapper &other);
 
 // members
 public:
+    TFSSignalObject *testobject;
 
 // functions
 public:
-   static TFSWrapper* instance()
+   static TFSWrapper& instance()
    {
-       static TFSWrapper *INSTANCE = new TFSWrapper;
+      static TFSWrapper INSTANCE;
       return INSTANCE;
    }
    Project *getSelectedProject();
