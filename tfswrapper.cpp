@@ -5,6 +5,7 @@
 #include "TFS/Project.h"
 #include "TFS/Sprint.h"
 #include "TFS/StatusType.h"
+#include "TFS/User.h"
 
 
 #include "createtestdata.h"
@@ -17,6 +18,7 @@ TFSWrapper::TFSWrapper() : selectedSprint(0)
 
     // FIXME zorg voor project kies functionaliteit.
     this->selectedProject = TFSTransaction::remoteReadProject("Sinterklaas Package Distribution Software");
+    this->selectedUser = this->getSelectedUser();
 }
 
 Project *TFSWrapper::getSelectedProject()
@@ -46,4 +48,18 @@ Sprint *TFSWrapper::getSelectedSprint()
         return this->selectedProject->getSprint(this->selectedSprint);
     else
         return nullptr;
+}
+
+User *TFSWrapper::getSelectedUser()
+{
+    // check if nullpointer, otherwise set the first User as default
+    if(selectedUser == nullptr) {
+        User::ItemStorage::iterator iType;
+        for(iType = User::getStorage().begin(); iType != User::getStorage().end(); ++iType){
+            std::pair<std::string, User*> pair = *iType;
+            selectedUser = pair.second;
+        }
+    }
+
+    return selectedUser;
 }
