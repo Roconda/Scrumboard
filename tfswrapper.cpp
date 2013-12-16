@@ -15,6 +15,7 @@ using std::cout;
 TFSWrapper::TFSWrapper() : selectedSprint(0)
 {
     //CreateTestData t;
+    testobject = new TFSSignalObject();
 
     // FIXME zorg voor project kies functionaliteit.
     this->selectedProject = TFSTransaction::remoteReadProject("Sinterklaas Package Distribution Software");
@@ -23,6 +24,7 @@ TFSWrapper::TFSWrapper() : selectedSprint(0)
 
 Project *TFSWrapper::getSelectedProject()
 {
+    emit testobject->remoteTFSDataChanged();
     return this->selectedProject;
 }
 
