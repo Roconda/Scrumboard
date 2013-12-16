@@ -17,15 +17,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // Stel het sprint nummer in.
-    TFSWrapper *wrapper = TFSWrapper::instance();
-    size_t sprintindex = wrapper->getSelectedSprintIndex();
+    TFSWrapper wrapper = TFSWrapper::instance();
+    size_t sprintindex = wrapper.getSelectedSprintIndex();
     updateSprintIndex(sprintindex);
 
     this->setStyleSheet("QPushButton, QComboBox, QSlider, QLineEdit { padding: 8 8 8 8 } ");
 
     // Edit scrollbar's item count to the amount of sprints
     int sprintSize = 0;
-    for(Sprint* sprint : wrapper->getSelectedProject()->getSprintArray()) if(sprint != NULL) sprintSize++;
+    for(Sprint* sprint : wrapper.getSelectedProject()->getSprintArray()) if(sprint != NULL) sprintSize++;
 
     ui->sprintSlider->setRange(1, sprintSize);
     ui->sprintSlider->setValue(sprintindex);
@@ -42,8 +42,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateSprintIndex(int newposition)
 {
-    TFSWrapper *wrapper = TFSWrapper::instance();
-    wrapper->setSelectedSprint(newposition);
+    TFSWrapper wrapper = TFSWrapper::instance();
+    wrapper.setSelectedSprint(newposition);
 
     QString msg = QString("Sprint #%1").arg(newposition);
 

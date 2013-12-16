@@ -12,11 +12,11 @@ PBIListModel::PBIListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     /* wrapper test/voorbeeld */
-    TFSWrapper *wrapper = TFSWrapper::instance();
+    TFSWrapper wrapper = TFSWrapper::instance();
 
     PBIVisitor pbivis;
 
-    auto wia = wrapper->getSelectedSprint()->getWorkItemArray();
+    auto wia = wrapper.getSelectedSprint()->getWorkItemArray();
     for_each(begin(wia), end(wia), [&](WorkItem *pbi) {
         if (pbi) {
             pbi->accept(pbivis);
