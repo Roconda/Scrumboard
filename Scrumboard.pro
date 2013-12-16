@@ -61,7 +61,8 @@ SOURCES += main.cpp \
     scrumboardwidgethandler.cpp \
     Model/pbilistmodel.cpp \
     Visitors/sbivisitor.cpp \
-    Visitors/pbivisitor.cpp
+    Visitors/pbivisitor.cpp \
+    tfssignalobject.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -122,7 +123,8 @@ HEADERS  += View/mainwindow.h \
     Model/pbilistmodel.h \
     scrumboardwidgethandler.h \
     Visitors/sbivisitor.h \
-    Visitors/pbivisitor.h
+    Visitors/pbivisitor.h \
+    tfssignalobject.h
 
 FORMS    += View/mainwindow.ui \
     View/defect.ui \
