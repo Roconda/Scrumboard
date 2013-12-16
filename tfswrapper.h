@@ -6,6 +6,10 @@
 
 #include "tfssignalobject.h"
 
+#include <QObject>
+
+#include "tfssignalobject.h"
+
 // forward declarations
 class Project;
 class Sprint;
