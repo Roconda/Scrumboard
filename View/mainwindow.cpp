@@ -74,3 +74,9 @@ void MainWindow::on_sprintSlider_valueChanged(int value)
 {
     updateSprintIndex(value);
 }
+
+void MainWindow::on_PBIcombobox_currentIndexChanged(int index)
+{
+    TFSWrapper wrapper = TFSWrapper::instance();
+
+}

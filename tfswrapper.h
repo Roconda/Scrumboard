@@ -1,10 +1,5 @@
 #ifndef TFSWRAPPER_H
 #define TFSWRAPPER_H
-#include "TFS/User.h"
-
-#include <QObject>
-
-#include "tfssignalobject.h"
 
 #include <QObject>
 
@@ -12,6 +7,8 @@
 
 // forward declarations
 class Project;
+class SprintBacklogItem;
+class User;
 class Sprint;
 
 class TFSWrapper
@@ -20,6 +17,7 @@ class TFSWrapper
 private:
     Project *selectedProject;
     size_t selectedSprint;
+    SprintBacklogItem* selectedSBI;
     User* selectedUser;
 
 // functions
@@ -28,7 +26,7 @@ private:
 
 // members
 public:
-    TFSSignalObject *testobject;
+    TFSSignalObject *signalObject;
 
 // functions
 public:
@@ -43,6 +41,8 @@ public:
    Sprint* getSelectedSprint();
    size_t getSelectedSprintIndex();
    User* getSelectedUser();
+   void setSelectedSBI(SprintBacklogItem *backlogitem);
+   SprintBacklogItem *getSelectedSBI();
 };
 
 #endif // TFSWRAPPER_H

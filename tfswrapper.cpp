@@ -5,6 +5,7 @@
 #include "TFS/Project.h"
 #include "TFS/Sprint.h"
 #include "TFS/StatusType.h"
+#include "TFS/SprintBacklogItem.h"
 #include "TFS/User.h"
 
 
@@ -15,7 +16,7 @@ using std::cout;
 TFSWrapper::TFSWrapper() : selectedSprint(0)
 {
     //CreateTestData t;
-    testobject = new TFSSignalObject();
+    signalObject = new TFSSignalObject();
 
     // FIXME zorg voor project kies functionaliteit.
     this->selectedProject = TFSTransaction::remoteReadProject("Sinterklaas Package Distribution Software");
@@ -24,7 +25,6 @@ TFSWrapper::TFSWrapper() : selectedSprint(0)
 
 Project *TFSWrapper::getSelectedProject()
 {
-    emit testobject->remoteTFSDataChanged();
     return this->selectedProject;
 }
 
@@ -55,13 +55,23 @@ Sprint *TFSWrapper::getSelectedSprint()
 User *TFSWrapper::getSelectedUser()
 {
     // check if nullpointer, otherwise set the first User as default
-    if(selectedUser == nullptr) {
+    if (selectedUser == nullptr) {
         User::ItemStorage::iterator iType;
-        for(iType = User::getStorage().begin(); iType != User::getStorage().end(); ++iType){
+        for (iType = User::getStorage().begin(); iType != User::getStorage().end(); ++iType){
             std::pair<std::string, User*> pair = *iType;
             selectedUser = pair.second;
         }
     }
 
     return selectedUser;
+}
+
+void TFSWrapper::setSelectedSBI(SprintBacklogItem *backlogitem)
+{
+    this->selectedSBI = backlogitem;
+}
+
+SprintBacklogItem *TFSWrapper::getSelectedSBI()
+{
+    return this->selectedSBI;
 }
