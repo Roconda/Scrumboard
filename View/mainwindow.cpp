@@ -9,6 +9,7 @@
 #include "../tfswrapper.h"
 #include "../TFS/Project.h"
 #include "../TFS/Sprint.h"
+#include "../TFS/User.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,7 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
     int sprintSize = 0;
     for(Sprint* sprint : wrapper.getSelectedProject()->getSprintArray()) if(sprint != NULL) sprintSize++;
 
-    ui->sprintSlider->setRange(1, sprintSize);
+
+    ui->sprintSlider->setRange(0, sprintSize-1);
     ui->sprintSlider->setValue(sprintindex);
 
     // add PBIListmodel to PBIcombobox
@@ -56,7 +58,7 @@ void MainWindow::updateSprintIndex(int newposition)
     TFSWrapper wrapper = TFSWrapper::instance();
     wrapper.setSelectedSprint(newposition);
 
-    QString msg = QString("Sprint #%1").arg(newposition);
+    QString msg = QString("Sprint #%1").arg(newposition+1);
 
     ui->widget->updateSprintData();
     ui->sprint_titleLabel->setText(msg);
