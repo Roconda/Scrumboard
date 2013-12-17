@@ -133,6 +133,7 @@ CreateTestData::CreateTestData()
         task1->setDescription("Het plan van aanpak van Project SPDS");
         task1->setUser(user1);
         task1->setRemainingWork(60.0);
+        task1->setBaselineWork(60.0);
 
         Status *status1 = new Status();
         status1->setStatusType(*statusType1);
@@ -144,6 +145,7 @@ CreateTestData::CreateTestData()
         task2->setWorkItemNumber(2);
         task2->setDescription("Versie 0.1");
         task2->setRemainingWork(70.0);
+        task2->setBaselineWork(70.0);
 
         Status *status2 = new Status();
         status2->setStatusType(*statusType2);
@@ -156,6 +158,7 @@ CreateTestData::CreateTestData()
         task3->setDescription("Kan je direct de header doorgeven? -Ontwerpiet");
         task3->setUser(user3);
         task3->setRemainingWork(20.0);
+        task3->setBaselineWork(20.0);
 
         Status *status3 = new Status();
         status3->setStatusType(*statusType3);
@@ -168,6 +171,7 @@ CreateTestData::CreateTestData()
         task4->setDescription("Vergeet niet method boolean Open()!");
         task4->setUser(user4);
         task4->setRemainingWork(30.0);
+        task4->setBaselineWork(30.0);
 
         Status *status4 = new Status();
         status4->setStatusType(*statusType4);
@@ -180,6 +184,7 @@ CreateTestData::CreateTestData()
         task5->setDescription("");
         task5->setUser(user5);
         task5->setRemainingWork(30.0);
+        task5->setBaselineWork(30.0);
 
         task5->addStatus(*status4);
 
@@ -192,6 +197,7 @@ CreateTestData::CreateTestData()
         task6->setDescription("Vergadering over feedback van Hoofdpiet");
         task6->setUser(user1);
         task6->setRemainingWork(100.0);
+        task6->setBaselineWork(100.0);
 
         task6->addStatus(*status4);
 

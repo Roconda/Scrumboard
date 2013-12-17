@@ -22,7 +22,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     SBIListModel *model = new SBIListModel();
 
     QPalette Pal(palette());

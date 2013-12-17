@@ -9,6 +9,7 @@
 #include "../tfswrapper.h"
 #include "../TFS/Project.h"
 #include "../TFS/Sprint.h"
+#include "../TFS/User.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,22 +18,33 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // Stel het sprint nummer in.
-    TFSWrapper wrapper = TFSWrapper::instance();
-    size_t sprintindex = wrapper.getSelectedSprintIndex();
+    size_t sprintindex = TFSWrapper::instance().getSelectedSprintIndex();
     updateSprintIndex(sprintindex);
 
     this->setStyleSheet("QPushButton, QComboBox, QSlider, QLineEdit { padding: 8 8 8 8 } ");
 
     // Edit scrollbar's item count to the amount of sprints
     int sprintSize = 0;
-    for(Sprint* sprint : wrapper.getSelectedProject()->getSprintArray()) if(sprint != NULL) sprintSize++;
+    for(Sprint* sprint : TFSWrapper::instance().getSelectedProject()->getSprintArray()) if(sprint != NULL) sprintSize++;
 
-    ui->sprintSlider->setRange(1, sprintSize);
+
+    ui->sprintSlider->setRange(0, sprintSize-1);
     ui->sprintSlider->setValue(sprintindex);
 
     // add PBIListmodel to PBIcombobox
     PBIListModel *pbilm = new PBIListModel();
     ui->PBIcombobox->setModel(pbilm);
+
+    // TODO: move somewhere else
+    for(User* user : TFSWrapper::instance().getAllUsers()) {
+        ui->userChooser->addItem(user->getName());
+    }
+
+    int userKey = ui->userChooser->findText(TFSWrapper::instance().getSelectedUser()->getName());
+    if(userKey != -1) {
+        ui->userChooser->setCurrentIndex(userKey);
+    }
+    // end of todo
 }
 
 MainWindow::~MainWindow()
@@ -42,10 +54,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateSprintIndex(int newposition)
 {
-    TFSWrapper wrapper = TFSWrapper::instance();
-    wrapper.setSelectedSprint(newposition);
+    TFSWrapper::instance().setSelectedSprint(newposition);
 
-    QString msg = QString("Sprint #%1").arg(newposition);
+    QString msg = QString("Sprint #%1").arg(newposition+1);
 
     ui->widget->updateSprintData();
     ui->sprint_titleLabel->setText(msg);
@@ -77,5 +88,4 @@ void MainWindow::on_sprintSlider_valueChanged(int value)
 
 void MainWindow::on_PBIcombobox_currentIndexChanged(int index)
 {
-    TFSWrapper wrapper = TFSWrapper::instance();
 }

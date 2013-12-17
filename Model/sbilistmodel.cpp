@@ -26,10 +26,9 @@ SBIListModel::SBIListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     /* wrapper test/voorbeeld */
-    TFSWrapper wrapper = TFSWrapper::instance();
-    QObject::connect(wrapper.signalObject, SIGNAL(remoteTFSDataChanged()),
-                     this, SLOT(refreshTFSData()));
 
+    QObject::connect(TFSWrapper::instance().signalObject, SIGNAL(remoteTFSDataChanged()),
+		this, SLOT(refreshTFSData()));
     refreshTFSData();
 }
 
@@ -110,9 +109,7 @@ QVariant SBIListModel::headerData(int section, Qt::Orientation orientation,
 
 void SBIListModel::refreshTFSData()
 {
-    TFSWrapper wrapper = TFSWrapper::instance();
-
-    Sprint *s = wrapper.getSelectedSprint();
+    Sprint *s = TFSWrapper::instance().getSelectedSprint();
 
     if (s) {
         vector<WorkItem*> pbis = s->getWorkItemArray();

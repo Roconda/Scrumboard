@@ -54,7 +54,12 @@ void LaneUI::setDisplayRole(SBIDisplayRoles::SBIDisplayRoles displayrole)
 void LaneUI::setModel(QAbstractListModel *model){
     this->model = model;
 
-    // TODO clear current widgets
+    //recursively deletes children and their childeren.
+    QList<ItemUI *> widgets = findChildren<ItemUI *>();
+    foreach(ItemUI * widget, widgets)
+    {
+        delete widget;
+    }
 
     for(int i = 0; i < model->rowCount(); i++){
         QVariant sbiDataVariant = model->data(model->index(i,0), this->displayrole);
@@ -71,5 +76,4 @@ void LaneUI::setModel(QAbstractListModel *model){
         it->setPriority(sbiData.find("Priority")->toString());
         ui->gridLayout->addWidget(it);
     }
-
 }

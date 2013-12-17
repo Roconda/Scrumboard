@@ -12,8 +12,8 @@ PBIListModel::PBIListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     /* bind dit model met het tfswrapper tfsupdate signal */
-    TFSWrapper wrapper = TFSWrapper::instance();
-    QObject::connect(wrapper.signalObject, SIGNAL(remoteTFSDataChanged()),
+
+    QObject::connect(TFSWrapper::instance().signalObject, SIGNAL(remoteTFSDataChanged()),
                      this, SLOT(refreshTFSData()));
 
     refreshTFSData();
@@ -51,11 +51,9 @@ QVariant PBIListModel::headerData(int section, Qt::Orientation orientation,
 
 void PBIListModel::refreshTFSData()
 {
-    TFSWrapper wrapper = TFSWrapper::instance();
-
     PBIVisitor pbivis;
 
-    auto wia = wrapper.getSelectedSprint()->getWorkItemArray();
+    auto wia = TFSWrapper::instance().getSelectedSprint()->getWorkItemArray();
     for_each(begin(wia), end(wia), [&](WorkItem *pbi) {
         if (pbi) {
             pbi->accept(pbivis);
