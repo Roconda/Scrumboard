@@ -35,6 +35,9 @@ void TFSWrapper::saveSelectedProject()
 
 Sprint *TFSWrapper::setSelectedSprint(size_t index)
 {
+    // test
+    emit this->signalObject->remoteTFSDataChanged();
+
     this->selectedSprint = index;
     return getSelectedSprint();
 }

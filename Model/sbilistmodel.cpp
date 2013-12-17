@@ -27,25 +27,10 @@ SBIListModel::SBIListModel(QObject *parent)
 {
     /* wrapper test/voorbeeld */
     TFSWrapper wrapper = TFSWrapper::instance();
+    QObject::connect(wrapper.signalObject, SIGNAL(remoteTFSDataChanged()),
+                     this, SLOT(refreshTFSData()));
 
-    Sprint *s = wrapper.getSelectedSprint();
-
-    if (s) {
-        vector<WorkItem*> pbis = s->getWorkItemArray();
-
-        SBIVisitor sbivis;
-        PBIVisitor pbivis;
-
-        for_each(begin(pbis), end(pbis), [&](WorkItem *wi){
-            if (wi)
-            {
-                wi->accept(sbivis);
-                wi->accept(pbivis);
-            }
-        });
-        this->SBIList = sbivis.getList();
-        this->PBIList = pbivis.getList();
-    }
+    refreshTFSData();
 }
 
 int SBIListModel::rowCount(const QModelIndex &parent) const
@@ -121,4 +106,28 @@ QVariant SBIListModel::headerData(int section, Qt::Orientation orientation,
         return QString("Column %1").arg(section);
     else
         return QString("Row %1").arg(section);
+}
+
+void SBIListModel::refreshTFSData()
+{
+    TFSWrapper wrapper = TFSWrapper::instance();
+
+    Sprint *s = wrapper.getSelectedSprint();
+
+    if (s) {
+        vector<WorkItem*> pbis = s->getWorkItemArray();
+
+        SBIVisitor sbivis;
+        PBIVisitor pbivis;
+
+        for_each(begin(pbis), end(pbis), [&](WorkItem *wi){
+            if (wi)
+            {
+                wi->accept(sbivis);
+                wi->accept(pbivis);
+            }
+        });
+        this->SBIList = sbivis.getList();
+        this->PBIList = pbivis.getList();
+    }
 }
