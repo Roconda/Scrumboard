@@ -27,7 +27,7 @@ SBIListModel::SBIListModel(QObject *parent)
 {
     /* wrapper test/voorbeeld */
 
-    QObject::connect(TFSWrapper::instance().signalObject, SIGNAL(remoteTFSDataChanged()),
+    QObject::connect(&TFSWrapper::instance(), SIGNAL(remoteTFSDataChanged()),
 		this, SLOT(refreshTFSData()));
     refreshTFSData();
 }
