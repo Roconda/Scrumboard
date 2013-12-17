@@ -38,7 +38,7 @@ private:
     vector<SprintBacklogItem*> SBIList;
     vector<ProductBacklogItem*> PBIList;
 
-public slots:
+private slots:
     void refreshTFSData();
 };
 

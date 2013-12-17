@@ -21,7 +21,7 @@ public:
 private:
     vector<ProductBacklogItem*> PBIList;
 
-public slots:
+private slots:
     void refreshTFSData();
 };
 
