@@ -23,6 +23,8 @@ private:
 // functions
 private:
     TFSWrapper();
+    TFSWrapper(TFSWrapper const&);
+    void operator=(TFSWrapper const&);
 
 // members
 public:

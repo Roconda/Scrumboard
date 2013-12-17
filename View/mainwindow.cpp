@@ -18,15 +18,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // Stel het sprint nummer in.
-    TFSWrapper wrapper = TFSWrapper::instance();
-    size_t sprintindex = wrapper.getSelectedSprintIndex();
+    size_t sprintindex = TFSWrapper::instance().getSelectedSprintIndex();
     updateSprintIndex(sprintindex);
 
     this->setStyleSheet("QPushButton, QComboBox, QSlider, QLineEdit { padding: 8 8 8 8 } ");
 
     // Edit scrollbar's item count to the amount of sprints
     int sprintSize = 0;
-    for(Sprint* sprint : wrapper.getSelectedProject()->getSprintArray()) if(sprint != NULL) sprintSize++;
+    for(Sprint* sprint : TFSWrapper::instance().getSelectedProject()->getSprintArray()) if(sprint != NULL) sprintSize++;
 
 
     ui->sprintSlider->setRange(0, sprintSize-1);
@@ -37,11 +36,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->PBIcombobox->setModel(pbilm);
 
     // TODO: move somewhere else
-    for(User* user : wrapper.getAllUsers()) {
+    for(User* user : TFSWrapper::instance().getAllUsers()) {
         ui->userChooser->addItem(user->getName());
     }
 
-    int userKey = ui->userChooser->findText(wrapper.getSelectedUser()->getName());
+    int userKey = ui->userChooser->findText(TFSWrapper::instance().getSelectedUser()->getName());
     if(userKey != -1) {
         ui->userChooser->setCurrentIndex(userKey);
     }
@@ -55,8 +54,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateSprintIndex(int newposition)
 {
-    TFSWrapper wrapper = TFSWrapper::instance();
-    wrapper.setSelectedSprint(newposition);
+    TFSWrapper::instance().setSelectedSprint(newposition);
 
     QString msg = QString("Sprint #%1").arg(newposition+1);
 
@@ -90,6 +88,5 @@ void MainWindow::on_sprintSlider_valueChanged(int value)
 
 void MainWindow::on_PBIcombobox_currentIndexChanged(int index)
 {
-    TFSWrapper wrapper = TFSWrapper::instance();
 
 }

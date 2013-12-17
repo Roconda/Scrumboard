@@ -26,9 +26,9 @@ SBIListModel::SBIListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     /* wrapper test/voorbeeld */
-    TFSWrapper wrapper = TFSWrapper::instance();
 
-    Sprint *s = wrapper.getSelectedSprint();
+
+    Sprint *s = TFSWrapper::instance().getSelectedSprint();
 
     if (s) {
         vector<WorkItem*> pbis = s->getWorkItemArray();
