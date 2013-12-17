@@ -63,7 +63,7 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
         sbiData.insert("RemainingHours", QString(total + "/" + remaining));
 
         auto test = SBIList[index.row()];
-        for(int i = 0; i < PBIList.size(); i++) {
+        for (int i = 0; i < PBIList.size(); i++) {
             if(ProductBacklogItem* pbi = PBIList.at(i)) {
                 auto array = pbi->getBacklogItemArray();
                 for(int j = 0; j < array.size(); j++) {
@@ -113,6 +113,7 @@ void SBIListModel::refreshTFSData()
 
     if (s) {
         vector<WorkItem*> pbis = s->getWorkItemArray();
+        int selectedSBIWorkItemnr = TFSWrapper::instance().getSelectedPBI()->getWorkItemNumber();
 
         SBIVisitor sbivis;
         PBIVisitor pbivis;
@@ -125,6 +126,9 @@ void SBIListModel::refreshTFSData()
             }
         });
         this->SBIList = sbivis.getList();
-        this->PBIList = pbivis.getList();
+
+        // Zoek de geselecteerde PBI. Eigenlijk hoeft de vector niet.
+        for (ProductBacklogItem *pbi : pbivis.getList())
+            this->PBIList.push_back(pbi);
     }
 }

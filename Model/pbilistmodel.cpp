@@ -55,9 +55,8 @@ void PBIListModel::refreshTFSData()
 
     auto wia = TFSWrapper::instance().getSelectedSprint()->getWorkItemArray();
     for_each(begin(wia), end(wia), [&](WorkItem *pbi) {
-        if (pbi) {
+        if (pbi)
             pbi->accept(pbivis);
-        }
     });
     this->PBIList = pbivis.getList();
 }

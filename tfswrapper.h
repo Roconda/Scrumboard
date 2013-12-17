@@ -6,7 +6,7 @@
 
 // forward declarations
 class Project;
-class SprintBacklogItem;
+class ProductBacklogItem;
 class User;
 class Sprint;
 
@@ -18,7 +18,7 @@ class TFSWrapper : public QObject
 private:
     Project *selectedProject;
     size_t selectedSprint;
-    SprintBacklogItem* selectedSBI;
+    size_t selectedPBI;
     User* selectedUser;
 
 // functions
@@ -34,14 +34,19 @@ public:
       static TFSWrapper INSTANCE;
       return INSTANCE;
    }
+   /* project */
    Project* getSelectedProject();
    void saveSelectedProject();
+   /* sprint */
    Sprint* setSelectedSprint(size_t index);
    Sprint* getSelectedSprint();
    size_t getSelectedSprintIndex();
+   /* user */
    User* getSelectedUser();
-   void setSelectedSBI(SprintBacklogItem *backlogitem);
-   SprintBacklogItem *getSelectedSBI();
+   /* PBI */
+   ProductBacklogItem *setSelectedPBI(size_t pbi);
+   ProductBacklogItem *getSelectedPBI();
+   size_t getSelectedPBIIndex();
    std::vector<User*> getAllUsers();
 
 // QT signals!

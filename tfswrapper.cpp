@@ -6,15 +6,15 @@
 #include "TFS/Project.h"
 #include "TFS/Sprint.h"
 #include "TFS/StatusType.h"
-#include "TFS/SprintBacklogItem.h"
+#include "TFS/ProductBacklogItem.h"
 #include "TFS/User.h"
 
-
 #include "createtestdata.h"
+#include "Visitors/pbivisitor.h"
 
 using std::cout;
 
-TFSWrapper::TFSWrapper(QObject *parent) : QObject(parent), selectedSprint(0)
+TFSWrapper::TFSWrapper(QObject *parent) : QObject(parent), selectedSprint(0), selectedPBI(0)
 {
     //CreateTestData t;
 
@@ -85,12 +85,25 @@ User *TFSWrapper::getSelectedUser()
     return selectedUser;
 }
 
-void TFSWrapper::setSelectedSBI(SprintBacklogItem *backlogitem)
+ProductBacklogItem *TFSWrapper::setSelectedPBI(size_t pbi)
 {
-    this->selectedSBI = backlogitem;
+    this->selectedPBI = pbi;
+    return getSelectedPBI();
 }
 
-SprintBacklogItem *TFSWrapper::getSelectedSBI()
+ProductBacklogItem *TFSWrapper::getSelectedPBI()
 {
-    return this->selectedSBI;
+    PBIVisitor pbivis;
+
+    auto wia = TFSWrapper::instance().getSelectedSprint()->getWorkItemArray();
+    for (auto &pbi : wia)
+        if (pbi)
+            pbi->accept(pbivis);
+
+    return pbivis.getList()[this->selectedPBI];
+}
+
+size_t TFSWrapper::getSelectedPBIIndex()
+{
+    return this->selectedPBI;
 }

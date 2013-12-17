@@ -10,6 +10,7 @@
 #include "../TFS/Project.h"
 #include "../TFS/Sprint.h"
 #include "../TFS/User.h"
+#include "../tfswrapper.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -88,4 +89,5 @@ void MainWindow::on_sprintSlider_valueChanged(int value)
 
 void MainWindow::on_PBIcombobox_currentIndexChanged(int index)
 {
+    TFSWrapper::instance().setSelectedPBI(index);
 }
