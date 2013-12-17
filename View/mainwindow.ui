@@ -58,33 +58,7 @@
        <widget class="QComboBox" name="PBIcombobox"/>
       </item>
       <item>
-       <widget class="QComboBox" name="comboBox">
-        <item>
-         <property name="text">
-          <string>Dustin</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Rick</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Sander</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Tim</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Victor</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="userChooser"/>
       </item>
       <item>
        <widget class="QLineEdit" name="lineEdit">
@@ -174,7 +148,7 @@
      <x>0</x>
      <y>0</y>
      <width>1141</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

@@ -43,6 +43,7 @@ public:
    User* getSelectedUser();
    void setSelectedSBI(SprintBacklogItem *backlogitem);
    SprintBacklogItem *getSelectedSBI();
+   std::vector<User*> getAllUsers();
 };
 
 #endif // TFSWRAPPER_H

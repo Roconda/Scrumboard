@@ -33,6 +33,17 @@ MainWindow::MainWindow(QWidget *parent) :
     // add PBIListmodel to PBIcombobox
     PBIListModel *pbilm = new PBIListModel();
     ui->PBIcombobox->setModel(pbilm);
+
+    // TODO: move somewhere else
+    for(User* user : wrapper.getAllUsers()) {
+        ui->userChooser->addItem(user->getName());
+    }
+
+    int userKey = ui->userChooser->findText(wrapper.getSelectedUser()->getName());
+    if(userKey != -1) {
+        ui->userChooser->setCurrentIndex(userKey);
+    }
+    // end of todo
 }
 
 MainWindow::~MainWindow()

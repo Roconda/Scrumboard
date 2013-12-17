@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 #include "tfswrapper.h"
 #include "TFS/TFSTransaction.h"
@@ -52,15 +53,31 @@ Sprint *TFSWrapper::getSelectedSprint()
         return nullptr;
 }
 
+/**
+ * @brief Retrieves all available users
+ * @return vector with available users
+ */
+std::vector<User*> TFSWrapper::getAllUsers() {
+    std::vector<User*> users;
+
+    User::ItemStorage::iterator iType;
+    for(iType = User::getStorage().begin(); iType != User::getStorage().end(); ++iType){
+        std::pair<std::string, User*> pair = *iType;
+        users.push_back(pair.second);
+    }
+
+    return users;
+}
+
+/**
+ * @brief Retrieves the currently selected user
+ * @return User object
+ */
 User *TFSWrapper::getSelectedUser()
 {
     // check if nullpointer, otherwise set the first User as default
-    if (selectedUser == nullptr) {
-        User::ItemStorage::iterator iType;
-        for (iType = User::getStorage().begin(); iType != User::getStorage().end(); ++iType){
-            std::pair<std::string, User*> pair = *iType;
-            selectedUser = pair.second;
-        }
+    if(selectedUser == nullptr) {
+        selectedUser = this->getAllUsers().back();
     }
 
     return selectedUser;
