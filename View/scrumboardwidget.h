@@ -15,7 +15,7 @@ class ScrumboardWidget : public QWidget
 public:
     explicit ScrumboardWidget(QWidget *parent = 0);
     ~ScrumboardWidget();
-    void updateSprintData();
+    void updateSprintData(QString username = "all");
     QString compareLane(LaneUI *);
 
 private:

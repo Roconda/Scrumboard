@@ -17,6 +17,8 @@
 #include "../TFS/StatusType.h"
 #include "../Visitors/sbivisitor.h"
 #include "../Visitors/pbivisitor.h"
+#include "../TFS/ItemStorage.h"
+#include <QDebug>
 
 using std::string;
 using std::cerr;
@@ -25,14 +27,10 @@ using std::vector;
 SBIListModel::SBIListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    /* wrapper test/voorbeeld */
-    TFSWrapper wrapper = TFSWrapper::instance();
-
-    Sprint *s = wrapper.getSelectedSprint();
+    Sprint *s = TFSWrapper::instance().getSelectedSprint();
 
     if (s) {
         vector<WorkItem*> pbis = s->getWorkItemArray();
-
         SBIVisitor sbivis;
         PBIVisitor pbivis;
 
@@ -43,8 +41,34 @@ SBIListModel::SBIListModel(QObject *parent)
                 wi->accept(pbivis);
             }
         });
+
         this->SBIList = sbivis.getList();
         this->PBIList = pbivis.getList();
+    }
+}
+
+void SBIListModel::FilterWithUsername(QString username)
+{
+    qDebug() << QString("I'm inside the method.");
+
+    if(username != "all") {
+        qDebug() << QString("I'm going to iterate.");
+
+        for(vector<SprintBacklogItem*>::iterator it = SBIList.begin(); it != SBIList.end(); ++it)
+        {
+            SprintBacklogItem* wi = *it;
+
+            if (wi && wi->getUser())
+            {
+                QString db_username = QString::fromLocal8Bit(wi->getUser()->getName());
+
+                if(QString::compare(username, db_username, Qt::CaseInsensitive) == 0)
+                {
+                    qDebug() << QString(db_username + " == " + username);
+                    it = SBIList.erase(it);
+                }
+            }
+        }
     }
 }
 

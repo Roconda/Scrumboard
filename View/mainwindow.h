@@ -26,6 +26,8 @@ private slots:
 // members
     void on_sprintSlider_valueChanged(int value);
 
+    void on_lineEdit_returnPressed();
+
 private:
     Ui::MainWindow *ui;
     static ItemHandler itemhandler;

@@ -28,9 +28,10 @@ ScrumboardWidget::~ScrumboardWidget()
     delete ui;
 }
 
-void ScrumboardWidget::updateSprintData()
+void ScrumboardWidget::updateSprintData(QString username)
 {
     SBIListModel model;
+    model.FilterWithUsername(username);
     ui->NotStarted->setModel(&model);
     ui->Started->setModel(&model);
     ui->toVerify->setModel(&model);

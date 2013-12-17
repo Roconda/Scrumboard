@@ -34,7 +34,7 @@ public:
     QVariant data(const QModelIndex &index, int role) const;
     QVariant headerData(int section, Qt::Orientation orientation,
                         int role = Qt::DisplayRole) const;
-
+    void FilterWithUsername(QString username = "all");
 
 private:
     vector<SprintBacklogItem*> SBIList;

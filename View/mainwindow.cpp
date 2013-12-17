@@ -9,6 +9,7 @@
 #include "../tfswrapper.h"
 #include "../TFS/Project.h"
 #include "../TFS/Sprint.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -73,4 +74,9 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_sprintSlider_valueChanged(int value)
 {
     updateSprintIndex(value);
+}
+
+void MainWindow::on_lineEdit_returnPressed()
+{
+    ui->widget->updateSprintData(ui->lineEdit->text());
 }
