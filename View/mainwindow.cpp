@@ -88,5 +88,4 @@ void MainWindow::on_sprintSlider_valueChanged(int value)
 
 void MainWindow::on_PBIcombobox_currentIndexChanged(int index)
 {
-
 }

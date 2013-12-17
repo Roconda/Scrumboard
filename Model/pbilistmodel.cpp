@@ -11,18 +11,12 @@ using std::for_each;
 PBIListModel::PBIListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    /* wrapper test/voorbeeld */
+    /* bind dit model met het tfswrapper tfsupdate signal */
 
+    QObject::connect(TFSWrapper::instance().signalObject, SIGNAL(remoteTFSDataChanged()),
+                     this, SLOT(refreshTFSData()));
 
-    PBIVisitor pbivis;
-
-    auto wia = TFSWrapper::instance().getSelectedSprint()->getWorkItemArray();
-    for_each(begin(wia), end(wia), [&](WorkItem *pbi) {
-        if (pbi) {
-            pbi->accept(pbivis);
-        }
-    });
-    this->PBIList = pbivis.getList();
+    refreshTFSData();
 }
 
 int PBIListModel::rowCount(const QModelIndex &parent) const
@@ -53,4 +47,17 @@ QVariant PBIListModel::headerData(int section, Qt::Orientation orientation,
         return QString("Column %1").arg(section);
     else
         return QString("Row %1").arg(section);
+}
+
+void PBIListModel::refreshTFSData()
+{
+    PBIVisitor pbivis;
+
+    auto wia = TFSWrapper::instance().getSelectedSprint()->getWorkItemArray();
+    for_each(begin(wia), end(wia), [&](WorkItem *pbi) {
+        if (pbi) {
+            pbi->accept(pbivis);
+        }
+    });
+    this->PBIList = pbivis.getList();
 }

@@ -20,6 +20,9 @@ public:
                         int role = Qt::DisplayRole) const;
 private:
     vector<ProductBacklogItem*> PBIList;
+
+public slots:
+    void refreshTFSData();
 };
 
 #endif // PBILISTMODEL_H

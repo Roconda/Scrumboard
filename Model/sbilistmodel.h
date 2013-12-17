@@ -12,8 +12,6 @@ using std::vector;
 // forward declarations
 class SprintBacklogItem;
 
-
-
 namespace SBIDisplayRoles {
     enum SBIDisplayRoles {
             NotStarted = Qt::UserRole,
@@ -39,6 +37,9 @@ public:
 private:
     vector<SprintBacklogItem*> SBIList;
     vector<ProductBacklogItem*> PBIList;
+
+public slots:
+    void refreshTFSData();
 };
 
 #endif // SBILISTMODEL_H
