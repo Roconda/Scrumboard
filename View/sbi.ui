@@ -18,63 +18,143 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="lbl_title">
-        <property name="text">
-         <string>Titel: </string>
+       <layout class="QFormLayout" name="formLayout">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lbl_description">
-        <property name="text">
-         <string>Omschrijving:</string>
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::ExpandingFieldsGrow</enum>
         </property>
-        <property name="wordWrap">
-         <bool>true</bool>
+        <property name="rowWrapPolicy">
+         <enum>QFormLayout::DontWrapRows</enum>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lbl_remaining_hours">
-        <property name="text">
-         <string>Punten:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lbl_completed_hours">
-        <property name="text">
-         <string>Uren:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lbl_total_hours">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lbl_status">
-        <property name="text">
-         <string>Status:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lbl_current_user">
-        <property name="text">
-         <string>Huidige user:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lbl_workhistory">
-        <property name="text">
-         <string>Work history:</string>
-        </property>
-       </widget>
+        <item row="1" column="0">
+         <widget class="QLabel" name="lbl_title">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Titel: </string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="le_title"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="lbl_description">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Omschrijving:</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="le_description"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="lbl_remaining_hours">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Punten:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="le_remaining_hours"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="lbl_completed_hours">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Uren:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="le_completed_hours"/>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="lbl_total_hours">
+          <property name="text">
+           <string>Totaal aantal uren:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="lbl_status">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Status:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QLabel" name="lbl_status_value">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0">
+         <widget class="QLabel" name="lbl_current_user">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Huidige user:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="1">
+         <widget class="QLineEdit" name="le_current_user"/>
+        </item>
+        <item row="8" column="0">
+         <widget class="QLabel" name="lbl_workhistory">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Work history:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="le_total_hours"/>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
