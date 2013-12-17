@@ -2,8 +2,7 @@
 #define TFSWRAPPER_H
 
 #include <QObject>
-
-#include "tfssignalobject.h"
+#include <vector>
 
 // forward declarations
 class Project;
@@ -11,8 +10,10 @@ class SprintBacklogItem;
 class User;
 class Sprint;
 
-class TFSWrapper
+class TFSWrapper : public QObject
 {
+    Q_OBJECT
+
 // members
 private:
     Project *selectedProject;
@@ -22,13 +23,9 @@ private:
 
 // functions
 private:
-    TFSWrapper();
+    TFSWrapper(QObject *parent = 0);
     TFSWrapper(TFSWrapper const&);
     void operator=(TFSWrapper const&);
-
-// members
-public:
-    TFSSignalObject *signalObject;
 
 // functions
 public:
@@ -46,6 +43,10 @@ public:
    void setSelectedSBI(SprintBacklogItem *backlogitem);
    SprintBacklogItem *getSelectedSBI();
    std::vector<User*> getAllUsers();
+
+// QT signals!
+signals:
+    void remoteTFSDataChanged();
 };
 
 #endif // TFSWRAPPER_H
