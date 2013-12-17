@@ -56,6 +56,7 @@ bool ItemUI::eventFilter(QObject *object, QEvent *event){
             if(!(drag->exec())){
                 this->show();
             }
+
             shadow->setBlurRadius(ItemUI::DEAULT_SHADOW_BLUR);
         }
 

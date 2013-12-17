@@ -75,5 +75,6 @@ void LaneUI::setModel(QAbstractListModel *model){
         it->setUser(sbiData.find("UserName")->toString());
         it->setPriority(sbiData.find("Priority")->toString());
         ui->gridLayout->addWidget(it);
+        it->show();
     }
 }
