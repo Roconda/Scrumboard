@@ -58,7 +58,13 @@
        <widget class="QComboBox" name="PBIcombobox"/>
       </item>
       <item>
-       <widget class="QComboBox" name="userChooser"/>
+       <widget class="QComboBox" name="userChooser">
+        <item>
+         <property name="text">
+          <string>All</string>
+         </property>
+        </item>
+       </widget>
       </item>
       <item>
        <widget class="QLineEdit" name="lineEdit">

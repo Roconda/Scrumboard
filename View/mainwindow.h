@@ -28,6 +28,10 @@ private slots:
 
     void on_PBIcombobox_currentIndexChanged(int index);
 
+    void on_lineEdit_returnPressed();
+
+    void on_userChooser_currentTextChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     static ItemHandler itemhandler;

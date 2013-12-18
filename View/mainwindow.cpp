@@ -46,6 +46,8 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->userChooser->setCurrentIndex(userKey);
     }
     // end of todo
+
+    ui->userChooser->setCurrentText("All");
 }
 
 MainWindow::~MainWindow()
@@ -90,4 +92,14 @@ void MainWindow::on_sprintSlider_valueChanged(int value)
 void MainWindow::on_PBIcombobox_currentIndexChanged(int index)
 {
     TFSWrapper::instance().setSelectedPBI(index);
+}
+
+void MainWindow::on_lineEdit_returnPressed()
+{
+    ui->widget->updateSprintData(ui->lineEdit->text());
+}
+
+void MainWindow::on_userChooser_currentTextChanged(const QString &arg1)
+{
+    ui->widget->updateSprintData(ui->userChooser->currentText());
 }
