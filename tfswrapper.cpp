@@ -10,21 +10,24 @@
 #include "TFS/User.h"
 
 #include "createtestdata.h"
+#include "TestData/TestData.h"
 #include "Visitors/pbivisitor.h"
 
 using std::cout;
 
 TFSWrapper::TFSWrapper(QObject *parent) : QObject(parent), selectedSprint(0), selectedPBI(0)
 {
-    //CreateTestData t;
+    //CreateTestData t; // Versie van Chris
+    TestData t;        // Versie van Sander
 
     // FIXME zorg voor project kies functionaliteit.
-    this->selectedProject = TFSTransaction::remoteReadProject("Sinterklaas Package Distribution Software");
+    this->selectedProject = TFSTransaction::remoteReadProject("Scrumbag");
     this->selectedUser = this->getSelectedUser();
 }
 
 Project *TFSWrapper::getSelectedProject()
 {
+    //emit testobject->remoteTFSDataChanged();
     return this->selectedProject;
 }
 

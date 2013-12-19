@@ -61,7 +61,14 @@ SOURCES += main.cpp \
     scrumboardwidgethandler.cpp \
     Model/pbilistmodel.cpp \
     Visitors/sbivisitor.cpp \
-    Visitors/pbivisitor.cpp
+    Visitors/pbivisitor.cpp \
+    TestData/testdata.cpp \
+    TestData/projectcreator.cpp \
+    TestData/statustypecreator.cpp \
+    TestData/sprintcreator.cpp \
+    TestData/sbicreator.cpp \
+    TestData/usercreator.cpp \
+    TestData/pbicreator.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -122,7 +129,14 @@ HEADERS  += View/mainwindow.h \
     Model/pbilistmodel.h \
     scrumboardwidgethandler.h \
     Visitors/sbivisitor.h \
-    Visitors/pbivisitor.h
+    Visitors/pbivisitor.h \
+    TestData/testdata.h \
+    TestData/projectcreator.h \
+    TestData/statustypecreator.h \
+    TestData/sprintcreator.h \
+    TestData/sbicreator.h \
+    TestData/usercreator.h \
+    TestData/pbicreator.h
 
 FORMS    += View/mainwindow.ui \
     View/defect.ui \
