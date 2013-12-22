@@ -6,6 +6,7 @@
 #include <vector>
 #include "../TFS/SprintBacklogItem.h"
 #include "../TFS/ProductBacklogItem.h"
+#include "SBIListModelFilter.h"
 
 using std::vector;
 
@@ -21,18 +22,23 @@ namespace SBIDisplayRoles {
     };
 }
 
+enum FilterType
+{
+    USERNAME = 1
+};
+
 class SBIListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-
     explicit SBIListModel(QObject *parent = 0);
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role) const;
     QVariant headerData(int section, Qt::Orientation orientation,
                         int role = Qt::DisplayRole) const;
-    void filterWithUsername(QString username = "All");
+    void Filter(FilterType type, QString phrase);
+    SBIListModelFilter* SetFilter(FilterType type);
 
 private:
     vector<SprintBacklogItem*> SBIList;

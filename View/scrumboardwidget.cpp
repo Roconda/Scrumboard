@@ -31,7 +31,11 @@ ScrumboardWidget::~ScrumboardWidget()
 void ScrumboardWidget::updateSprintData(QString username)
 {
     SBIListModel model;
-    model.filterWithUsername(username);
+
+    if(username != "All")
+    {
+        model.Filter(USERNAME, username);
+    }
 
     ui->NotStarted->setModel(&model);
     ui->Started->setModel(&model);

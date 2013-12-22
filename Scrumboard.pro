@@ -68,7 +68,9 @@ SOURCES += main.cpp \
     TestData/sprintcreator.cpp \
     TestData/sbicreator.cpp \
     TestData/usercreator.cpp \
-    TestData/pbicreator.cpp
+    TestData/pbicreator.cpp \
+    Model/SBIListModelFilter.cpp \
+    Model/UsernameFilter.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -136,7 +138,9 @@ HEADERS  += View/mainwindow.h \
     TestData/sprintcreator.h \
     TestData/sbicreator.h \
     TestData/usercreator.h \
-    TestData/pbicreator.h
+    TestData/pbicreator.h \
+    Model/SBIListModelFilter.h \
+    Model/UsernameFilter.h
 
 FORMS    += View/mainwindow.ui \
     View/defect.ui \

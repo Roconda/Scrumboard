@@ -17,6 +17,8 @@
 #include "../TFS/StatusType.h"
 #include "../Visitors/sbivisitor.h"
 #include "../Visitors/pbivisitor.h"
+#include "SBIListModelFilter.h"
+#include "UsernameFilter.h"
 #include <QDebug>
 
 
@@ -34,35 +36,25 @@ SBIListModel::SBIListModel(QObject *parent)
     refreshTFSData();
 }
 
+void SBIListModel::Filter(FilterType type, QString phrase)
+{
+    SBIListModelFilter* filter = SetFilter(type);
+    SBIList = filter->Filter(SBIList, phrase);
+}
+
+SBIListModelFilter* SBIListModel::SetFilter(FilterType type)
+{
+    switch(type)
+    {
+        case USERNAME:
+            return new UsernameFilter;
+            break;
+    }
+}
+
 int SBIListModel::rowCount(const QModelIndex &parent) const
 {
     return SBIList.size();
-}
-
-void SBIListModel::filterWithUsername(QString username)
-{
-    if (username != "All")
-    {
-        vector<SprintBacklogItem*> temp;
-
-        for(vector<SprintBacklogItem*>::iterator it = SBIList.begin(); it != SBIList.end(); ++it)
-        {
-            SprintBacklogItem* si = *it;
-
-            if(si && si->getUser())
-            {
-                QString db_u = QString::fromLocal8Bit(si->getUser()->getName());
-
-                if(QString::compare(username, db_u, Qt::CaseInsensitive) == 0)
-                {
-                    qDebug() << QString(username + " == " + db_u);
-                    temp.push_back(si);
-                }
-            }
-        }
-
-        SBIList = temp;
-    }
 }
 
 QVariant SBIListModel::data(const QModelIndex &index, int role) const
