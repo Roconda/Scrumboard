@@ -2,6 +2,7 @@
 #include "ui_scrumboardwidget.h"
 #include "../model/sbilistmodel.h"
 #include "laneui.h"
+#include <QDebug>
 
 ScrumboardWidget::ScrumboardWidget(QWidget *parent) :
     QWidget(parent),
@@ -28,13 +29,21 @@ ScrumboardWidget::~ScrumboardWidget()
     delete ui;
 }
 
-void ScrumboardWidget::updateSprintData(QString username)
+void ScrumboardWidget::updateSprintData(int filter, QString phrase)
 {
     SBIListModel model;
 
-    if(username != "All")
+    if(filter != -1)
     {
-        model.Filter(USERNAME, username);
+        switch(filter)
+        {
+            case USERNAME:
+                model.Filter(USERNAME, phrase);
+                break;
+            case SBI_TITLE:
+                model.Filter(SBI_TITLE, phrase);
+                break;
+        }
     }
 
     ui->NotStarted->setModel(&model);

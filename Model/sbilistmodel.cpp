@@ -18,7 +18,8 @@
 #include "../Visitors/sbivisitor.h"
 #include "../Visitors/pbivisitor.h"
 #include "SBIListModelFilter.h"
-#include "UsernameFilter.h"
+#include "SBI_UsernameFilter.h"
+#include "SBI_TitleFilter.h"
 #include <QDebug>
 
 
@@ -47,7 +48,10 @@ SBIListModelFilter* SBIListModel::SetFilter(FilterType type)
     switch(type)
     {
         case USERNAME:
-            return new UsernameFilter;
+            return new SBI_UsernameFilter;
+            break;
+        case SBI_TITLE:
+            return new SBI_TitleFilter;
             break;
     }
 }

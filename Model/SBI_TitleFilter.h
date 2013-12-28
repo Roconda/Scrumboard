@@ -1,13 +1,13 @@
-#ifndef USERNAMEFILTER_H
-#define USERNAMEFILTER_H
+#ifndef SBI_TITLEFILTER_H
+#define SBI_TITLEFILTER_H
 
 #include "SBIListModelFilter.h"
 #include "qstring.h"
 
-class UsernameFilter : public SBIListModelFilter
+class SBI_TitleFilter : public SBIListModelFilter
 {
 public:
     virtual std::vector<SprintBacklogItem*> Filter(std::vector<SprintBacklogItem*> content, QString phrase);
 };
 
-#endif // USERNAMEFILTER_H
+#endif // SBI_TITLEFILTER_H
