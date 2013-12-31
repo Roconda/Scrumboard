@@ -30,11 +30,14 @@ private slots:
 
     void on_lineEdit_returnPressed();
 
-    void on_userChooser_currentTextChanged(const QString &arg1);
+    void on_filterChooser_currentIndexChanged(int index);
+
+    void on_btn_clear_clicked();
 
 private:
     Ui::MainWindow *ui;
     static ItemHandler itemhandler;
+    int currentFilterChooserIndex;
 
 // functions
 private:

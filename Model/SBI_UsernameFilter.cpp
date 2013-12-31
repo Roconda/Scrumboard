@@ -1,9 +1,9 @@
-#include "UsernameFilter.h"
+#include "SBI_UsernameFilter.h"
 #include "../TFS/SprintBacklogItem.h"
 #include "../TFS/User.h"
 #include <QDebug>
 
-std::vector<SprintBacklogItem*> UsernameFilter::Filter(std::vector<SprintBacklogItem*> content, QString phrase)
+std::vector<SprintBacklogItem*> SBI_UsernameFilter::Filter(std::vector<SprintBacklogItem*> content, QString phrase)
 {
     std::vector<SprintBacklogItem*> temp;
 
@@ -15,9 +15,8 @@ std::vector<SprintBacklogItem*> UsernameFilter::Filter(std::vector<SprintBacklog
         {
             QString db_u = QString::fromLocal8Bit(si->getUser()->getName());
 
-            if(QString::compare(phrase, db_u, Qt::CaseInsensitive) == 0)
+            if(db_u.contains(phrase, Qt::CaseInsensitive))
             {
-                //qDebug() << QString(phrase + " == " + db_u);
                 temp.push_back(si);
             }
         }

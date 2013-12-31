@@ -11,12 +11,14 @@
 #include "../TFS/Sprint.h"
 #include "../TFS/User.h"
 #include "../tfswrapper.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    currentFilterChooserIndex = 0;
 
     // Stel het sprint nummer in.
     size_t sprintindex = TFSWrapper::instance().getSelectedSprintIndex();
@@ -35,19 +37,6 @@ MainWindow::MainWindow(QWidget *parent) :
     // add PBIListmodel to PBIcombobox
     PBIListModel *pbilm = new PBIListModel();
     ui->PBIcombobox->setModel(pbilm);
-
-    // TODO: move somewhere else
-    for(User* user : TFSWrapper::instance().getAllUsers()) {
-        ui->userChooser->addItem(user->getName());
-    }
-
-    int userKey = ui->userChooser->findText(TFSWrapper::instance().getSelectedUser()->getName());
-    if(userKey != -1) {
-        ui->userChooser->setCurrentIndex(userKey);
-    }
-    // end of todo
-
-    ui->userChooser->setCurrentText("All");
 }
 
 MainWindow::~MainWindow()
@@ -86,7 +75,7 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_sprintSlider_valueChanged(int value)
 {
-    updateSprintIndex(value);
+    //updateSprintIndex(value);
 }
 
 void MainWindow::on_PBIcombobox_currentIndexChanged(int index)
@@ -96,10 +85,15 @@ void MainWindow::on_PBIcombobox_currentIndexChanged(int index)
 
 void MainWindow::on_lineEdit_returnPressed()
 {
-    ui->widget->updateSprintData(ui->lineEdit->text());
+    ui->widget->updateSprintData(currentFilterChooserIndex, ui->lineEdit->text());
 }
 
-void MainWindow::on_userChooser_currentTextChanged(const QString &arg1)
+void MainWindow::on_filterChooser_currentIndexChanged(int index)
 {
-    ui->widget->updateSprintData(ui->userChooser->currentText());
+    currentFilterChooserIndex = index;
+}
+
+void MainWindow::on_btn_clear_clicked()
+{
+    ui->widget->updateSprintData();
 }

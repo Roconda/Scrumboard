@@ -24,7 +24,8 @@ namespace SBIDisplayRoles {
 
 enum FilterType
 {
-    USERNAME = 1
+    USERNAME = 0,
+    SBI_TITLE = 1
 };
 
 class SBIListModel : public QAbstractListModel

@@ -58,10 +58,15 @@
        <widget class="QComboBox" name="PBIcombobox"/>
       </item>
       <item>
-       <widget class="QComboBox" name="userChooser">
+       <widget class="QComboBox" name="filterChooser">
         <item>
          <property name="text">
-          <string>All</string>
+          <string>Username</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Title</string>
          </property>
         </item>
        </widget>
@@ -85,6 +90,13 @@
         </property>
         <property name="placeholderText">
          <string extracomment="Zoek op naam, titel, omschrijving .."/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_clear">
+        <property name="text">
+         <string>All</string>
         </property>
        </widget>
       </item>
