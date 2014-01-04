@@ -23,6 +23,7 @@ BurndownChart::~BurndownChart()
 
 
 void BurndownChart::loadCustomPlot(){
+    //get SBI's with visitor
     SBIVisitor visitor;
     for(int i = 0; i < TFSWrapper::instance().getSelectedSprint()->getWorkItemArray().size(); i++){
         WorkItem *workitem = TFSWrapper::instance().getSelectedSprint()->getWorkItem(i);
@@ -43,12 +44,12 @@ void BurndownChart::loadCustomPlot(){
     }
 
     // generate some data:
-    QVector<double> x(beginDate->daysTo(*endDate) + 1), y(beginDate->daysTo(*endDate) + 1); // initialize with entries 0..100
+    QVector<double> x(beginDate->daysTo(*endDate) + 1), y(beginDate->daysTo(*endDate) + 1);
     QDate currDate = QDate::currentDate();
     for (int i=0; i< beginDate->daysTo(*endDate) + 1; ++i)
     {
         x[i] = i;
-        if(i != beginDate->daysTo(currDate)){
+        if(i <= beginDate->daysTo(currDate)){
             QDate *date = new QDate(sprint->getBeginYear(), sprint->getBeginMonth(), sprint->getBeginDay());
             date->addDays(i);
             double status;
@@ -58,10 +59,9 @@ void BurndownChart::loadCustomPlot(){
                     RemainingWorkHistory *workhistory = SBIitem->getRemainingWorkHistory(i);
                     if(workhistory){
                         QDate *workhistoryDate = new QDate(workhistory->getYear(), workhistory->getMonth(), workhistory->getDay());
-                        if(workhistoryDate > date){
+                        if(workhistoryDate == date){
                             workhistory = SBIitem->getRemainingWorkHistory(i - 1);
                             status += workhistory->getRemainingWork();
-                            break;
                         }
                     }
                 }
