@@ -19,7 +19,10 @@ const char* TFSWrapper::SELECTED_PROJECT = "Scrumbag";
 
 TFSWrapper::TFSWrapper(QObject *parent) : QObject(parent), selectedSprint(0), selectedPBI(0)
 {
-    TestData t;        // Versie van Sander, gebruik CreateTestData voor de versie van Chris
+    // Reload testdata on startup
+    //
+    // CreateTestData t; // Versie van Chris
+    // TestData t;        // Versie van Sander
 
     this->selectedProject = TFSTransaction::remoteReadProject(SELECTED_PROJECT);
     this->selectedUser = this->getSelectedUser();
