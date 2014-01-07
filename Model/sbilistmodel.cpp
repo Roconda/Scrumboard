@@ -42,7 +42,7 @@ SBIListModel::SBIListModel(QObject *parent)
 void SBIListModel::Filter(FilterType type, QString phrase)
 {
     SBIListModelFilter* filter = SetFilter(type);
-    //workitemList = filter->Filter(workitemList, phrase);
+    workitemList = filter->Filter(workitemList, phrase);
 }
 
 SBIListModelFilter* SBIListModel::SetFilter(FilterType type)
@@ -164,9 +164,6 @@ void SBIListModel::refreshTFSData()
         this->workitemList.insert(workitemList.end(), sbivis.getList().begin(), sbivis.getList().end());
         this->workitemList.insert(workitemList.end(), defvis.getList().begin(), defvis.getList().end());
 
-
-        // Zoek de geselecteerde PBI. Eigenlijk hoeft de vector niet.
-        for (ProductBacklogItem *pbi : pbivis.getList())
-            this->PBIList.push_back(pbi);
+        this->PBIList = pbivis.getList();
     }
 }

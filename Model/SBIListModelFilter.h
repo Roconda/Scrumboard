@@ -5,11 +5,11 @@
 #include "qstring.h"
 
 // forward declarations
-class SprintBacklogItem;
+class WorkItem;
 
 class SBIListModelFilter {
 public:
-    virtual std::vector<SprintBacklogItem*> Filter(std::vector<SprintBacklogItem*> content, QString phrase) = 0;
+    virtual std::vector<WorkItem *> Filter(std::vector<WorkItem*> content, QString phrase) = 0;
 };
 
 #endif // SBILISTMODELFILTER_H
