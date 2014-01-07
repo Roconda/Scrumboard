@@ -21,6 +21,8 @@ public:
 private:
     Ui::ScrumboardWidget *ui;
     ScrumboardWidgetHandler *handler;
+
+    SBIListModel model;
 };
 
 #endif // SCRUMBOARDWIDGET_H

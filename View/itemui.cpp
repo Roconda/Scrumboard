@@ -1,6 +1,6 @@
 #include "itemui.h"
 #include "ui_itemui.h"
-#include "sbi.h"
+#include "../View/sbi.h"
 #include "../itemmimedata.h"
 #include "../scrumboardwidgethandler.h"
 
@@ -64,6 +64,8 @@ bool ItemUI::eventFilter(QObject *object, QEvent *event){
         if (object == this && (event->type()==QEvent::MouseButtonDblClick)) {
             SBI *sbi = new SBI(this);
 
+            connect(sbi, SIGNAL(onChangedDetails(SprintBacklogItem*)), this, SLOT(updateItem(SprintBacklogItem*)));
+
             QString itemID = ui->idLabel->text();
             itemID.remove(0, 1);
 
@@ -114,4 +116,14 @@ void ItemUI::setPriority(QString s) {
 
 QString ItemUI::getID(){
     return ui->idLabel->text();
+}
+
+
+void ItemUI::updateItem(SprintBacklogItem *sbiItem)
+{
+    setTitle(sbiItem->getTitle());
+    setRemainingHours(QString("%1").arg(sbiItem->getRemainingWork()));
+    setUser(sbiItem->getUser()->getName());
+
+    this->repaint();
 }

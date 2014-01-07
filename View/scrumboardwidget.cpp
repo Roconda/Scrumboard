@@ -11,8 +11,6 @@ ScrumboardWidget::ScrumboardWidget(QWidget *parent) :
     ui->setupUi(this);
     ScrumboardWidgetHandler::getInstance().setParent(this);
 
-    SBIListModel model;
-
     ui->NotStarted->setDisplayRole(SBIDisplayRoles::NotStarted);
     ui->Started->setDisplayRole(SBIDisplayRoles::Started);
     ui->toVerify->setDisplayRole(SBIDisplayRoles::ToVerify);

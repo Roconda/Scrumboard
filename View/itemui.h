@@ -1,6 +1,8 @@
 #ifndef ITEMUI_H
 #define ITEMUI_H
 
+#include "../TFS/SprintBacklogItem.h"
+
 #include <QWidget>
 #include <QDataWidgetMapper>
 #include <QGraphicsDropShadowEffect>
@@ -35,7 +37,8 @@ private:
 protected:
     bool eventFilter(QObject *object, QEvent *event);
 
-
+protected slots:
+    void updateItem(SprintBacklogItem *sbiItem);
 };
 
 #endif // ITEMUI_H
