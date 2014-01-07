@@ -6,6 +6,7 @@
 #include <vector>
 #include "../TFS/SprintBacklogItem.h"
 #include "../TFS/ProductBacklogItem.h"
+#include "../TFS/Defect.h"
 #include "SBIListModelFilter.h"
 
 using std::vector;
@@ -42,8 +43,8 @@ public:
     SBIListModelFilter* SetFilter(FilterType type);
 
 private:
-    vector<SprintBacklogItem*> SBIList;
     vector<ProductBacklogItem*> PBIList;
+    vector<WorkItem*> workitemList;
 
 private slots:
     void refreshTFSData();

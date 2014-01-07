@@ -17,6 +17,8 @@
 #include "../TFS/StatusType.h"
 #include "../Visitors/sbivisitor.h"
 #include "../Visitors/pbivisitor.h"
+#include "../Visitors/defectvisitor.h"
+#include "../Visitors/workitemstatusvisitor.h"
 #include "SBIListModelFilter.h"
 #include "SBI_UsernameFilter.h"
 #include "SBI_TitleFilter.h"
@@ -40,7 +42,7 @@ SBIListModel::SBIListModel(QObject *parent)
 void SBIListModel::Filter(FilterType type, QString phrase)
 {
     SBIListModelFilter* filter = SetFilter(type);
-    SBIList = filter->Filter(SBIList, phrase);
+    //workitemList = filter->Filter(workitemList, phrase);
 }
 
 SBIListModelFilter* SBIListModel::SetFilter(FilterType type)
@@ -58,7 +60,7 @@ SBIListModelFilter* SBIListModel::SetFilter(FilterType type)
 
 int SBIListModel::rowCount(const QModelIndex &parent) const
 {
-    return SBIList.size();
+    return workitemList.size();
 }
 
 QVariant SBIListModel::data(const QModelIndex &index, int role) const
@@ -66,27 +68,35 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         throw std::exception("Index is invalid");
 
-    if (index.row() >= SBIList.size())
+    if (index.row() >= workitemList.size())
         throw std::out_of_range("Index out of range");
 
-    if (SBIList[index.row()] == nullptr)
+    if (workitemList[index.row()] == nullptr)
         return QVariant();
 
-    Status *stat = SBIList[index.row()]->getStatus(SBIList[index.row()]->sizeStatus() -1);
+    WorkItemStatusVisitor wisvis;
+    workitemList[index.row()]->accept(wisvis);
+
+    Status *stat = wisvis.getStatus();
 
     QMap<QString, QVariant> temp;
 
     if (stat) {
         QMap<QString, QVariant> sbiData;
 
-        sbiData.insert("Title", SBIList[index.row()]->getTitle());
-        sbiData.insert("Description", SBIList[index.row()]->getDescription());
-        sbiData.insert("WorkItemNumber", SBIList[index.row()]->getWorkItemNumber());
-        QString remaining = QString::number(SBIList[index.row()]->getRemainingWork());
-        QString total = QString::number(SBIList[index.row()]->getBaselineWork());
-        sbiData.insert("RemainingHours", QString(total + "/" + remaining));
+        sbiData.insert("Title", workitemList[index.row()]->getTitle());
+        sbiData.insert("Description", workitemList[index.row()]->getDescription());
+        sbiData.insert("WorkItemNumber", workitemList[index.row()]->getWorkItemNumber());
 
-        auto test = SBIList[index.row()];
+        SBIVisitor sbivis;
+        workitemList[index.row()]->accept(sbivis);
+        if(!sbivis.getList().empty()){
+            QString remaining = QString::number(sbivis.getList()[0]->getRemainingWork());
+            QString total = QString::number(sbivis.getList()[0]->getBaselineWork());
+            sbiData.insert("RemainingHours", QString(total + "/" + remaining));
+        }
+
+        auto test = workitemList[index.row()];
         for (int i = 0; i < PBIList.size(); i++) {
             if(ProductBacklogItem* pbi = PBIList.at(i)) {
                 auto array = pbi->getBacklogItemArray();
@@ -100,7 +110,7 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
             }
         }
 
-        User *u = SBIList[index.row()]->getUser();
+        User *u = workitemList[index.row()]->getUser();
         if (u)
             sbiData.insert("UserName", QString(u->getName()));
         else
@@ -141,15 +151,19 @@ void SBIListModel::refreshTFSData()
 
         SBIVisitor sbivis;
         PBIVisitor pbivis;
+        DefectVisitor defvis;
 
         for_each(begin(pbis), end(pbis), [&](WorkItem *wi){
             if (wi)
             {
                 wi->accept(sbivis);
                 wi->accept(pbivis);
+                wi->accept(defvis);
             }
         });
-        this->SBIList = sbivis.getList();
+        this->workitemList.insert(workitemList.end(), sbivis.getList().begin(), sbivis.getList().end());
+        this->workitemList.insert(workitemList.end(), defvis.getList().begin(), defvis.getList().end());
+
 
         // Zoek de geselecteerde PBI. Eigenlijk hoeft de vector niet.
         for (ProductBacklogItem *pbi : pbivis.getList())

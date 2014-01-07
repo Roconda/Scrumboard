@@ -17,7 +17,6 @@ LIBS     += -lws2_32 -L./
 
 SOURCES += main.cpp \
 		View/mainwindow.cpp \
-        View/defect.cpp \
         qcustomplot/qcustomplot.cpp \
         View/burndownchart.cpp \
         View/sbi.cpp \
@@ -25,7 +24,6 @@ SOURCES += main.cpp \
         View/itemui.cpp \
         View/laneui.cpp \
         View/scrumboardwidget.cpp \
-        View/adddefect.cpp \
     	TFS/WriteData.cpp \
     	TFS/WorkItem.cpp \
     	TFS/User.cpp \
@@ -71,18 +69,18 @@ SOURCES += main.cpp \
     TestData/pbicreator.cpp \
     Model/SBIListModelFilter.cpp \
     Model/SBI_TitleFilter.cpp \
-    Model/SBI_UsernameFilter.cpp
+    Model/SBI_UsernameFilter.cpp \
+    Visitors/defectvisitor.cpp \
+    Visitors/workitemstatusvisitor.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
-    View/defect.h \
     View/burndownchart.h \
     View/sbi.h \
     View/adddefect.h \
     View/itemui.h \
     View/laneui.h \
     View/scrumboardwidget.h \
-    View/adddefect.h \
     TFS/WriteData.h \
     TFS/WorkItem.h \
     TFS/User.h \
@@ -142,10 +140,11 @@ HEADERS  += View/mainwindow.h \
     TestData/pbicreator.h \
     Model/SBIListModelFilter.h \
     Model/SBI_TitleFilter.h \
-    Model/SBI_UsernameFilter.h
+    Model/SBI_UsernameFilter.h \
+    Visitors/defectvisitor.h \
+    Visitors/workitemstatusvisitor.h
 
 FORMS    += View/mainwindow.ui \
-    View/defect.ui \
     View/burndownchart.ui \
     View/sbi.ui \
     View/adddefect.ui \

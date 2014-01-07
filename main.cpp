@@ -1,5 +1,4 @@
 #include "View/mainwindow.h"
-#include "View/defect.h"
 #include <QApplication>
 
 #include <QSplitter>

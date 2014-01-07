@@ -1,6 +1,5 @@
 #include "sbi.h"
 #include "ui_sbi.h"
-#include "defect.h"
 #include "../tfswrapper.h"
 #include "../scrumboardwidgethandler.h"
 
@@ -47,10 +46,7 @@ SBI::~SBI()
 
 void SBI::on_pushButton_clicked()
 {
-    /*
-    Defect *defect = new Defect(this);
-    defect->show();
-    */
+
 }
 
 
