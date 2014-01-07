@@ -15,30 +15,28 @@
 
 using std::cout;
 
+const char* TFSWrapper::SELECTED_PROJECT = "Scrumbag";
+
 TFSWrapper::TFSWrapper(QObject *parent) : QObject(parent), selectedSprint(0), selectedPBI(0)
 {
-    //CreateTestData t; // Versie van Chris
-    TestData t;        // Versie van Sander
+    TestData t;        // Versie van Sander, gebruik CreateTestData voor de versie van Chris
 
-    // FIXME zorg voor project kies functionaliteit.
-    this->selectedProject = TFSTransaction::remoteReadProject("Scrumbag");
+    this->selectedProject = TFSTransaction::remoteReadProject(SELECTED_PROJECT);
     this->selectedUser = this->getSelectedUser();
 }
 
 Project *TFSWrapper::getSelectedProject()
 {
-    //emit testobject->remoteTFSDataChanged();
     return this->selectedProject;
 }
 
 void TFSWrapper::saveSelectedProject()
 {
-    TFSTransaction::remoteWriteProject("Scrumbag");
+    TFSTransaction::remoteWriteProject(SELECTED_PROJECT);
 }
 
 Sprint *TFSWrapper::setSelectedSprint(size_t index)
 {
-    // test
     emit TFSWrapper::instance().remoteTFSDataChanged();
 
     this->selectedSprint = index;

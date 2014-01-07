@@ -26,6 +26,7 @@ private:
     TFSWrapper(QObject *parent = 0);
     TFSWrapper(TFSWrapper const&);
     void operator=(TFSWrapper const&);
+    static const char* SELECTED_PROJECT;
 
 // functions
 public:
