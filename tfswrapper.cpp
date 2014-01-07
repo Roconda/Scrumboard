@@ -18,7 +18,7 @@ using std::cout;
 TFSWrapper::TFSWrapper(QObject *parent) : QObject(parent), selectedSprint(0), selectedPBI(0)
 {
     //CreateTestData t; // Versie van Chris
-    TestData t;        // Versie van Sander
+    //TestData t;        // Versie van Sander
 
     // FIXME zorg voor project kies functionaliteit.
     this->selectedProject = TFSTransaction::remoteReadProject("Scrumbag");

@@ -2,6 +2,7 @@
 #include "ui_sbi.h"
 #include "defect.h"
 #include "../tfswrapper.h"
+#include "../scrumboardwidgethandler.h"
 
 #include "../TFS/User.h"
 
@@ -9,6 +10,10 @@
 #include <QDebug>
 #include <QMessageBox>
 
+/**
+ * @brief SBI::SBI
+ * @param parent
+ */
 SBI::SBI(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SBI)
@@ -138,7 +143,7 @@ void SBI::on_buttonBox_rejected()
             saveData();
         }
         else
-        { }
+        { /* Ignore saving the changes that were made */ }
     }
 }
 
@@ -153,6 +158,8 @@ void SBI::saveData()
 
     User* user = User::withName(ui->le_current_user->text().toLocal8Bit());
     sbiItem->setUser(user);
+
+    /* BUG: SBI Item Details Are Not Being Saved (!) */
 
     TFSWrapper::instance().saveSelectedProject();
 }
