@@ -69,7 +69,7 @@ bool ItemUI::eventFilter(QObject *object, QEvent *event){
             QString itemID = ui->idLabel->text();
             itemID.remove(0, 1);
 
-            SprintBacklogItem* currentItem = ScrumboardWidgetHandler::getInstance().getItemForID(itemID.toInt());
+            SprintBacklogItem* currentItem = ScrumboardWidgetHandler::getInstance().getSBIForID(itemID.toInt());
             if (currentItem) {
                 sbi->setSBIItem(currentItem);
                 sbi->setTitle(currentItem->getTitle());

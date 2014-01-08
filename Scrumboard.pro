@@ -16,7 +16,7 @@ win32-msvc*: QMAKE_LFLAGS += /VERBOSE
 LIBS     += -lws2_32 -L./
 
 SOURCES += main.cpp \
-		View/mainwindow.cpp \
+        View/mainwindow.cpp \
         qcustomplot/qcustomplot.cpp \
         View/burndownchart.cpp \
         View/sbi.cpp \
@@ -71,7 +71,8 @@ SOURCES += main.cpp \
     Model/SBI_TitleFilter.cpp \
     Model/SBI_UsernameFilter.cpp \
     Visitors/defectvisitor.cpp \
-    Visitors/workitemstatusvisitor.cpp
+    Visitors/workitemstatusvisitor.cpp \
+    View/defectui.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -142,7 +143,8 @@ HEADERS  += View/mainwindow.h \
     Model/SBI_TitleFilter.h \
     Model/SBI_UsernameFilter.h \
     Visitors/defectvisitor.h \
-    Visitors/workitemstatusvisitor.h
+    Visitors/workitemstatusvisitor.h \
+    View/defectui.h
 
 FORMS    += View/mainwindow.ui \
     View/burndownchart.ui \
@@ -150,7 +152,8 @@ FORMS    += View/mainwindow.ui \
     View/adddefect.ui \
     View/itemui.ui \
     View/laneui.ui \
-    View/scrumboardwidget.ui
+    View/scrumboardwidget.ui \
+    View/defectui.ui
 
 RC_FILE	+= scrumbag.rc
 
