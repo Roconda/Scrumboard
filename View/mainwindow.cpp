@@ -81,6 +81,7 @@ void MainWindow::on_sprintSlider_valueChanged(int value)
 void MainWindow::on_PBIcombobox_currentIndexChanged(int index)
 {
     TFSWrapper::instance().setSelectedPBI(index);
+    ui->widget->updateSprintData(currentFilterChooserIndex, ui->lineEdit->text());
 }
 
 void MainWindow::on_lineEdit_returnPressed()

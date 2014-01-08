@@ -1,4 +1,6 @@
 #include "sbivisitor.h"
+#include "../tfswrapper.h"
+#include "../TFS/ProductBacklogItem.h"
 #include "../TFS/SprintBacklogItem.h"
 
 SBIVisitor::SBIVisitor()
