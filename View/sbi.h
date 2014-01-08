@@ -3,6 +3,7 @@
 
 #include <QDialog>
 
+#include "itemui.h"
 #include "../TFS/SprintBacklogItem.h"
 
 namespace Ui {
@@ -37,7 +38,6 @@ protected slots:
     void onChangedDescription(const QString &text);
     void onChangedRemainingHours(const QString &text);
     void onChangedCompletedHours(const QString &text);
-    void onChangedStatus(const QString &text);
     void onChangedCurrentUser(const QString &text);
 
 private slots:
@@ -46,6 +46,9 @@ private slots:
     void on_buttonBox_accepted();
 
     void on_buttonBox_rejected();
+
+signals:
+    void onChangedDetails(SprintBacklogItem *sbiItem);
 
 private:
     Ui::SBI *ui;

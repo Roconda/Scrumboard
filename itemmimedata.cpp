@@ -2,7 +2,8 @@
 
 ItemMimeData::ItemMimeData()
 {
-
+    this->item = NULL;
+    this->defect = NULL;
 }
 
 void ItemMimeData::setItemUI(ItemUI *item){
@@ -11,4 +12,12 @@ void ItemMimeData::setItemUI(ItemUI *item){
 
 ItemUI* ItemMimeData::getItemUI(){
     return item;
+}
+
+void ItemMimeData::setDefectUI(DefectUI *defect){
+    this->defect = defect;
+}
+
+DefectUI* ItemMimeData::getDefectUI(){
+    return defect;
 }
