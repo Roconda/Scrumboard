@@ -22,6 +22,11 @@
 #include "SBIListModelFilter.h"
 #include "SBI_UsernameFilter.h"
 #include "SBI_TitleFilter.h"
+
+#include "basicfilter.h"
+#include "filterdecorator.h"
+#include "filter_sbi_username.h"
+#include "filter_sbi_title.h"
 #include <QDebug>
 
 
@@ -37,12 +42,36 @@ SBIListModel::SBIListModel(QObject *parent)
     QObject::connect(&TFSWrapper::instance(), SIGNAL(remoteTFSDataChanged()),
 		this, SLOT(refreshTFSData()));
     refreshTFSData();
+
+    this->filter = new BasicFilter();
 }
 
-void SBIListModel::Filter(FilterType type, QString phrase)
+void SBIListModel::Filter(std::vector<WorkItem*>& content, QString phrase)
 {
-    SBIListModelFilter* filter = SetFilter(type);
-    workitemList = filter->Filter(workitemList, phrase);
+    this->filter->Filter(content, phrase);
+
+    //SBIListModelFilter* filter = SetFilter(type);
+    //workitemList = filter->Filter(workitemList, phrase);
+}
+
+void SBIListModel::AddFilterOption(FilterOption option)
+{
+    switch(option)
+    {
+        case USERNAME:
+            FilterDecorator option = new Filter_SBI_Username(this->filter);
+            filter = option;
+            break;
+        case SBI_TITLE:
+            FilterDecorator option = new Filter_SBI_Title(this->filter);
+            filter = option;
+            break;
+    }
+}
+
+void SBIListModel::ClearFilterOptions()
+{
+
 }
 
 SBIListModelFilter* SBIListModel::SetFilter(FilterType type)

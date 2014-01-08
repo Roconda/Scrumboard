@@ -72,7 +72,12 @@ SOURCES += main.cpp \
     Model/SBI_UsernameFilter.cpp \
     Visitors/defectvisitor.cpp \
     Visitors/workitemstatusvisitor.cpp \
-    View/defectui.cpp
+    View/defectui.cpp \
+    Model/filterdecorator.cpp \
+    Model/filter_sbi_username.cpp \
+    Model/filteroption.cpp \
+    Model/basicfilter.cpp \
+    Model/filter_sbi_title.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -144,7 +149,12 @@ HEADERS  += View/mainwindow.h \
     Model/SBI_UsernameFilter.h \
     Visitors/defectvisitor.h \
     Visitors/workitemstatusvisitor.h \
-    View/defectui.h
+    View/defectui.h \
+    Model/filterdecorator.h \
+    Model/filter_sbi_username.h \
+    Model/filteroption.h \
+    Model/basicfilter.h \
+    Model/filter_sbi_title.h
 
 FORMS    += View/mainwindow.ui \
     View/burndownchart.ui \

@@ -8,6 +8,7 @@
 #include "../TFS/ProductBacklogItem.h"
 #include "../TFS/Defect.h"
 #include "SBIListModelFilter.h"
+#include "filterdecorator.h"
 
 using std::vector;
 
@@ -29,6 +30,12 @@ enum FilterType
     SBI_TITLE = 1
 };
 
+enum FilterOption
+{
+    USERNAME = 0,
+    SBI_TITLE = 1
+};
+
 class SBIListModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -39,12 +46,15 @@ public:
     QVariant data(const QModelIndex &index, int role) const;
     QVariant headerData(int section, Qt::Orientation orientation,
                         int role = Qt::DisplayRole) const;
-    void Filter(FilterType type, QString phrase);
+    void Filter(std::vector<WorkItem *> &content, QString phrase);
+    void AddFilterOption(FilterOption option);
+    void ClearFilterOptions();
     SBIListModelFilter* SetFilter(FilterType type);
 
 private:
     vector<ProductBacklogItem*> PBIList;
     vector<WorkItem*> workitemList;
+    FilterDecorator* filter;
 
 private slots:
     void refreshTFSData();
