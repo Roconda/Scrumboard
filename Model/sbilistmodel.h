@@ -46,8 +46,8 @@ private:
     vector<ProductBacklogItem*> PBIList;
     vector<WorkItem*> workitemList;
 
-public slots:
-    void refreshTFSData1();
+private slots:
+    void refreshTFSData();
 };
 
 #endif // SBILISTMODEL_H

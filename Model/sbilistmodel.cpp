@@ -33,9 +33,10 @@ SBIListModel::SBIListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     /* wrapper test/voorbeeld */
+
     QObject::connect(&TFSWrapper::instance(), SIGNAL(remoteTFSDataChanged()),
-        this, SLOT(refreshTFSData1()));
-    refreshTFSData1();
+		this, SLOT(refreshTFSData()));
+    refreshTFSData();
 }
 
 void SBIListModel::Filter(FilterType type, QString phrase)
@@ -140,12 +141,13 @@ QVariant SBIListModel::headerData(int section, Qt::Orientation orientation,
         return QString("Row %1").arg(section);
 }
 
-void SBIListModel::refreshTFSData1()
+void SBIListModel::refreshTFSData()
 {
     Sprint *s = TFSWrapper::instance().getSelectedSprint();
 
     if (s) {
-        vector<SprintBacklogItem*> pbis = TFSWrapper::instance().getSelectedPBI()->getBacklogItemArray();
+        vector<WorkItem*> pbis = s->getWorkItemArray();
+        int selectedSBIWorkItemnr = TFSWrapper::instance().getSelectedPBI()->getWorkItemNumber();
 
         SBIVisitor sbivis;
         PBIVisitor pbivis;

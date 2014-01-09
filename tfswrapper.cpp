@@ -40,6 +40,8 @@ void TFSWrapper::saveSelectedProject()
 
 Sprint *TFSWrapper::setSelectedSprint(size_t index)
 {
+    emit TFSWrapper::instance().remoteTFSDataChanged();
+
     this->selectedSprint = index;
     return getSelectedSprint();
 }

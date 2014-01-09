@@ -12,8 +12,10 @@ PBIListModel::PBIListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     /* bind dit model met het tfswrapper tfsupdate signal */
+
     QObject::connect(&TFSWrapper::instance(), SIGNAL(remoteTFSDataChanged()),
                      this, SLOT(refreshTFSData()));
+
     refreshTFSData();
 }
 
