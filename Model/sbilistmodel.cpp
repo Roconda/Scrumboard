@@ -116,6 +116,11 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
         else
             sbiData.insert("UserName", QString("Not assigned"));
 
+        if (dynamic_cast<Defect*>(workitemList[index.row()]))
+            sbiData.insert("isDefect", QString("True"));
+        else
+            sbiData.insert("isDefect", QString("False"));
+
         if (strcmp(stat->getStatusType()->getName(), "Not Started") == 0 && role == SBIDisplayRoles::NotStarted)
             return sbiData;
         else if (strcmp(stat->getStatusType()->getName(), "Started") == 0 && role == SBIDisplayRoles::Started)
