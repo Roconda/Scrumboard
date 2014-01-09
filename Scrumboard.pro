@@ -71,7 +71,8 @@ SOURCES += main.cpp \
     TestData/pbicreator.cpp \
     Model/SBIListModelFilter.cpp \
     Model/SBI_TitleFilter.cpp \
-    Model/SBI_UsernameFilter.cpp
+    Model/SBI_UsernameFilter.cpp \
+    TestData/workhistorycreator.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -142,7 +143,8 @@ HEADERS  += View/mainwindow.h \
     TestData/pbicreator.h \
     Model/SBIListModelFilter.h \
     Model/SBI_TitleFilter.h \
-    Model/SBI_UsernameFilter.h
+    Model/SBI_UsernameFilter.h \
+    TestData/workhistorycreator.h
 
 FORMS    += View/mainwindow.ui \
     View/defect.ui \

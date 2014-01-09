@@ -17,6 +17,8 @@ TestData::TestData()
     vector<ProductBacklogItem*> pbis = pbiCreator.Create(sprints);
     // Create the sbi's
     vector<SprintBacklogItem*> sbis = sbiCreator.Create(users, statusTypes, pbis, sprints);
+    // Set the remaining work history
+    vector<RemainingWorkHistory*> histories = remainingWorkHistoryCreator.Create(sbis);
 
     // Send the contents of the project to the server.
     TFSTransaction::remoteWriteProject("Scrumbag");

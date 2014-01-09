@@ -10,6 +10,7 @@ using std::vector;
 #include "sprintcreator.h"
 #include "pbicreator.h"
 #include "sbicreator.h"
+#include "workhistorycreator.h"
 
 class TestData
 {
@@ -20,6 +21,8 @@ private:
     SprintCreator sprintCreator;
     PBICreator pbiCreator;
     SBICreator sbiCreator;
+    WorkHistoryCreator remainingWorkHistoryCreator;
+
 
 public:
     TestData();
