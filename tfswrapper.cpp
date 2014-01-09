@@ -104,7 +104,10 @@ ProductBacklogItem *TFSWrapper::getSelectedPBI()
         if (pbi)
             pbi->accept(pbivis);
 
-    return pbivis.getList()[this->selectedPBI];
+    if ((!pbivis.getList().empty()) && (this->selectedPBI < (pbivis.getList().size() - 1)) )
+        return pbivis.getList().at(this->selectedPBI);
+    else
+        return nullptr;
 }
 
 size_t TFSWrapper::getSelectedPBIIndex()

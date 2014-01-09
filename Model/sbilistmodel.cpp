@@ -116,6 +116,11 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
         else
             sbiData.insert("UserName", QString("Not assigned"));
 
+        if (dynamic_cast<Defect*>(workitemList[index.row()]))
+            sbiData.insert("isDefect", QString("True"));
+        else
+            sbiData.insert("isDefect", QString("False"));
+
         if (strcmp(stat->getStatusType()->getName(), "Not Started") == 0 && role == SBIDisplayRoles::NotStarted)
             return sbiData;
         else if (strcmp(stat->getStatusType()->getName(), "Started") == 0 && role == SBIDisplayRoles::Started)
@@ -146,20 +151,26 @@ void SBIListModel::refreshTFSData()
     Sprint *s = TFSWrapper::instance().getSelectedSprint();
 
     if (s) {
-        vector<WorkItem*> pbis = s->getWorkItemArray();
+        vector<WorkItem*> wis;
+
+        if (TFSWrapper::instance().getSelectedPBI()) {
+
+            for (auto &wi : TFSWrapper::instance().getSelectedPBI()->getBacklogItemArray())
+                wis.push_back(wi);
+        }
 
         SBIVisitor sbivis;
         PBIVisitor pbivis;
         DefectVisitor defvis;
 
-        for_each(begin(pbis), end(pbis), [&](WorkItem *wi){
-            if (wi)
-            {
-                wi->accept(sbivis);
-                wi->accept(pbivis);
-                wi->accept(defvis);
+        for (auto &workItem : s->getWorkItemArray()) {
+            if (workItem) {
+                workItem->accept(pbivis);
+                workItem->accept(defvis);
             }
-        });
+        }
+
+        this->workitemList.insert(workitemList.end(), wis.begin(), wis.end());
         this->workitemList.insert(workitemList.end(), sbivis.getList().begin(), sbivis.getList().end());
         this->workitemList.insert(workitemList.end(), defvis.getList().begin(), defvis.getList().end());
 

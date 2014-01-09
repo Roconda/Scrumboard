@@ -93,7 +93,7 @@ void LaneUI::setModel(QAbstractListModel *model){
 
         QMap<QString, QVariant> sbiData = sbiDataVariant.toMap();
 
-        if(!sbiData.find("Priority")->toString().isEmpty()){
+        if(sbiData.find("isDefect")->toString() == QString("False")){
             ItemUI *it = new ItemUI(this);
             it->setTitle(sbiData.find("Title")->toString());
             it->setID(sbiData.find("WorkItemNumber")->toString());
