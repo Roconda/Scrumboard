@@ -8,6 +8,7 @@
 #include "../TFS/Sprint.h"
 #include "../TFS/SprintBacklogItem.h"
 #include "../Visitors/sbivisitor.h"
+#include "../scrumboardwidgethandler.h"
 #include "qmessagebox.h"
 #include <QDate>
 
@@ -52,8 +53,10 @@ AddDefect::~AddDefect()
 }
 
 void AddDefect::accept(){
-    if(this->save())
+    if(this->save()){
         this->destroy();
+        ScrumboardWidgetHandler::getInstance().updateScrumboard();
+    }
 }
 
 void AddDefect::reject(){

@@ -19,6 +19,7 @@ public:
     bool setStatusForItem(DefectUI* item, LaneUI* lane);
     SprintBacklogItem* getSBIForID(int id);
     Defect* getDefectForID(int id);
+    void updateScrumboard();
     void setParent(QWidget *parent){
         this->parent = parent;
     }
