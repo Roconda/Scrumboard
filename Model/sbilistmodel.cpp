@@ -90,7 +90,7 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
 
         SBIVisitor sbivis;
         workitemList[index.row()]->accept(sbivis);
-        if(!sbivis.getList().empty()){
+        if (!sbivis.getList().empty()){
             QString remaining = QString::number(sbivis.getList()[0]->getRemainingWork());
             QString total = QString::number(sbivis.getList()[0]->getBaselineWork());
             sbiData.insert("RemainingHours", QString(total + "/" + remaining));
@@ -153,7 +153,7 @@ void SBIListModel::refreshTFSData()
     if (s) {
         vector<WorkItem*> wis;
 
-        if (TFSWrapper::instance().getSelectedPBI()) {
+         if (TFSWrapper::instance().getSelectedPBI()) {
 
             for (auto &wi : TFSWrapper::instance().getSelectedPBI()->getBacklogItemArray())
                 wis.push_back(wi);

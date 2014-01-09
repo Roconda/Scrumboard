@@ -30,7 +30,7 @@ QVariant PBIListModel::data(const QModelIndex &index, int role) const
         throw std::exception("Index is invalid");
 
     if (role == Qt::DisplayRole) {
-        if (!PBIList.empty() && PBIList.at(index.row()))
+        if (!PBIList.empty() && index.row() < PBIList.size() && PBIList.at(index.row()))
             return QString(PBIList.at(index.row())->getTitle());
         return QVariant();
     } else
