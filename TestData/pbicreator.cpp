@@ -54,30 +54,30 @@ vector<ProductBacklogItem*> PBICreator::Create(vector<Sprint*> sprints)
     //=================================  SPRINT 2 ================================
     ProductBacklogItem *pbi8 = new ProductBacklogItem();
     pbi8->setTitle("Klasse diagram");
-    pbi8->setPriority(100);
+    pbi8->setPriority(94);
     sprints[1]->addWorkItem(*pbi8);
     pbis.push_back(pbi8);
 
     ProductBacklogItem *pbi9 = new ProductBacklogItem();
-    pbi9->setTitle("Klasse diagram");
-    pbi9->setPriority(100);
+    pbi9->setTitle("Realisatie");
+    pbi9->setPriority(96);
     sprints[1]->addWorkItem(*pbi9);
     pbis.push_back(pbi9);
 
     ProductBacklogItem *pbi10 = new ProductBacklogItem();
-    pbi10->setTitle("Klasse diagram");
-    pbi10->setPriority(100);
+    pbi10->setTitle("Documentatie");
+    pbi10->setPriority(80);
     sprints[1]->addWorkItem(*pbi10);
     pbis.push_back(pbi10);
 
     ProductBacklogItem *pbi11 = new ProductBacklogItem();
-    pbi11->setTitle("Klasse diagram");
-    pbi11->setPriority(100);
+    pbi11->setTitle("Testing");
+    pbi11->setPriority(90);
     sprints[1]->addWorkItem(*pbi11);
     pbis.push_back(pbi11);
 
     ProductBacklogItem *pbi12 = new ProductBacklogItem();
-    pbi12->setTitle("Klasse diagram");
+    pbi12->setTitle("Presentatie");
     pbi12->setPriority(100);
     sprints[1]->addWorkItem(*pbi12);
     pbis.push_back(pbi12);
