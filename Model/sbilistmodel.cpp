@@ -146,7 +146,10 @@ void SBIListModel::refreshTFSData()
     Sprint *s = TFSWrapper::instance().getSelectedSprint();
 
     if (s) {
-        vector<WorkItem*> pbis = s->getWorkItemArray();
+        vector<SprintBacklogItem*> pbis;
+
+        if (TFSWrapper::instance().getSelectedPBI())
+            pbis = TFSWrapper::instance().getSelectedPBI()->getBacklogItemArray();
 
         SBIVisitor sbivis;
         PBIVisitor pbivis;
