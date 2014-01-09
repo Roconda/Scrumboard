@@ -5,6 +5,7 @@
 #include "../TFS/Sprint.h"
 #include "../Visitors/sbivisitor.h"
 #include "../TFS/RemainingWorkHistory.h"
+#include <QDebug>
 
 BurndownChart::BurndownChart(QWidget *parent) :
     QDialog(parent),
@@ -21,7 +22,6 @@ BurndownChart::~BurndownChart()
     delete ui;
 }
 
-
 void BurndownChart::loadCustomPlot(){
     //get SBI's with visitor
     SBIVisitor visitor;
@@ -37,8 +37,8 @@ void BurndownChart::loadCustomPlot(){
     QDate *beginDate = new QDate(sprint->getBeginYear(), sprint->getBeginMonth(), sprint->getBeginDay());
     QDate *endDate = new QDate(sprint->getEndYear(), sprint->getEndMonth(), sprint->getEndDay());
     vector<SprintBacklogItem*> &SBIlist = visitor.getList();
-    for(vector<SprintBacklogItem*>::const_iterator it = SBIlist.begin(); it != SBIlist.end(); ++it){
-        SprintBacklogItem *SBIitem = *it;
+    for(vector<SprintBacklogItem*>::const_iterator itr = SBIlist.begin(); itr != SBIlist.end(); ++itr){
+        SprintBacklogItem *SBIitem = *itr;
         remainingWorkTotal += SBIitem->getRemainingWork();
         totalWork += SBIitem->getBaselineWork();
     }
@@ -46,27 +46,28 @@ void BurndownChart::loadCustomPlot(){
     // generate some data:
     QVector<double> x(beginDate->daysTo(*endDate) + 1), y(beginDate->daysTo(*endDate) + 1);
     QDate currDate = QDate::currentDate();
-    for (int i=0; i< beginDate->daysTo(*endDate) + 1; ++i)
+    for (int n=0; n< beginDate->daysTo(*endDate) + 1; n++)
     {
-        x[i] = i;
-        if(i <= beginDate->daysTo(currDate)){
+        x[n] = n;
+        if(n <= beginDate->daysTo(currDate)){
             QDate *date = new QDate(sprint->getBeginYear(), sprint->getBeginMonth(), sprint->getBeginDay());
-            date->addDays(i);
+            date = &date->addDays(n);
+            qDebug() << date->day() << date->month() << date->year();
             double status;
             for(vector<SprintBacklogItem*>::const_iterator it = SBIlist.begin(); it != SBIlist.end(); ++it){
                 SprintBacklogItem *SBIitem = *it;
-                for(int i = 0; i < SBIitem->getRemainingWorkHistoryArray().size(); i++){
-                    RemainingWorkHistory *workhistory = SBIitem->getRemainingWorkHistory(i);
+                for(int x = 0; x < SBIitem->getRemainingWorkHistoryArray().size(); x++){
+                    RemainingWorkHistory *workhistory = SBIitem->getRemainingWorkHistory(n);
                     if(workhistory){
                         QDate *workhistoryDate = new QDate(workhistory->getYear(), workhistory->getMonth(), workhistory->getDay());
-                        if(workhistoryDate == date){
-                            workhistory = SBIitem->getRemainingWorkHistory(i - 1);
+                        qDebug() << workhistoryDate->day() << workhistoryDate->month() << workhistoryDate->year();
+                        if(workhistoryDate->daysTo(*date) == 0){
                             status += workhistory->getRemainingWork();
                         }
                     }
                 }
             }
-            y[i] = status;
+            y[n] = status;
         }
     }
     // create graph and assign data to it:
