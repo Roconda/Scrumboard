@@ -22,7 +22,7 @@ TFSWrapper::TFSWrapper(QObject *parent) : QObject(parent), selectedSprint(0), se
     // Reload testdata on startup
     //
     // CreateTestData t; // Versie van Chris
-    TestData t;       // Versie van Sander
+    //TestData t;       // Versie van Sander
 
     this->selectedProject = TFSTransaction::remoteReadProject(SELECTED_PROJECT);
     this->selectedUser = this->getSelectedUser();
