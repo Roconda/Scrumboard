@@ -1,6 +1,5 @@
 #include "View/sbi.h"
 #include "ui_sbi.h"
-#include "View/defect.h"
 
 SBI::SBI(QWidget *parent) :
     QDialog(parent),
@@ -16,6 +15,5 @@ SBI::~SBI()
 
 void SBI::on_pushButton_clicked()
 {
-    Defect *defect = new Defect(this);
-    defect->show();
+
 }
