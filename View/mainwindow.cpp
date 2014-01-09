@@ -75,6 +75,8 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_sprintSlider_valueChanged(int value)
 {
     updateSprintIndex(value);
+    TFSWrapper::instance().setSelectedPBI(0);
+    ui->PBIcombobox->update();
 }
 
 void MainWindow::on_PBIcombobox_currentIndexChanged(int index)
