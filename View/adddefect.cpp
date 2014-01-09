@@ -14,6 +14,10 @@
 
 using std::pair;
 
+/**
+ * @brief create this object and fill all the data in the dropdownboxes
+ * @param parent
+ */
 AddDefect::AddDefect(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddDefect)

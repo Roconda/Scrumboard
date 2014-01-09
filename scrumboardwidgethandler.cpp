@@ -17,7 +17,12 @@
 
 using std::pair;
 
-
+/**
+ * @brief Sets a Status for a SprintBacklogItem during a drag and drop completion
+ * @param The ItemUI* object that has been dragged
+ * @param The lane it has been dragged to
+ * @return
+ */
 bool ScrumboardWidgetHandler::setStatusForItem(ItemUI *item, LaneUI *lane){
     ScrumboardWidget *scrumboard = dynamic_cast<ScrumboardWidget *>(parent);
     QString laneName = scrumboard->compareLane(lane);
@@ -61,6 +66,12 @@ bool ScrumboardWidgetHandler::setStatusForItem(ItemUI *item, LaneUI *lane){
     }
 }
 
+/**
+ * @brief Sets a Status for a Defect during a drag and drop completion
+ * @param The DefectUI* object that has been dragged
+ * @param The lane it has been dragged to
+ * @return
+ */
 bool ScrumboardWidgetHandler::setStatusForItem(DefectUI *item, LaneUI *lane){
     ScrumboardWidget *scrumboard = dynamic_cast<ScrumboardWidget *>(parent);
     QString laneName = scrumboard->compareLane(lane);
@@ -102,6 +113,10 @@ bool ScrumboardWidgetHandler::setStatusForItem(DefectUI *item, LaneUI *lane){
     }
 }
 
+/**
+ * @brief Sets the correct Data for a SprintBacklogItem that has been dragged to lane "Done"
+ * @param SBIitem
+ */
 void ScrumboardWidgetHandler::setItemDone(SprintBacklogItem* SBIitem){
     RemainingWorkHistory *history = new RemainingWorkHistory();
     history->setDay(QDate::currentDate().day());
@@ -112,6 +127,12 @@ void ScrumboardWidgetHandler::setItemDone(SprintBacklogItem* SBIitem){
     SBIitem->setCompletedWork(SBIitem->getBaselineWork());
 }
 
+/**
+ * @brief compares the currentlane and the lane to where the WorkItem has been dragged to, to see if this drag is acceptable
+ * @param The current lane where the WorkItem came from
+ * @param The lane where the WorkItem has been dragged to
+ * @return
+ */
 bool ScrumboardWidgetHandler::acceptStatus(QString currentLane, QString toLane){
     if(currentLane == "Not Started" && toLane == "Started"){
         return true;
@@ -128,6 +149,11 @@ bool ScrumboardWidgetHandler::acceptStatus(QString currentLane, QString toLane){
     }
 }
 
+/**
+ * @brief searches for a SprintBacklogItem with the given id
+ * @param The id for the SprintBacklogItem to be searched for
+ * @return The SprintBacklogItem if found.
+ */
 SprintBacklogItem* ScrumboardWidgetHandler::getSBIForID(int id){
     SBIVisitor visitor;
     for(int i = 0; i < TFSWrapper::instance().getSelectedSprint()->getWorkItemArray().size(); i++){
@@ -147,6 +173,11 @@ SprintBacklogItem* ScrumboardWidgetHandler::getSBIForID(int id){
     return NULL;
 }
 
+/**
+ * @brief searches for a Defect with the given id
+ * @param The id for the Defect to be searched for
+ * @return The Defect if found.
+ */
 Defect* ScrumboardWidgetHandler::getDefectForID(int id){
     DefectVisitor visitor;
     for(int i = 0; i < TFSWrapper::instance().getSelectedSprint()->getWorkItemArray().size(); i++){
@@ -166,6 +197,9 @@ Defect* ScrumboardWidgetHandler::getDefectForID(int id){
     return NULL;
 }
 
+/**
+ * @brief update the ScrumboardWidget
+ */
 void ScrumboardWidgetHandler::updateScrumboard(){
     ScrumboardWidget *scrumboard = dynamic_cast<ScrumboardWidget *>(parent);
     scrumboard->updateSprintData();
