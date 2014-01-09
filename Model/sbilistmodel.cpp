@@ -147,7 +147,6 @@ void SBIListModel::refreshTFSData()
 
     if (s) {
         vector<WorkItem*> pbis = s->getWorkItemArray();
-        int selectedSBIWorkItemnr = TFSWrapper::instance().getSelectedPBI()->getWorkItemNumber();
 
         SBIVisitor sbivis;
         PBIVisitor pbivis;
