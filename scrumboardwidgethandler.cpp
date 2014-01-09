@@ -165,3 +165,8 @@ Defect* ScrumboardWidgetHandler::getDefectForID(int id){
 
     return NULL;
 }
+
+void ScrumboardWidgetHandler::updateScrumboard(){
+    ScrumboardWidget *scrumboard = dynamic_cast<ScrumboardWidget *>(parent);
+    scrumboard->updateSprintData();
+}
