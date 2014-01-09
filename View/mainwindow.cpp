@@ -52,7 +52,6 @@ void MainWindow::updateSprintIndex(int newposition)
 
     ui->widget->updateSprintData();
     ui->sprint_titleLabel->setText(msg);
-
 }
 
 void MainWindow::on_pushButton_clicked()

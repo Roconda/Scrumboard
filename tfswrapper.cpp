@@ -43,6 +43,7 @@ Sprint *TFSWrapper::setSelectedSprint(size_t index)
     emit TFSWrapper::instance().remoteTFSDataChanged();
 
     this->selectedSprint = index;
+    this->selectedPBI = 0;
     return getSelectedSprint();
 }
 
@@ -92,6 +93,7 @@ User *TFSWrapper::getSelectedUser()
 ProductBacklogItem *TFSWrapper::setSelectedPBI(size_t pbi)
 {
     this->selectedPBI = pbi;
+    emit remoteTFSDataChanged();
     return getSelectedPBI();
 }
 
