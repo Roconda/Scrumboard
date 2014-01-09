@@ -151,23 +151,26 @@ void SBIListModel::refreshTFSData()
     Sprint *s = TFSWrapper::instance().getSelectedSprint();
 
     if (s) {
-        vector<SprintBacklogItem*> pbis;
+        vector<WorkItem*> wis;
 
-        if (TFSWrapper::instance().getSelectedPBI())
-            pbis = TFSWrapper::instance().getSelectedPBI()->getBacklogItemArray();
+        if (TFSWrapper::instance().getSelectedPBI()) {
+
+            for (auto &wi : TFSWrapper::instance().getSelectedPBI()->getBacklogItemArray())
+                wis.push_back(wi);
+        }
 
         SBIVisitor sbivis;
         PBIVisitor pbivis;
         DefectVisitor defvis;
 
-        for_each(begin(pbis), end(pbis), [&](WorkItem *wi){
-            if (wi)
-            {
-                wi->accept(sbivis);
-                wi->accept(pbivis);
-                wi->accept(defvis);
+        for (auto &workItem : s->getWorkItemArray()) {
+            if (workItem) {
+                workItem->accept(pbivis);
+                workItem->accept(defvis);
             }
-        });
+        }
+
+        this->workitemList.insert(workitemList.end(), wis.begin(), wis.end());
         this->workitemList.insert(workitemList.end(), sbivis.getList().begin(), sbivis.getList().end());
         this->workitemList.insert(workitemList.end(), defvis.getList().begin(), defvis.getList().end());
 
