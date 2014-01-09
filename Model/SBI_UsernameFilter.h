@@ -7,7 +7,7 @@
 class SBI_UsernameFilter : public SBIListModelFilter
 {
 public:
-    virtual std::vector<SprintBacklogItem*> Filter(std::vector<SprintBacklogItem*> content, QString phrase);
+    virtual std::vector<WorkItem*> Filter(std::vector<WorkItem*> content, QString phrase);
 };
 
 #endif // SBI_USERNAMEFILTER_H

@@ -16,8 +16,7 @@ win32-msvc*: QMAKE_LFLAGS += /VERBOSE
 LIBS     += -lws2_32 -L./
 
 SOURCES += main.cpp \
-		View/mainwindow.cpp \
-        View/defect.cpp \
+        View/mainwindow.cpp \
         qcustomplot/qcustomplot.cpp \
         View/burndownchart.cpp \
         View/sbi.cpp \
@@ -25,7 +24,6 @@ SOURCES += main.cpp \
         View/itemui.cpp \
         View/laneui.cpp \
         View/scrumboardwidget.cpp \
-        View/adddefect.cpp \
     	TFS/WriteData.cpp \
     	TFS/WorkItem.cpp \
     	TFS/User.cpp \
@@ -69,21 +67,22 @@ SOURCES += main.cpp \
     TestData/sbicreator.cpp \
     TestData/usercreator.cpp \
     TestData/pbicreator.cpp \
+    TestData/workhistorycreator.cpp \
     Model/SBIListModelFilter.cpp \
     Model/SBI_TitleFilter.cpp \
     Model/SBI_UsernameFilter.cpp \
-    TestData/workhistorycreator.cpp
+    Visitors/defectvisitor.cpp \
+    Visitors/workitemstatusvisitor.cpp \
+    View/defectui.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
-    View/defect.h \
     View/burndownchart.h \
     View/sbi.h \
     View/adddefect.h \
     View/itemui.h \
     View/laneui.h \
     View/scrumboardwidget.h \
-    View/adddefect.h \
     TFS/WriteData.h \
     TFS/WorkItem.h \
     TFS/User.h \
@@ -141,19 +140,22 @@ HEADERS  += View/mainwindow.h \
     TestData/sbicreator.h \
     TestData/usercreator.h \
     TestData/pbicreator.h \
+    TestData/workhistorycreator.h \
     Model/SBIListModelFilter.h \
     Model/SBI_TitleFilter.h \
     Model/SBI_UsernameFilter.h \
-    TestData/workhistorycreator.h
+    Visitors/defectvisitor.h \
+    Visitors/workitemstatusvisitor.h \
+    View/defectui.h
 
 FORMS    += View/mainwindow.ui \
-    View/defect.ui \
     View/burndownchart.ui \
     View/sbi.ui \
     View/adddefect.ui \
     View/itemui.ui \
     View/laneui.ui \
-    View/scrumboardwidget.ui
+    View/scrumboardwidget.ui \
+    View/defectui.ui
 
 RC_FILE	+= scrumbag.rc
 

@@ -96,7 +96,7 @@ bool AddDefect::save(){
     for(iType = StatusType::getStorage().begin(); iType != StatusType::getStorage().end(); ++iType){
         pair<std::string, StatusType*> x = *iType;
         StatusType *st = x.second;
-        if(st->getName() == "Not Started"){
+        if(st->getName() == QString("Not Started")){
             status->setStatusType(*st);
             status->setDay(QDate::currentDate().day());
             status->setMonth(QDate::currentDate().month());
@@ -125,8 +125,8 @@ bool AddDefect::save(){
     QStringList split = selected.split(":");
     int workitemnumber = split.at(0).toInt();
     SprintBacklogItem* item = static_cast<SprintBacklogItem*>(TFSWrapper::instance().getSelectedSprint()->getWorkItem(workitemnumber));
+    TFSWrapper::instance().getSelectedSprint()->addWorkItem(*defect);
     item->addDefect(*defect);
-
     TFSWrapper::instance().saveSelectedProject();
 
     return true;

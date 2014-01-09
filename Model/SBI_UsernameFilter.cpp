@@ -3,13 +3,13 @@
 #include "../TFS/User.h"
 #include <QDebug>
 
-std::vector<SprintBacklogItem*> SBI_UsernameFilter::Filter(std::vector<SprintBacklogItem*> content, QString phrase)
+std::vector<WorkItem*> SBI_UsernameFilter::Filter(std::vector<WorkItem*> content, QString phrase)
 {
-    std::vector<SprintBacklogItem*> temp;
+    std::vector<WorkItem*> temp;
 
-    for(std::vector<SprintBacklogItem*>::iterator it = content.begin(); it != content.end(); ++it)
+    for(std::vector<WorkItem*>::iterator it = content.begin(); it != content.end(); ++it)
     {
-        SprintBacklogItem* si = *it;
+        WorkItem* si = *it;
 
         if(si && si->getUser())
         {

@@ -3,6 +3,7 @@
 
 #include "View/itemui.h"
 #include "View/laneui.h"
+#include "View/defectui.h"
 
 class ScrumboardWidgetHandler
 {
@@ -14,8 +15,10 @@ public:
                 return instance;
             }
 
-    bool setStatusForSBI(ItemUI* item, LaneUI* lane);
-    SprintBacklogItem* getItemForID(int id);
+    bool setStatusForItem(ItemUI* item, LaneUI* lane);
+    bool setStatusForItem(DefectUI* item, LaneUI* lane);
+    SprintBacklogItem* getSBIForID(int id);
+    Defect* getDefectForID(int id);
     void setParent(QWidget *parent){
         this->parent = parent;
     }
