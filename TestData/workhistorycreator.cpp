@@ -12,7 +12,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history1->setDay(5);
     history1->setMonth(12);
     history1->setYear(2013);
-    history1->setRemainingWork(10);
+    history1->setRemainingWork(0);
     sbis[0]->addRemainingWorkHistory(*history1);
     histories.push_back(history1);
 
@@ -20,7 +20,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history2->setDay(5);
     history2->setMonth(12);
     history2->setYear(2013);
-    history2->setRemainingWork(1);
+    history2->setRemainingWork(4);
     sbis[1]->addRemainingWorkHistory(*history2);
     histories.push_back(history2);
 
@@ -28,7 +28,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history3->setDay(6);
     history3->setMonth(12);
     history3->setYear(2013);
-    history3->setRemainingWork(5);
+    history3->setRemainingWork(0);
     sbis[1]->addRemainingWorkHistory(*history3);
     histories.push_back(history3);
 
@@ -36,7 +36,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history4->setDay(6);
     history4->setMonth(12);
     history4->setYear(2013);
-    history4->setRemainingWork(2);
+    history4->setRemainingWork(3);
     sbis[2]->addRemainingWorkHistory(*history4);
     histories.push_back(history4);
 
@@ -44,7 +44,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history5->setDay(7);
     history5->setMonth(12);
     history5->setYear(2013);
-    history5->setRemainingWork(5);
+    history5->setRemainingWork(0);
     sbis[2]->addRemainingWorkHistory(*history5);
     histories.push_back(history5);
 
@@ -52,7 +52,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history6->setDay(8);
     history6->setMonth(12);
     history6->setYear(2013);
-    history6->setRemainingWork(1);
+    history6->setRemainingWork(0);
     sbis[3]->addRemainingWorkHistory(*history6);
     histories.push_back(history6);
 
@@ -60,7 +60,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history7->setDay(10);
     history7->setMonth(12);
     history7->setYear(2013);
-    history7->setRemainingWork(1);
+    history7->setRemainingWork(0);
     sbis[4]->addRemainingWorkHistory(*history7);
     histories.push_back(history7);
 
@@ -68,7 +68,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history8->setDay(10);
     history8->setMonth(12);
     history8->setYear(2013);
-    history8->setRemainingWork(1);
+    history8->setRemainingWork(0);
     sbis[5]->addRemainingWorkHistory(*history8);
     histories.push_back(history8);
 
@@ -76,7 +76,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history9->setDay(10);
     history9->setMonth(12);
     history9->setYear(2013);
-    history9->setRemainingWork(1);
+    history9->setRemainingWork(0);
     sbis[6]->addRemainingWorkHistory(*history9);
     histories.push_back(history9);
 
@@ -84,7 +84,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history10->setDay(10);
     history10->setMonth(12);
     history10->setYear(2013);
-    history10->setRemainingWork(1);
+    history10->setRemainingWork(0);
     sbis[7]->addRemainingWorkHistory(*history10);
     histories.push_back(history10);
 
@@ -92,7 +92,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history11->setDay(14);
     history11->setMonth(12);
     history11->setYear(2013);
-    history11->setRemainingWork(2);
+    history11->setRemainingWork(0);
     sbis[8]->addRemainingWorkHistory(*history11);
     histories.push_back(history11);
 
@@ -100,7 +100,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history12->setDay(14);
     history12->setMonth(12);
     history12->setYear(2013);
-    history12->setRemainingWork(2);
+    history12->setRemainingWork(3);
     sbis[9]->addRemainingWorkHistory(*history12);
     histories.push_back(history12);
 
@@ -108,7 +108,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history13->setDay(16);
     history13->setMonth(12);
     history13->setYear(2013);
-    history13->setRemainingWork(5);
+    history13->setRemainingWork(0);
     sbis[9]->addRemainingWorkHistory(*history13);
     histories.push_back(history13);
 
@@ -116,7 +116,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history14->setDay(17);
     history14->setMonth(12);
     history14->setYear(2013);
-    history14->setRemainingWork(5);
+    history14->setRemainingWork(0);
     sbis[10]->addRemainingWorkHistory(*history14);
     histories.push_back(history14);
 
@@ -124,7 +124,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history15->setDay(2);
     history15->setMonth(1);
     history15->setYear(2014);
-    history15->setRemainingWork(4);
+    history15->setRemainingWork(0);
     sbis[11]->addRemainingWorkHistory(*history15);
     histories.push_back(history15);
 
@@ -132,7 +132,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history16->setDay(4);
     history16->setMonth(1);
     history16->setYear(2014);
-    history16->setRemainingWork(4);
+    history16->setRemainingWork(0);
     sbis[12]->addRemainingWorkHistory(*history16);
     histories.push_back(history16);
 
@@ -140,7 +140,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history17->setDay(7);
     history17->setMonth(1);
     history17->setYear(2014);
-    history17->setRemainingWork(3);
+    history17->setRemainingWork(7);
     sbis[13]->addRemainingWorkHistory(*history17);
     histories.push_back(history17);
 
@@ -148,7 +148,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history18->setDay(8);
     history18->setMonth(1);
     history18->setYear(2014);
-    history18->setRemainingWork(6);
+    history18->setRemainingWork(4);
     sbis[13]->addRemainingWorkHistory(*history18);
     histories.push_back(history18);
 
@@ -156,7 +156,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history19->setDay(9);
     history19->setMonth(1);
     history19->setYear(2014);
-    history19->setRemainingWork(10);
+    history19->setRemainingWork(0);
     sbis[13]->addRemainingWorkHistory(*history19);
     histories.push_back(history19);
 
@@ -164,7 +164,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history20->setDay(12);
     history20->setMonth(1);
     history20->setYear(2014);
-    history20->setRemainingWork(1);
+    history20->setRemainingWork(2);
     sbis[14]->addRemainingWorkHistory(*history20);
     histories.push_back(history20);
 
@@ -172,7 +172,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history21->setDay(13);
     history21->setMonth(1);
     history21->setYear(2014);
-    history21->setRemainingWork(3);
+    history21->setRemainingWork(0);
     sbis[14]->addRemainingWorkHistory(*history21);
     histories.push_back(history21);
 
@@ -180,7 +180,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history22->setDay(13);
     history22->setMonth(1);
     history22->setYear(2014);
-    history22->setRemainingWork(8);
+    history22->setRemainingWork(12);
     sbis[15]->addRemainingWorkHistory(*history22);
     histories.push_back(history22);
 
@@ -188,7 +188,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history23->setDay(14);
     history23->setMonth(1);
     history23->setYear(2014);
-    history23->setRemainingWork(16);
+    history23->setRemainingWork(4);
     sbis[15]->addRemainingWorkHistory(*history23);
     histories.push_back(history23);
 
@@ -196,7 +196,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history24->setDay(15);
     history24->setMonth(1);
     history24->setYear(2014);
-    history24->setRemainingWork(20);
+    history24->setRemainingWork(0);
     sbis[15]->addRemainingWorkHistory(*history24);
     histories.push_back(history24);
 
@@ -204,7 +204,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history25->setDay(16);
     history25->setMonth(1);
     history25->setYear(2014);
-    history25->setRemainingWork(8);
+    history25->setRemainingWork(2);
     sbis[16]->addRemainingWorkHistory(*history25);
     histories.push_back(history25);
 
@@ -212,7 +212,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history26->setDay(20);
     history26->setMonth(1);
     history26->setYear(2014);
-    history26->setRemainingWork(10);
+    history26->setRemainingWork(0);
     sbis[16]->addRemainingWorkHistory(*history26);
     histories.push_back(history26);
 
@@ -220,7 +220,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history27->setDay(22);
     history27->setMonth(1);
     history27->setYear(2014);
-    history27->setRemainingWork(1);
+    history27->setRemainingWork(4);
     sbis[17]->addRemainingWorkHistory(*history27);
     histories.push_back(history27);
 
@@ -228,7 +228,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history28->setDay(23);
     history28->setMonth(1);
     history28->setYear(2014);
-    history28->setRemainingWork(5);
+    history28->setRemainingWork(0);
     sbis[17]->addRemainingWorkHistory(*history28);
     histories.push_back(history28);
 
@@ -236,7 +236,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history29->setDay(1);
     history29->setMonth(2);
     history29->setYear(2014);
-    history29->setRemainingWork(3);
+    history29->setRemainingWork(7);
     sbis[18]->addRemainingWorkHistory(*history29);
     histories.push_back(history29);
 
@@ -244,7 +244,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history30->setDay(3);
     history30->setMonth(2);
     history30->setYear(2014);
-    history30->setRemainingWork(10);
+    history30->setRemainingWork(0);
     sbis[18]->addRemainingWorkHistory(*history30);
     histories.push_back(history30);
 
@@ -252,7 +252,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history31->setDay(10);
     history31->setMonth(2);
     history31->setYear(2014);
-    history31->setRemainingWork(10);
+    history31->setRemainingWork(5);
     sbis[19]->addRemainingWorkHistory(*history31);
     histories.push_back(history31);
 
@@ -260,7 +260,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history32->setDay(13);
     history32->setMonth(2);
     history32->setYear(2014);
-    history32->setRemainingWork(10);
+    history32->setRemainingWork(0);
     sbis[19]->addRemainingWorkHistory(*history32);
     histories.push_back(history32);
 
@@ -276,7 +276,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history34->setDay(22);
     history34->setMonth(2);
     history34->setYear(2014);
-    history34->setRemainingWork(10);
+    history34->setRemainingWork(0);
     sbis[20]->addRemainingWorkHistory(*history34);
     histories.push_back(history34);
 
@@ -284,7 +284,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history35->setDay(25);
     history35->setMonth(2);
     history35->setYear(2014);
-    history35->setRemainingWork(5);
+    history35->setRemainingWork(0);
     sbis[21]->addRemainingWorkHistory(*history35);
     histories.push_back(history35);
 
@@ -292,7 +292,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history36->setDay(28);
     history36->setMonth(2);
     history36->setYear(2014);
-    history36->setRemainingWork(4);
+    history36->setRemainingWork(6);
     sbis[22]->addRemainingWorkHistory(*history36);
     histories.push_back(history36);
 
@@ -300,7 +300,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history37->setDay(1);
     history37->setMonth(3);
     history37->setYear(2014);
-    history37->setRemainingWork(10);
+    history37->setRemainingWork(0);
     sbis[22]->addRemainingWorkHistory(*history37);
     histories.push_back(history37);
 
@@ -308,7 +308,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history38->setDay(1);
     history38->setMonth(3);
     history38->setYear(2014);
-    history38->setRemainingWork(5);
+    history38->setRemainingWork(10);
     sbis[23]->addRemainingWorkHistory(*history38);
     histories.push_back(history38);
 
@@ -316,7 +316,7 @@ vector<RemainingWorkHistory*> WorkHistoryCreator::Create(vector<SprintBacklogIte
     history39->setDay(3);
     history39->setMonth(3);
     history39->setYear(2014);
-    history39->setRemainingWork(15);
+    history39->setRemainingWork(0);
     sbis[23]->addRemainingWorkHistory(*history39);
     histories.push_back(history39);
 

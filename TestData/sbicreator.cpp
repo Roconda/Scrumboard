@@ -15,8 +15,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task1->setWorkItemNumber(1);
     task1->setDescription("AKD versie 1 maken.");
     task1->setUser(users[0]);
-    task1->setRemainingWork(0);
-    task1->setCompletedWork(10);
+    task1->setRemainingWork(10);
+    task1->setCompletedWork(0);
     task1->setBaselineWork(10);
 
     Status *status1 = new Status();
@@ -33,8 +33,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task2->setWorkItemNumber(2);
     task2->setDescription("Het gemaakte Applicatie Klasse diagram controlleren.");
     task2->setUser(users[1]);
-    task2->setRemainingWork(0);
-    task2->setCompletedWork(5);
+    task2->setRemainingWork(5);
+    task2->setCompletedWork(0);
     task2->setBaselineWork(5);
 
     Status *status2 = new Status();
@@ -51,8 +51,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task3->setWorkItemNumber(3);
     task3->setDescription("De verbeterpunten doorvoeren om zo het AKD te verbeteren.");
     task3->setUser(users[2]);
-    task3->setRemainingWork(0);
-    task3->setCompletedWork(5);
+    task3->setRemainingWork(5);
+    task3->setCompletedWork(0);
     task3->setBaselineWork(5);
 
     Status *status3 = new Status();
@@ -69,8 +69,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task4->setWorkItemNumber(4);
     task4->setDescription("Het AKD met de groep bespreken om zo achter verbeterpunten te komen.");
     task4->setUser(users[3]);
-    task4->setRemainingWork(0);
-    task4->setCompletedWork(1);
+    task4->setRemainingWork(1);
+    task4->setCompletedWork(0);
     task4->setBaselineWork(1);
 
     Status *status4 = new Status();
@@ -87,8 +87,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task5->setWorkItemNumber(5);
     task5->setDescription("Contact gegevens van de groepsleden uitwisselen.");
     task5->setUser(users[4]);
-    task5->setRemainingWork(0);
-    task5->setCompletedWork(1);
+    task5->setRemainingWork(1);
+    task5->setCompletedWork(0);
     task5->setBaselineWork(1);
 
     Status *status5 = new Status();
@@ -105,8 +105,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task6->setWorkItemNumber(6);
     task6->setDescription("Elkaar op skype toevoegen en een skype groep aanmaken.");
     task6->setUser(users[5]);
-    task6->setRemainingWork(0);
-    task6->setCompletedWork(1);
+    task6->setRemainingWork(1);
+    task6->setCompletedWork(0);
     task6->setBaselineWork(1);
 
     Status *status6 = new Status();
@@ -123,8 +123,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task7->setWorkItemNumber(7);
     task7->setDescription("Een trello groep aanmaken, iedereen toevoegen en een bord openen.");
     task7->setUser(users[0]);
-    task7->setRemainingWork(0);
-    task7->setCompletedWork(1);
+    task7->setRemainingWork(1);
+    task7->setCompletedWork(0);
     task7->setBaselineWork(1);
 
     Status *status7 = new Status();
@@ -141,8 +141,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task8->setWorkItemNumber(8);
     task8->setDescription("Een git repository aanmaken, iedereen toevoegen en een initieel project starten.");
     task8->setUser(users[1]);
-    task8->setRemainingWork(0);
-    task8->setCompletedWork(1);
+    task8->setRemainingWork(1);
+    task8->setCompletedWork(0);
     task8->setBaselineWork(1);
 
     Status *status8 = new Status();
@@ -159,8 +159,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task9->setWorkItemNumber(9);
     task9->setDescription("Onderzoek doen naar mogelijke ontwikkelomgevingen en er een kiezen.");
     task9->setUser(users[2]);
-    task9->setRemainingWork(0);
-    task9->setCompletedWork(2);
+    task9->setRemainingWork(2);
+    task9->setCompletedWork(0);
     task9->setBaselineWork(2);
 
     Status *status9 = new Status();
@@ -177,8 +177,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task10->setWorkItemNumber(10);
     task10->setDescription("Installatie van tool uitzoeken.");
     task10->setUser(users[3]);
-    task10->setRemainingWork(0);
-    task10->setCompletedWork(5);
+    task10->setRemainingWork(5);
+    task10->setCompletedWork(0);
     task10->setBaselineWork(5);
 
     Status *status10 = new Status();
@@ -195,8 +195,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task11->setWorkItemNumber(11);
     task11->setDescription("Overige leden ontwikkeltool installeren.");
     task11->setUser(users[4]);
-    task11->setRemainingWork(0);
-    task11->setCompletedWork(5);
+    task11->setRemainingWork(5);
+    task11->setCompletedWork(0);
     task11->setBaselineWork(5);
 
     Status *status11 = new Status();
@@ -213,8 +213,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task12->setWorkItemNumber(12);
     task12->setDescription("Een eerste opzet maken van het project.");
     task12->setUser(users[5]);
-    task12->setRemainingWork(0);
-    task12->setCompletedWork(4);
+    task12->setRemainingWork(4);
+    task12->setCompletedWork(0);
     task12->setBaselineWork(4);
 
     Status *status12 = new Status();
@@ -231,8 +231,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task13->setWorkItemNumber(13);
     task13->setDescription("Onderzoek doen naar het model geleverd door Bert Hoeks.");
     task13->setUser(users[0]);
-    task13->setRemainingWork(0);
-    task13->setCompletedWork(5);
+    task13->setRemainingWork(5);
+    task13->setCompletedWork(0);
     task13->setBaselineWork(5);
 
     Status *status13 = new Status();
@@ -249,8 +249,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task14->setWorkItemNumber(14);
     task14->setDescription("Uitzoeken hoe we een eigen TFS server kunnen hosten.");
     task14->setUser(users[1]);
-    task14->setRemainingWork(0);
-    task14->setCompletedWork(10);
+    task14->setRemainingWork(10);
+    task14->setCompletedWork(0);
     task14->setBaselineWork(10);
 
     Status *status14 = new Status();
@@ -267,8 +267,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task15->setWorkItemNumber(15);
     task15->setDescription("Onderzoeken relaties binnen het TFS model.");
     task15->setUser(users[2]);
-    task15->setRemainingWork(0);
-    task15->setCompletedWork(3);
+    task15->setRemainingWork(3);
+    task15->setCompletedWork(0);
     task15->setBaselineWork(3);
 
     Status *status15 = new Status();
@@ -285,8 +285,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task16->setWorkItemNumber(16);
     task16->setDescription("Begin maken aan het architectuur document met gemaakte keuzes en beargumentatie.");
     task16->setUser(users[3]);
-    task16->setRemainingWork(0);
-    task16->setCompletedWork(20);
+    task16->setRemainingWork(20);
+    task16->setCompletedWork(0);
     task16->setBaselineWork(20);
 
     Status *status16 = new Status();
@@ -303,8 +303,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task17->setWorkItemNumber(17);
     task17->setDescription("Bepalen welke keuzes er gemaakt zijn.");
     task17->setUser(users[4]);
-    task17->setRemainingWork(0);
-    task17->setCompletedWork(10);
+    task17->setRemainingWork(10);
+    task17->setCompletedWork(0);
     task17->setBaselineWork(10);
 
     Status *status17 = new Status();
@@ -321,8 +321,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task18->setWorkItemNumber(18);
     task18->setDescription("Bepalen welke Sequence Diagrammen er gemaakt moeten worden.");
     task18->setUser(users[5]);
-    task18->setRemainingWork(0);
-    task18->setCompletedWork(5);
+    task18->setRemainingWork(5);
+    task18->setCompletedWork(0);
     task18->setBaselineWork(5);
 
     Status *status18 = new Status();
@@ -339,8 +339,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task19->setWorkItemNumber(19);
     task19->setDescription("Bepalen wat er getest gaat worden.");
     task19->setUser(users[0]);
-    task19->setRemainingWork(0);
-    task19->setCompletedWork(10);
+    task19->setRemainingWork(10);
+    task19->setCompletedWork(0);
     task19->setBaselineWork(10);
 
     Status *status19 = new Status();
@@ -357,8 +357,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task20->setWorkItemNumber(20);
     task20->setDescription("Het vastleggen van de testcases.");
     task20->setUser(users[1]);
-    task20->setRemainingWork(0);
-    task20->setCompletedWork(10);
+    task20->setRemainingWork(10);
+    task20->setCompletedWork(0);
     task20->setBaselineWork(10);
 
     Status *status20 = new Status();
@@ -375,8 +375,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task21->setWorkItemNumber(21);
     task21->setDescription("Het uitvoeren van de eerste testcase.");
     task21->setUser(users[2]);
-    task21->setRemainingWork(0);
-    task21->setCompletedWork(3);
+    task21->setRemainingWork(3);
+    task21->setCompletedWork(0);
     task21->setBaselineWork(3);
 
     Status *status21 = new Status();
@@ -393,8 +393,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task22->setWorkItemNumber(22);
     task22->setDescription("Overleggen over de inhoud van de presentatie.");
     task22->setUser(users[3]);
-    task22->setRemainingWork(0);
-    task22->setCompletedWork(5);
+    task22->setRemainingWork(5);
+    task22->setCompletedWork(0);
     task22->setBaselineWork(5);
 
     Status *status22 = new Status();
@@ -411,8 +411,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task23->setWorkItemNumber(23);
     task23->setDescription("Presentatie sheets maken en eventueel andere voorbereidingen.");
     task23->setUser(users[4]);
-    task23->setRemainingWork(0);
-    task23->setCompletedWork(10);
+    task23->setRemainingWork(10);
+    task23->setCompletedWork(0);
     task23->setBaselineWork(10);
 
     Status *status23 = new Status();
@@ -429,8 +429,8 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     task24->setWorkItemNumber(24);
     task24->setDescription("Presentatie geven aan de klant.");
     task24->setUser(users[5]);
-    task24->setRemainingWork(0);
-    task24->setCompletedWork(15);
+    task24->setRemainingWork(15);
+    task24->setCompletedWork(0);
     task24->setBaselineWork(15);
 
     Status *status24 = new Status();
@@ -440,6 +440,25 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     pbis[6]->addBacklogItem(*task24);
     sprints[0]->addWorkItem(*task24);
     sbis.push_back(task24);
+
+    //===============      Sprint 2        =================================
+    //===============Product backlog item 8=================================
+    SprintBacklogItem* task25 = new SprintBacklogItem();
+    task25->setTitle("Presentatie geven");
+    task25->setWorkItemNumber(25);
+    task25->setDescription("AKD versie 2");
+    task25->setUser(users[5]);
+    task25->setRemainingWork(8);
+    task25->setCompletedWork(0);
+    task25->setBaselineWork(8);
+
+    Status *status25 = new Status();
+    status25->setStatusType(*statusTypes[0]);
+    task25->addStatus(*status25);
+
+    pbis[7]->addBacklogItem(*task25);
+    sprints[0]->addWorkItem(*task25);
+    sbis.push_back(task25);
 
     return sbis;
 }
