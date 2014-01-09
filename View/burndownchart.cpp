@@ -30,46 +30,56 @@ void BurndownChart::loadCustomPlot(){
         if(workitem)
             workitem->accept(visitor);
     }
-
-    double remainingWorkTotal = 0.0;
+    vector<SprintBacklogItem*> &SBIlist = visitor.getList();
     double totalWork = 0.0;
+    double yAxis = 0.0;
+    for(vector<SprintBacklogItem*>::const_iterator itr = SBIlist.begin(); itr != SBIlist.end(); ++itr){
+        SprintBacklogItem *SBIitem = *itr;
+        totalWork += SBIitem->getBaselineWork();
+        yAxis += SBIitem->getBaselineWork();
+    }
+
     Sprint *sprint = TFSWrapper::instance().getSelectedSprint();
     QDate *beginDate = new QDate(sprint->getBeginYear(), sprint->getBeginMonth(), sprint->getBeginDay());
     QDate *endDate = new QDate(sprint->getEndYear(), sprint->getEndMonth(), sprint->getEndDay());
-    vector<SprintBacklogItem*> &SBIlist = visitor.getList();
-    for(vector<SprintBacklogItem*>::const_iterator itr = SBIlist.begin(); itr != SBIlist.end(); ++itr){
-        SprintBacklogItem *SBIitem = *itr;
-        remainingWorkTotal += SBIitem->getRemainingWork();
-        totalWork += SBIitem->getBaselineWork();
-    }
 
     // generate some data:
     QVector<double> x(beginDate->daysTo(*endDate) + 1), y(beginDate->daysTo(*endDate) + 1);
     QDate currDate = QDate::currentDate();
-    for (int n=0; n< beginDate->daysTo(*endDate) + 1; n++)
+    QDate *date = new QDate(sprint->getBeginYear(), sprint->getBeginMonth(), sprint->getBeginDay());
+    for (int n = 0; n < beginDate->daysTo(*endDate) + 1; n++)
     {
         x[n] = n;
+        date = &date->addDays(1);
+        double workremainingforday = 0.0;
         if(n <= beginDate->daysTo(currDate)){
-            QDate *date = new QDate(sprint->getBeginYear(), sprint->getBeginMonth(), sprint->getBeginDay());
-            date = &date->addDays(n);
-            qDebug() << date->day() << date->month() << date->year();
-            double status;
             for(vector<SprintBacklogItem*>::const_iterator it = SBIlist.begin(); it != SBIlist.end(); ++it){
                 SprintBacklogItem *SBIitem = *it;
                 for(int x = 0; x < SBIitem->getRemainingWorkHistoryArray().size(); x++){
-                    RemainingWorkHistory *workhistory = SBIitem->getRemainingWorkHistory(n);
+                    RemainingWorkHistory *workhistory = SBIitem->getRemainingWorkHistory(x);
                     if(workhistory){
                         QDate *workhistoryDate = new QDate(workhistory->getYear(), workhistory->getMonth(), workhistory->getDay());
-                        qDebug() << workhistoryDate->day() << workhistoryDate->month() << workhistoryDate->year();
                         if(workhistoryDate->daysTo(*date) == 0){
-                            status += workhistory->getRemainingWork();
+                            workremainingforday += workhistory->getRemainingWork();
                         }
                     }
                 }
             }
-            y[n] = status;
+            totalWork = totalWork - workremainingforday;
+            y[n] = totalWork;
+        }else{
+            break;
         }
     }
+
+    double projectedEndPoint = (totalWork - (((yAxis - ((yAxis + totalWork) / 2)) / (beginDate->daysTo(currDate))) * (currDate.daysTo(*endDate))));
+    double difference = totalWork - projectedEndPoint;
+    for(int i = 0; i < y.size() - 1; i++){
+        if(y[i] == 0.0){
+            y[i] == totalWork - (difference / QDate::currentDate().daysTo(*endDate));
+        }
+    }
+
     // create graph and assign data to it:
     ui->widget->addGraph();
     ui->widget->graph(0)->setData(x, y);
@@ -78,7 +88,7 @@ void BurndownChart::loadCustomPlot(){
     ui->widget->yAxis->setLabel("Remaining Hours");
     // set axes ranges, so we see all data:
     ui->widget->xAxis->setRange(0, beginDate->daysTo(*endDate));
-    ui->widget->yAxis->setRange(0, totalWork);
+    ui->widget->yAxis->setRange(0, yAxis);
     ui->widget->replot();
 }
 
