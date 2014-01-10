@@ -31,11 +31,9 @@ void BurndownChart::loadCustomPlot(){
             workitem->accept(visitor);
     }
     vector<SprintBacklogItem*> &SBIlist = visitor.getList();
-    double totalWork = 0.0;
     double yAxis = 0.0;
     for(vector<SprintBacklogItem*>::const_iterator itr = SBIlist.begin(); itr != SBIlist.end(); ++itr){
         SprintBacklogItem *SBIitem = *itr;
-        totalWork += SBIitem->getBaselineWork();
         yAxis += SBIitem->getBaselineWork();
     }
 
@@ -61,28 +59,59 @@ void BurndownChart::loadCustomPlot(){
                         QDate *workhistoryDate = new QDate(workhistory->getYear(), workhistory->getMonth(), workhistory->getDay());
                         if(workhistoryDate->daysTo(*date) == 0){
                             workremainingforday += workhistory->getRemainingWork();
+                            break;
+                        }else if(workhistoryDate->daysTo(*date) < 0){
+                            if(x != 0){
+                                workremainingforday += SBIitem->getRemainingWorkHistory(x)->getRemainingWork();
+                                break;
+                            }else{
+                                workremainingforday += SBIitem->getBaselineWork();
+                                break;
+                            }
                         }
                     }
                 }
             }
-            totalWork = totalWork - workremainingforday;
-            y[n] = totalWork;
+            y[n] = workremainingforday;
         }else{
             break;
         }
     }
 
-    double projectedEndPoint = (totalWork - (((yAxis - ((yAxis + totalWork) / 2)) / (beginDate->daysTo(currDate))) * (currDate.daysTo(*endDate))));
-    double difference = totalWork - projectedEndPoint;
-    for(int i = 0; i < y.size() - 1; i++){
-        if(y[i] == 0.0){
-            y[i] == totalWork - (difference / QDate::currentDate().daysTo(*endDate));
+    double difference = 0.0;
+    double currentDatePointX;
+    if(y[0] != 0){
+        for(int t = 0; t < y.size() - 1; t++){
+            if(y[t] == 0.0){
+                currentDatePointX = t - 1;
+                difference = y[0] - y[t -1];
+                int remainingDays = beginDate->addDays(t).daysTo(*endDate);
+                for(t; t < y.size() - 1; t++){
+                    x[t] = t;
+                    y[t] = y[t-1] - (difference / remainingDays);
+                }
+            }
         }
     }
 
+    QVector<double> xCurrentDatePoint(2), yLine(2);
+    xCurrentDatePoint[0] = currentDatePointX;
+    xCurrentDatePoint[1] = currentDatePointX;
+    yLine[0] = 0;
+    yLine[1] = yAxis;
+
     // create graph and assign data to it:
+    ui->widget->legend->setVisible(true);
     ui->widget->addGraph();
     ui->widget->graph(0)->setData(x, y);
+    ui->widget->graph(0)->setName("Project burndown");
+
+    ui->widget->addGraph();
+    QPen* pen = new QPen(Qt::DashLine);
+    pen->setColor(Qt::red);
+    ui->widget->graph(1)->setPen(*pen);
+    ui->widget->graph(1)->addData(xCurrentDatePoint, yLine);
+    ui->widget->graph(1)->setName("Current day");
     // give the axes some labels:
     ui->widget->xAxis->setLabel("Days");
     ui->widget->yAxis->setLabel("Remaining Hours");
