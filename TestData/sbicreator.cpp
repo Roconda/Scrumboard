@@ -444,9 +444,9 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     //===============      Sprint 2        =================================
     //===============Product backlog item 8=================================
     SprintBacklogItem* task25 = new SprintBacklogItem();
-    task25->setTitle("Presentatie geven");
+    task25->setTitle("AKD versie 2");
     task25->setWorkItemNumber(25);
-    task25->setDescription("AKD versie 2");
+    task25->setDescription("AKD versie 2 maken");
     task25->setUser(users[5]);
     task25->setRemainingWork(8);
     task25->setCompletedWork(0);
@@ -459,6 +459,282 @@ vector<SprintBacklogItem*> SBICreator::Create(vector<User*> users, vector<Status
     pbis[7]->addBacklogItem(*task25);
     sprints[0]->addWorkItem(*task25);
     sbis.push_back(task25);
+
+    SprintBacklogItem* task26 = new SprintBacklogItem();
+    task26->setTitle("AKD controleren");
+    task26->setWorkItemNumber(26);
+    task26->setDescription("Het gemaakte AKD controleren");
+    task26->setUser(users[5]);
+    task26->setRemainingWork(4);
+    task26->setCompletedWork(0);
+    task26->setBaselineWork(4);
+
+    Status *status26 = new Status();
+    status26->setStatusType(*statusTypes[0]);
+    task26->addStatus(*status26);
+
+    pbis[7]->addBacklogItem(*task26);
+    sprints[0]->addWorkItem(*task26);
+    sbis.push_back(task26);
+
+    SprintBacklogItem* task27 = new SprintBacklogItem();
+    task27->setTitle("AKD verbeteren");
+    task27->setWorkItemNumber(27);
+    task27->setDescription("Het gemaakte AKD verbeteren");
+    task27->setUser(users[5]);
+    task27->setRemainingWork(4);
+    task27->setCompletedWork(0);
+    task27->setBaselineWork(4);
+
+    Status *status27 = new Status();
+    status27->setStatusType(*statusTypes[0]);
+    task27->addStatus(*status27);
+
+    pbis[7]->addBacklogItem(*task27);
+    sprints[0]->addWorkItem(*task27);
+    sbis.push_back(task27);
+
+    SprintBacklogItem* task28 = new SprintBacklogItem();
+    task28->setTitle("AKD bespreken");
+    task28->setWorkItemNumber(28);
+    task28->setDescription("Het gemaakte AKD bespreken met de groep");
+    task28->setUser(users[5]);
+    task28->setRemainingWork(1);
+    task28->setCompletedWork(0);
+    task28->setBaselineWork(1);
+
+    Status *status28 = new Status();
+    status28->setStatusType(*statusTypes[0]);
+    task28->addStatus(*status28);
+
+    pbis[7]->addBacklogItem(*task28);
+    sprints[0]->addWorkItem(*task28);
+    sbis.push_back(task28);
+
+    //===============Product backlog item 9=================================
+    SprintBacklogItem* task29 = new SprintBacklogItem();
+    task29->setTitle("Tweede opzet project");
+    task29->setWorkItemNumber(29);
+    task29->setDescription("Tweede opzet maken van het project");
+    task29->setUser(users[5]);
+    task29->setRemainingWork(10);
+    task29->setCompletedWork(0);
+    task29->setBaselineWork(10);
+
+    Status *status29 = new Status();
+    status29->setStatusType(*statusTypes[0]);
+    task29->addStatus(*status29);
+
+    pbis[8]->addBacklogItem(*task29);
+    sprints[0]->addWorkItem(*task29);
+    sbis.push_back(task29);
+
+    SprintBacklogItem* task30 = new SprintBacklogItem();
+    task30->setTitle("Userstory 12 realiseren");
+    task30->setWorkItemNumber(30);
+    task30->setDescription("Userstory 12 realiseren");
+    task30->setUser(users[5]);
+    task30->setRemainingWork(8);
+    task30->setCompletedWork(0);
+    task30->setBaselineWork(8);
+
+    Status *status30 = new Status();
+    status30->setStatusType(*statusTypes[0]);
+    task30->addStatus(*status30);
+
+    pbis[8]->addBacklogItem(*task30);
+    sprints[0]->addWorkItem(*task30);
+    sbis.push_back(task30);
+
+    SprintBacklogItem* task31 = new SprintBacklogItem();
+    task31->setTitle("Userstory 7 realiseren");
+    task31->setWorkItemNumber(31);
+    task31->setDescription("Userstory 7 realiseren");
+    task31->setUser(users[5]);
+    task31->setRemainingWork(7);
+    task31->setCompletedWork(0);
+    task31->setBaselineWork(7);
+
+    Status *status31 = new Status();
+    status31->setStatusType(*statusTypes[0]);
+    task31->addStatus(*status31);
+
+    pbis[8]->addBacklogItem(*task31);
+    sprints[0]->addWorkItem(*task31);
+    sbis.push_back(task31);
+
+    SprintBacklogItem* task32 = new SprintBacklogItem();
+    task32->setTitle("Userstory 8 realiseren");
+    task32->setWorkItemNumber(32);
+    task32->setDescription("Userstory 8 realiseren");
+    task32->setUser(users[5]);
+    task32->setRemainingWork(14);
+    task32->setCompletedWork(0);
+    task32->setBaselineWork(14);
+
+    Status *status32 = new Status();
+    status32->setStatusType(*statusTypes[0]);
+    task32->addStatus(*status32);
+
+    pbis[8]->addBacklogItem(*task32);
+    sprints[0]->addWorkItem(*task32);
+    sbis.push_back(task32);
+
+    SprintBacklogItem* task33 = new SprintBacklogItem();
+    task33->setTitle("Userstory 15 realiseren");
+    task33->setWorkItemNumber(33);
+    task33->setDescription("Userstory 15 realiseren");
+    task33->setUser(users[5]);
+    task33->setRemainingWork(10);
+    task33->setCompletedWork(0);
+    task33->setBaselineWork(10);
+
+    Status *status33 = new Status();
+    status33->setStatusType(*statusTypes[0]);
+    task33->addStatus(*status33);
+
+    pbis[8]->addBacklogItem(*task33);
+    sprints[0]->addWorkItem(*task33);
+    sbis.push_back(task33);
+
+    //===============Product backlog item 10=================================
+    SprintBacklogItem* task34 = new SprintBacklogItem();
+    task34->setTitle("Architectuur document bijwerken");
+    task34->setWorkItemNumber(34);
+    task34->setDescription("Architectuur document bijwerken met de nieuwe code");
+    task34->setUser(users[5]);
+    task34->setRemainingWork(8);
+    task34->setCompletedWork(0);
+    task34->setBaselineWork(8);
+
+    Status *status34 = new Status();
+    status34->setStatusType(*statusTypes[0]);
+    task34->addStatus(*status34);
+
+    pbis[9]->addBacklogItem(*task34);
+    sprints[0]->addWorkItem(*task34);
+    sbis.push_back(task34);
+
+    SprintBacklogItem* task35 = new SprintBacklogItem();
+    task35->setTitle("Architectuur document bijwerken");
+    task35->setWorkItemNumber(35);
+    task35->setDescription("Architectuur document bijwerken met de nieuwe code");
+    task35->setUser(users[5]);
+    task35->setRemainingWork(5);
+    task35->setCompletedWork(0);
+    task35->setBaselineWork(5);
+
+    Status *status35 = new Status();
+    status35->setStatusType(*statusTypes[0]);
+    task35->addStatus(*status35);
+
+    pbis[9]->addBacklogItem(*task35);
+    sprints[0]->addWorkItem(*task35);
+    sbis.push_back(task35);
+
+    //===============Product backlog item 11=================================
+    SprintBacklogItem* task36 = new SprintBacklogItem();
+    task36->setTitle("Testcases bepalen");
+    task36->setWorkItemNumber(36);
+    task36->setDescription("Het bepalen van de testcases van deze sprint.");
+    task36->setUser(users[5]);
+    task36->setRemainingWork(8);
+    task36->setCompletedWork(0);
+    task36->setBaselineWork(8);
+
+    Status *status36 = new Status();
+    status36->setStatusType(*statusTypes[0]);
+    task36->addStatus(*status36);
+
+    pbis[10]->addBacklogItem(*task36);
+    sprints[0]->addWorkItem(*task36);
+    sbis.push_back(task36);
+
+    SprintBacklogItem* task37 = new SprintBacklogItem();
+    task37->setTitle("Testcases verdelen");
+    task37->setWorkItemNumber(37);
+    task37->setDescription("Het verdelen van de testcases die uitgevoerd worden.");
+    task37->setUser(users[5]);
+    task37->setRemainingWork(1);
+    task37->setCompletedWork(0);
+    task37->setBaselineWork(1);
+
+    Status *status37 = new Status();
+    status37->setStatusType(*statusTypes[0]);
+    task37->addStatus(*status37);
+
+    pbis[10]->addBacklogItem(*task37);
+    sprints[0]->addWorkItem(*task37);
+    sbis.push_back(task37);
+
+    SprintBacklogItem* task38 = new SprintBacklogItem();
+    task38->setTitle("Tweede testcases uitvoeren");
+    task38->setWorkItemNumber(38);
+    task38->setDescription("Het uitvoeren van de testcases van deze sprint.");
+    task38->setUser(users[5]);
+    task38->setRemainingWork(5);
+    task38->setCompletedWork(0);
+    task38->setBaselineWork(5);
+
+    Status *status38 = new Status();
+    status38->setStatusType(*statusTypes[0]);
+    task38->addStatus(*status38);
+
+    pbis[10]->addBacklogItem(*task38);
+    sprints[0]->addWorkItem(*task38);
+    sbis.push_back(task38);
+
+    //===============Product backlog item 12=================================
+    SprintBacklogItem* task39 = new SprintBacklogItem();
+    task39->setTitle("Bepalen wie presentatie geeft");
+    task39->setWorkItemNumber(39);
+    task39->setDescription("Bepalen wie de presentatie van deze sprint geeft.");
+    task39->setUser(users[5]);
+    task39->setRemainingWork(2);
+    task39->setCompletedWork(0);
+    task39->setBaselineWork(2);
+
+    Status *status39 = new Status();
+    status39->setStatusType(*statusTypes[0]);
+    task39->addStatus(*status39);
+
+    pbis[11]->addBacklogItem(*task39);
+    sprints[0]->addWorkItem(*task39);
+    sbis.push_back(task39);
+
+    SprintBacklogItem* task40 = new SprintBacklogItem();
+    task40->setTitle("Presentatie sheets maken");
+    task40->setWorkItemNumber(39);
+    task40->setDescription("Het maken van de sheets voor de presentatie.");
+    task40->setUser(users[5]);
+    task40->setRemainingWork(10);
+    task40->setCompletedWork(0);
+    task40->setBaselineWork(10);
+
+    Status *status40 = new Status();
+    status40->setStatusType(*statusTypes[0]);
+    task40->addStatus(*status40);
+
+    pbis[11]->addBacklogItem(*task40);
+    sprints[0]->addWorkItem(*task40);
+    sbis.push_back(task40);
+
+    SprintBacklogItem* task41 = new SprintBacklogItem();
+    task41->setTitle("Presentatie geven");
+    task41->setWorkItemNumber(39);
+    task41->setDescription("Het geven van de presentatie aan de opdrachtgevers.");
+    task41->setUser(users[5]);
+    task41->setRemainingWork(1);
+    task41->setCompletedWork(0);
+    task41->setBaselineWork(10);
+
+    Status *status41 = new Status();
+    status41->setStatusType(*statusTypes[0]);
+    task41->addStatus(*status4);
+
+    pbis[11]->addBacklogItem(*task41);
+    sprints[0]->addWorkItem(*task41);
+    sbis.push_back(task41);
 
     return sbis;
 }
