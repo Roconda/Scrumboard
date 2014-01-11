@@ -122,6 +122,7 @@ void ScrumboardWidgetHandler::setItemDone(SprintBacklogItem* SBIitem){
     history->setDay(QDate::currentDate().day());
     history->setMonth(QDate::currentDate().month());
     history->setYear(QDate::currentDate().year());
+    history->setRemainingWork(0.0);
     SBIitem->addRemainingWorkHistory(*history);
     SBIitem->setRemainingWork(0.0);
     SBIitem->setCompletedWork(SBIitem->getBaselineWork());

@@ -1,5 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <utility>
+#include <string>
 
 #include "tfswrapper.h"
 #include "TFS/TFSTransaction.h"
@@ -88,6 +91,30 @@ User *TFSWrapper::getSelectedUser()
     }
 
     return selectedUser;
+}
+
+User *TFSWrapper::setSelectedUser(size_t index)
+{
+    User::ItemStorage::iterator uIter;
+
+    for (uIter = User::getStorage().begin(); uIter != User::getStorage().end(); ++uIter) {
+        if (std::distance(User::getStorage().begin(), uIter) == index)
+            return this->selectedUser = uIter->second;
+    }
+
+    return nullptr;
+}
+
+size_t TFSWrapper::getSelectedUserIndex()
+{
+    if (this->selectedUser == nullptr)
+        return -1;
+
+    User::ItemStorage::iterator uIter;
+
+    for (uIter = User::getStorage().begin(); uIter != User::getStorage().end(); ++uIter)
+        if (uIter->second == this->selectedUser)
+            return std::distance(User::getStorage().begin(), uIter);
 }
 
 ProductBacklogItem *TFSWrapper::setSelectedPBI(size_t pbi)

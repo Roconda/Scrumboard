@@ -34,6 +34,8 @@ private slots:
 
     void on_btn_clear_clicked();
 
+    void on_userComboBox_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     static ItemHandler itemhandler;

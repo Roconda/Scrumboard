@@ -153,9 +153,12 @@ void SBIListModel::refreshTFSData()
     if (s) {
         vector<WorkItem*> wis;
 
-         if (TFSWrapper::instance().getSelectedPBI()) {
+        if (TFSWrapper::instance().getSelectedPBI()) {
 
             for (auto &wi : TFSWrapper::instance().getSelectedPBI()->getBacklogItemArray())
+                wis.push_back(wi);
+        } else {
+            for (auto &wi : s->getWorkItemArray())
                 wis.push_back(wi);
         }
 

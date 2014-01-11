@@ -73,7 +73,8 @@ SOURCES += main.cpp \
     Model/SBI_UsernameFilter.cpp \
     Visitors/defectvisitor.cpp \
     Visitors/workitemstatusvisitor.cpp \
-    View/defectui.cpp
+    View/defectui.cpp \
+    Model/userlistmodel.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -146,7 +147,8 @@ HEADERS  += View/mainwindow.h \
     Model/SBI_UsernameFilter.h \
     Visitors/defectvisitor.h \
     Visitors/workitemstatusvisitor.h \
-    View/defectui.h
+    View/defectui.h \
+    Model/userlistmodel.h
 
 FORMS    += View/mainwindow.ui \
     View/burndownchart.ui \

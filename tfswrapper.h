@@ -44,11 +44,13 @@ public:
    size_t getSelectedSprintIndex();
    /* user */
    User* getSelectedUser();
+   size_t getSelectedUserIndex();
+   User *setSelectedUser(size_t index);
+   std::vector<User*> getAllUsers();
    /* PBI */
    ProductBacklogItem *setSelectedPBI(size_t pbi);
    ProductBacklogItem *getSelectedPBI();
    size_t getSelectedPBIIndex();
-   std::vector<User*> getAllUsers();
 
 // QT signals!
 signals:
