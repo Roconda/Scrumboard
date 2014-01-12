@@ -34,10 +34,15 @@ private slots:
 
     void on_btn_clear_clicked();
 
+    void on_btn_filter_clicked();
+
+    void on_test_clicked();
+
 private:
     Ui::MainWindow *ui;
     static ItemHandler itemhandler;
     int currentFilterChooserIndex;
+    int currentPBIChooserIndex;
 
 // functions
 private:

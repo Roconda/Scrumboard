@@ -27,6 +27,13 @@
        <number>0</number>
       </property>
       <item>
+       <widget class="QPushButton" name="test">
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="sprint_titleLabel">
         <property name="font">
          <font>
@@ -59,6 +66,12 @@
       </item>
       <item>
        <widget class="QComboBox" name="filterChooser">
+        <property name="currentText">
+         <string/>
+        </property>
+        <property name="currentIndex">
+         <number>-1</number>
+        </property>
         <item>
          <property name="text">
           <string>Username</string>
@@ -94,9 +107,16 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="btn_filter">
+        <property name="text">
+         <string>Filter</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="btn_clear">
         <property name="text">
-         <string>All</string>
+         <string>Clear</string>
         </property>
        </widget>
       </item>

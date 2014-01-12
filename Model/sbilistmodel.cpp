@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "sbilistmodel.h"
+#include "SBIListModel.h"
 #include "../tfswrapper.h"
 #include "../TFS/TFSTransaction.h"
 #include "../TFS/Project.h"
@@ -22,8 +22,11 @@
 #include "SBIListModelFilter.h"
 #include "SBI_UsernameFilter.h"
 #include "SBI_TitleFilter.h"
+#include "filterdecorator.h"
+#include "filteroption.h"
+#include "filter_sbi_username.h"
+#include "filter_sbi_title.h"
 #include <QDebug>
-
 
 using std::string;
 using std::cerr;
@@ -39,10 +42,52 @@ SBIListModel::SBIListModel(QObject *parent)
     refreshTFSData();
 }
 
+void SBIListModel::Reload()
+{
+}
+
+void SBIListModel::FilterIt()
+{
+    if(!filterOptionList.empty())
+    {
+        FilterDecorator* fo = filterOptionList.back();
+        fo->Filter(workitemList);
+    }
+}
+
 void SBIListModel::Filter(FilterType type, QString phrase)
 {
     SBIListModelFilter* filter = SetFilter(type);
     workitemList = filter->Filter(workitemList, phrase);
+}
+
+void SBIListModel::AddFilterOption(FilterType option, QString phrase)
+{
+    if(option != -1 && phrase.isEmpty())
+    {
+        return;
+    }
+
+    FilterDecorator* fo;
+    FilterDecorator* last = filterOptionList.empty() ? new SimpleFilter() : filterOptionList.back();
+
+    switch(option)
+    {
+        case USERNAME:
+            fo = new Filter_SBI_Username(last, phrase);
+        break;
+
+        case SBI_TITLE:
+            fo = new Filter_SBI_Title(last, phrase);
+        break;
+    }
+
+    filterOptionList.push_back(fo);
+}
+
+void SBIListModel::ClearFilterOptions()
+{
+    filterOptionList.clear();
 }
 
 SBIListModelFilter* SBIListModel::SetFilter(FilterType type)

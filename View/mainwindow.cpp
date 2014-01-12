@@ -97,5 +97,16 @@ void MainWindow::on_filterChooser_currentIndexChanged(int index)
 
 void MainWindow::on_btn_clear_clicked()
 {
+    ui->widget->ClearFilterOptions();
+}
+
+void MainWindow::on_btn_filter_clicked()
+{
+    ui->widget->FilterIt();
+}
+
+void MainWindow::on_test_clicked()
+{
+    ui->widget->Reload();
     ui->widget->updateSprintData();
 }
