@@ -34,6 +34,7 @@ void ScrumboardWidget::Reload()
 void ScrumboardWidget::ClearFilterOptions()
 {
     model.ClearFilterOptions();
+    model.Reload();
 }
 
 void ScrumboardWidget::FilterIt(int filter, QString phrase)
@@ -60,7 +61,15 @@ void ScrumboardWidget::FilterIt(int filter, QString phrase)
 
 void ScrumboardWidget::updateSprintData()
 {
-    model.Reload();
+    ui->NotStarted->setModel(nullptr);
+    ui->Started->setModel(nullptr);
+    ui->toVerify->setModel(nullptr);
+    ui->Done->setModel(nullptr);
+
+    ui->NotStarted->setModel(&model);
+    ui->Started->setModel(&model);
+    ui->toVerify->setModel(&model);
+    ui->Done->setModel(&model);
 }
 
 QString ScrumboardWidget::compareLane(LaneUI *lane){

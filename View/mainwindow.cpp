@@ -106,11 +106,14 @@ void MainWindow::on_filterChooser_currentIndexChanged(int index)
 void MainWindow::on_btn_clear_clicked()
 {
     ui->widget->ClearFilterOptions();
+    ui->widget->updateSprintData();
 }
 
 void MainWindow::on_btn_filter_clicked()
 {
+    ui->widget->Reload();
     ui->widget->FilterIt(currentFilterChooserIndex, ui->lineEdit->text());
+    ui->widget->updateSprintData();
 }
 
 void MainWindow::on_userComboBox_currentIndexChanged(int index)

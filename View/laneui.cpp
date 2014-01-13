@@ -86,6 +86,9 @@ void LaneUI::setModel(QAbstractListModel *model){
         delete widget;
     }
 
+    if (model == nullptr)
+        return;
+
     for(int i = 0; i < model->rowCount(); i++){
         QVariant sbiDataVariant = model->data(model->index(i,0), this->displayrole);
         if (sbiDataVariant == QVariant())
