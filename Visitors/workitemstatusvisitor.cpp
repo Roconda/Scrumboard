@@ -5,7 +5,7 @@ WorkItemStatusVisitor::WorkItemStatusVisitor()
 }
 
 void WorkItemStatusVisitor::visit(Defect& defect) {
-    for(int i =0; i < defect.getStatusArray().size(); i++){
+    for(size_t i =0; i < defect.getStatusArray().size(); i++){
         if(defect.getStatus(i)){
             this->status = defect.getStatus(i);
         }else{

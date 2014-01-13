@@ -1,6 +1,5 @@
 #include "SBI_TitleFilter.h"
 #include "../TFS/SprintBacklogItem.h"
-#include <QDebug>
 
 std::vector<WorkItem*> SBI_TitleFilter::Filter(std::vector<WorkItem*> content, QString phrase)
 {

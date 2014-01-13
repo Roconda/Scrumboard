@@ -5,7 +5,6 @@
 #include "../TFS/Sprint.h"
 #include "../Visitors/sbivisitor.h"
 #include "../TFS/RemainingWorkHistory.h"
-#include <QDebug>
 
 BurndownChart::BurndownChart(QWidget *parent) :
     QDialog(parent),
@@ -25,7 +24,7 @@ BurndownChart::~BurndownChart()
 void BurndownChart::loadCustomPlot(){
     //get SBI's with visitor
     SBIVisitor visitor;
-    for(int i = 0; i < TFSWrapper::instance().getSelectedSprint()->getWorkItemArray().size(); i++){
+    for(size_t i = 0; i < TFSWrapper::instance().getSelectedSprint()->getWorkItemArray().size(); i++){
         WorkItem *workitem = TFSWrapper::instance().getSelectedSprint()->getWorkItem(i);
         if(workitem)
             workitem->accept(visitor);
@@ -53,7 +52,7 @@ void BurndownChart::loadCustomPlot(){
         if(n <= beginDate->daysTo(currDate)){
             for(vector<SprintBacklogItem*>::const_iterator it = SBIlist.begin(); it != SBIlist.end(); ++it){
                 SprintBacklogItem *SBIitem = *it;
-                for(int x = 0; x < SBIitem->getRemainingWorkHistoryArray().size(); x++){
+                for(size_t x = 0; x < SBIitem->getRemainingWorkHistoryArray().size(); x++){
                     RemainingWorkHistory *workhistory = SBIitem->getRemainingWorkHistory(x);
                     if(workhistory){
                         QDate *workhistoryDate = new QDate(workhistory->getYear(), workhistory->getMonth(), workhistory->getDay());

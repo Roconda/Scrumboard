@@ -144,10 +144,10 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
         }
 
         auto test = workitemList[index.row()];
-        for (int i = 0; i < PBIList.size(); i++) {
+        for (size_t i = 0; i < PBIList.size(); i++) {
             if(ProductBacklogItem* pbi = PBIList.at(i)) {
                 auto array = pbi->getBacklogItemArray();
-                for(int j = 0; j < array.size(); j++) {
+                for(size_t j = 0; j < array.size(); j++) {
                     if(SprintBacklogItem* sbi = array.at(j)) {
                         if(sbi->getWorkItemNumber() == test->getWorkItemNumber()) {
                             sbiData.insert("Priority", pbi->getPriority());

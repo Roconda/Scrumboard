@@ -1,18 +1,25 @@
 #include "filter_sbi_username.h"
 #include "../TFS/User.h"
 #include "../TFS/WorkItem.h"
+
+#ifdef QT_DEBUG
 #include <QDebug>
+#endif
 
 Filter_SBI_Username::Filter_SBI_Username(FilterDecorator *component, QString phrase)
     : FilterOption(component, phrase) {}
 
 void Filter_SBI_Username::Filter(std::vector<WorkItem *> &content)
 {
+    #ifdef QT_DEBUG
     qDebug() << "Filter_SBI_Username";
+    #endif
 
     this->component->Filter(content);
 
+    #ifdef QT_DEBUG
     qDebug() << "Passed username...";
+    #endif
 
     std::vector<WorkItem*> temp;
 
