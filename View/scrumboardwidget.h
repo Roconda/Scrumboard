@@ -15,7 +15,10 @@ class ScrumboardWidget : public QWidget
 public:
     explicit ScrumboardWidget(QWidget *parent = 0);
     ~ScrumboardWidget();
+    void Reload();
     void updateSprintData(int filter = -1, QString phrase = NULL);
+    void FilterIt();
+    void ClearFilterOptions();
     QString compareLane(LaneUI *);
 
 private:

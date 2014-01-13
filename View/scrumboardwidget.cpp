@@ -27,19 +27,36 @@ ScrumboardWidget::~ScrumboardWidget()
     delete ui;
 }
 
+void ScrumboardWidget::Reload()
+{
+    model.Reload();
+}
+
+void ScrumboardWidget::ClearFilterOptions()
+{
+    model.ClearFilterOptions();
+}
+
+void ScrumboardWidget::FilterIt()
+{
+    model.FilterIt();
+}
+
 void ScrumboardWidget::updateSprintData(int filter, QString phrase)
 {
-    SBIListModel model;
-
     if(filter != -1)
     {
         switch(filter)
         {
             case USERNAME:
+                model.AddFilterOption(USERNAME, phrase);
                 model.Filter(USERNAME, phrase);
                 break;
             case SBI_TITLE:
-                model.Filter(SBI_TITLE, phrase);
+                model.AddFilterOption(SBI_TITLE, phrase);
+                //model.Filter(SBI_TITLE, phrase);
+                break;
+            default:
                 break;
         }
     }

@@ -4,10 +4,14 @@
 #include <QAbstractListModel>
 #include <QStringList>
 #include <vector>
+#include "../TFS/WorkItem.h"
 #include "../TFS/SprintBacklogItem.h"
 #include "../TFS/ProductBacklogItem.h"
 #include "../TFS/Defect.h"
 #include "SBIListModelFilter.h"
+#include "filterdecorator.h"
+#include "simplefilter.h"
+#include "filteroption.h"
 
 using std::vector;
 
@@ -25,6 +29,7 @@ namespace SBIDisplayRoles {
 
 enum FilterType
 {
+    NOTHING = -1,
     USERNAME = 0,
     SBI_TITLE = 1
 };
@@ -39,10 +44,15 @@ public:
     QVariant data(const QModelIndex &index, int role) const;
     QVariant headerData(int section, Qt::Orientation orientation,
                         int role = Qt::DisplayRole) const;
-    void Filter(FilterType type, QString phrase);
+    void Reload();
+    void FilterIt();
+    void Filter(FilterType type = NOTHING, QString phrase = NULL);
+    void AddFilterOption(FilterType option, QString phrase);
+    void ClearFilterOptions();
     SBIListModelFilter* SetFilter(FilterType type);
 
-private:
+public:
+    vector<FilterDecorator*> filterOptionList;
     vector<ProductBacklogItem*> PBIList;
     vector<WorkItem*> workitemList;
 
