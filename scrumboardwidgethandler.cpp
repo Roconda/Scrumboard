@@ -54,16 +54,13 @@ bool ScrumboardWidgetHandler::setStatusForItem(ItemUI *item, LaneUI *lane){
                         SBIitem->addStatus(*status);
                         TFSWrapper::instance().saveSelectedProject();
                         return true;
-                    }else{
-                        return false;
                     }
                 }
             }
         }
-    }else{
-        //exception LaneUI name does not exist!
-        return false;
     }
+
+    return false;
 }
 
 /**
@@ -101,16 +98,13 @@ bool ScrumboardWidgetHandler::setStatusForItem(DefectUI *item, LaneUI *lane){
                         defect->addStatus(*status);
                         TFSWrapper::instance().saveSelectedProject();
                         return true;
-                    }else{
-                        return false;
                     }
                 }
             }
         }
-    }else{
-        //exception LaneUI name does not exist!
-        return false;
     }
+
+    return false;
 }
 
 /**

@@ -115,6 +115,8 @@ size_t TFSWrapper::getSelectedUserIndex()
     for (uIter = User::getStorage().begin(); uIter != User::getStorage().end(); ++uIter)
         if (uIter->second == this->selectedUser)
             return std::distance(User::getStorage().begin(), uIter);
+
+    return -1;
 }
 
 ProductBacklogItem *TFSWrapper::setSelectedPBI(int pbi)

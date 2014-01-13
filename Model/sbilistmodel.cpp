@@ -97,7 +97,8 @@ SBIListModelFilter* SBIListModel::SetFilter(FilterType type)
         case USERNAME:
             return new SBI_UsernameFilter;
             break;
-        case SBI_TITLE:
+        default:
+            // return sbi title
             return new SBI_TitleFilter;
             break;
     }
@@ -174,9 +175,9 @@ QVariant SBIListModel::data(const QModelIndex &index, int role) const
             return sbiData;
         else if (strcmp(stat->getStatusType()->getName(), "Done") == 0 && role == SBIDisplayRoles::Done)
             return sbiData;
-        else
-            return QVariant();
     }
+
+    return QVariant();
 }
 
 QVariant SBIListModel::headerData(int section, Qt::Orientation orientation,
