@@ -2,7 +2,10 @@
 #define SBI_USERNAMEFILTER_H
 
 #include "SBIListModelFilter.h"
-#include "qstring.h"
+#include <QString>
+#include <vector>
+
+#include "../TFS/WorkItem.h"
 
 class SBI_UsernameFilter : public SBIListModelFilter
 {

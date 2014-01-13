@@ -3,6 +3,10 @@
 
 #include "filterdecorator.h"
 
+#include "../TFS/WorkItem.h"
+
+#include <vector>
+
 class SimpleFilter : public FilterDecorator
 {
 public:
