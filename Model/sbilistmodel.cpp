@@ -44,6 +44,7 @@ SBIListModel::SBIListModel(QObject *parent)
 
 void SBIListModel::Reload()
 {
+    refreshTFSData();
 }
 
 void SBIListModel::FilterIt()
@@ -194,6 +195,9 @@ QVariant SBIListModel::headerData(int section, Qt::Orientation orientation,
 
 void SBIListModel::refreshTFSData()
 {
+    this->PBIList.clear();
+    this->workitemList.clear();
+
     Sprint *s = TFSWrapper::instance().getSelectedSprint();
 
     if (s) {
