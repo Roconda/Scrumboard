@@ -45,11 +45,9 @@ void ScrumboardWidget::FilterIt(int filter, QString phrase)
         {
             case USERNAME:
                 model.AddFilterOption(USERNAME, phrase);
-                //model.Filter(USERNAME, phrase);
                 break;
             case SBI_TITLE:
                 model.AddFilterOption(SBI_TITLE, phrase);
-                //model.Filter(SBI_TITLE, phrase);
                 break;
             default:
                 break;

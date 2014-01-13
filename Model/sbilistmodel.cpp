@@ -19,9 +19,6 @@
 #include "../Visitors/pbivisitor.h"
 #include "../Visitors/defectvisitor.h"
 #include "../Visitors/workitemstatusvisitor.h"
-#include "SBIListModelFilter.h"
-#include "SBI_UsernameFilter.h"
-#include "SBI_TitleFilter.h"
 #include "filterdecorator.h"
 #include "filteroption.h"
 #include "filter_sbi_username.h"
@@ -56,12 +53,6 @@ void SBIListModel::FilterIt()
     }
 }
 
-void SBIListModel::Filter(FilterType type, QString phrase)
-{
-    SBIListModelFilter* filter = SetFilter(type);
-    workitemList = filter->Filter(workitemList, phrase);
-}
-
 void SBIListModel::AddFilterOption(FilterType option, QString phrase)
 {
     if(option != -1 && phrase.isEmpty())
@@ -89,20 +80,6 @@ void SBIListModel::AddFilterOption(FilterType option, QString phrase)
 void SBIListModel::ClearFilterOptions()
 {
     filterOptionList.clear();
-}
-
-SBIListModelFilter* SBIListModel::SetFilter(FilterType type)
-{
-    switch(type)
-    {
-        case USERNAME:
-            return new SBI_UsernameFilter;
-            break;
-        default:
-            // return sbi title
-            return new SBI_TitleFilter;
-            break;
-    }
 }
 
 int SBIListModel::rowCount(const QModelIndex &parent) const

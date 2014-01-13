@@ -67,9 +67,6 @@ SOURCES += main.cpp \
     TestData/usercreator.cpp \
     TestData/pbicreator.cpp \
     TestData/workhistorycreator.cpp \
-    Model/SBIListModelFilter.cpp \
-    Model/SBI_TitleFilter.cpp \
-    Model/SBI_UsernameFilter.cpp \
     Visitors/defectvisitor.cpp \
     Visitors/workitemstatusvisitor.cpp \
     View/defectui.cpp \
@@ -145,9 +142,6 @@ HEADERS  += View/mainwindow.h \
     TestData/usercreator.h \
     TestData/pbicreator.h \
     TestData/workhistorycreator.h \
-    Model/SBIListModelFilter.h \
-    Model/SBI_TitleFilter.h \
-    Model/SBI_UsernameFilter.h \
     Visitors/defectvisitor.h \
     Visitors/workitemstatusvisitor.h \
     View/defectui.h \
