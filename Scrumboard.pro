@@ -79,6 +79,7 @@ SOURCES += main.cpp \
     Model/filteroption.cpp \
     Model/filter_sbi_title.cpp \
     Model/filter_sbi_username.cpp
+    Model/userlistmodel.cpp
 
 HEADERS  += View/mainwindow.h \
     qcustomplot/qcustomplot.h \
@@ -157,6 +158,7 @@ HEADERS  += View/mainwindow.h \
     Model/filteroption.h \
     Model/filter_sbi_title.h \
     Model/filter_sbi_username.h
+    Model/userlistmodel.h
 
 FORMS    += View/mainwindow.ui \
     View/burndownchart.ui \

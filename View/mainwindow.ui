@@ -46,6 +46,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QComboBox" name="userComboBox">
+        <property name="toolTip">
+         <string>Gebruiker</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -186,7 +193,7 @@
      <x>0</x>
      <y>0</y>
      <width>1141</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

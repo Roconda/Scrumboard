@@ -5,12 +5,14 @@
 #include "adddefect.h"
 #include "../Model/sbilistmodel.h"
 #include "../Model/pbilistmodel.h"
+#include "../Model/userlistmodel.h"
 #include "../itemhandler.h"
 #include "../tfswrapper.h"
 #include "../TFS/Project.h"
 #include "../TFS/Sprint.h"
 #include "../TFS/User.h"
 #include "../tfswrapper.h"
+
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -34,9 +36,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->sprintSlider->setRange(0, sprintSize-1);
     ui->sprintSlider->setValue(sprintindex);
 
-    // add PBIListmodel to PBIcombobox
+    // set PBIListmodel to PBIcombobox
     PBIListModel *pbilm = new PBIListModel();
     ui->PBIcombobox->setModel(pbilm);
+
+    // set UserListmodel to userComboBox
+    UserListModel *ulm = new UserListModel();
+    ui->userComboBox->setModel(ulm);
+    ui->userComboBox->setCurrentIndex(TFSWrapper::instance().getSelectedUserIndex());
 }
 
 MainWindow::~MainWindow()
@@ -109,4 +116,12 @@ void MainWindow::on_test_clicked()
 {
     ui->widget->Reload();
     ui->widget->updateSprintData();
+}
+
+void MainWindow::on_userComboBox_currentIndexChanged(int index)
+{
+    TFSWrapper &tfsp = TFSWrapper::instance();
+
+    TFSWrapper::instance().setSelectedUser(index);
+    ui->userComboBox->setCurrentIndex(index);
 }

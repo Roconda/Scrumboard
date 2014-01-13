@@ -1,5 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <utility>
+#include <string>
 
 #include "tfswrapper.h"
 #include "TFS/TFSTransaction.h"
@@ -38,7 +41,7 @@ void TFSWrapper::saveSelectedProject()
     TFSTransaction::remoteWriteProject(SELECTED_PROJECT);
 }
 
-Sprint *TFSWrapper::setSelectedSprint(size_t index)
+Sprint *TFSWrapper::setSelectedSprint(int index)
 {
     emit TFSWrapper::instance().remoteTFSDataChanged();
 
@@ -90,7 +93,31 @@ User *TFSWrapper::getSelectedUser()
     return selectedUser;
 }
 
-ProductBacklogItem *TFSWrapper::setSelectedPBI(size_t pbi)
+User *TFSWrapper::setSelectedUser(int index)
+{
+    User::ItemStorage::iterator uIter;
+
+    for (uIter = User::getStorage().begin(); uIter != User::getStorage().end(); ++uIter) {
+        if (std::distance(User::getStorage().begin(), uIter) == index)
+            return this->selectedUser = uIter->second;
+    }
+
+    return nullptr;
+}
+
+size_t TFSWrapper::getSelectedUserIndex()
+{
+    if (this->selectedUser == nullptr)
+        return -1;
+
+    User::ItemStorage::iterator uIter;
+
+    for (uIter = User::getStorage().begin(); uIter != User::getStorage().end(); ++uIter)
+        if (uIter->second == this->selectedUser)
+            return std::distance(User::getStorage().begin(), uIter);
+}
+
+ProductBacklogItem *TFSWrapper::setSelectedPBI(int pbi)
 {
     this->selectedPBI = pbi;
     emit remoteTFSDataChanged();
