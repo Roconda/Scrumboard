@@ -27,13 +27,6 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QPushButton" name="test">
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QLabel" name="sprint_titleLabel">
         <property name="font">
          <font>
@@ -193,7 +186,7 @@
      <x>0</x>
      <y>0</y>
      <width>1141</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

@@ -36,12 +36,7 @@ void ScrumboardWidget::ClearFilterOptions()
     model.ClearFilterOptions();
 }
 
-void ScrumboardWidget::FilterIt()
-{
-    model.FilterIt();
-}
-
-void ScrumboardWidget::updateSprintData(int filter, QString phrase)
+void ScrumboardWidget::FilterIt(int filter, QString phrase)
 {
     if(filter != -1)
     {
@@ -49,7 +44,7 @@ void ScrumboardWidget::updateSprintData(int filter, QString phrase)
         {
             case USERNAME:
                 model.AddFilterOption(USERNAME, phrase);
-                model.Filter(USERNAME, phrase);
+                //model.Filter(USERNAME, phrase);
                 break;
             case SBI_TITLE:
                 model.AddFilterOption(SBI_TITLE, phrase);
@@ -60,10 +55,12 @@ void ScrumboardWidget::updateSprintData(int filter, QString phrase)
         }
     }
 
-    ui->NotStarted->setModel(&model);
-    ui->Started->setModel(&model);
-    ui->toVerify->setModel(&model);
-    ui->Done->setModel(&model);
+    model.FilterIt();
+}
+
+void ScrumboardWidget::updateSprintData()
+{
+    model.Reload();
 }
 
 QString ScrumboardWidget::compareLane(LaneUI *lane){

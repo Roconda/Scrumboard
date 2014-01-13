@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    currentFilterChooserIndex = 0;
+    currentFilterChooserIndex = -1;
 
     // Stel het sprint nummer in.
     size_t sprintindex = TFSWrapper::instance().getSelectedSprintIndex();
@@ -90,12 +90,12 @@ void MainWindow::on_sprintSlider_valueChanged(int value)
 void MainWindow::on_PBIcombobox_currentIndexChanged(int index)
 {
     TFSWrapper::instance().setSelectedPBI(index-1);
-    ui->widget->updateSprintData(currentFilterChooserIndex, ui->lineEdit->text());
+    ui->widget->updateSprintData();
 }
 
 void MainWindow::on_lineEdit_returnPressed()
 {
-    ui->widget->updateSprintData(currentFilterChooserIndex, ui->lineEdit->text());
+    ui->widget->updateSprintData();
 }
 
 void MainWindow::on_filterChooser_currentIndexChanged(int index)
@@ -110,13 +110,7 @@ void MainWindow::on_btn_clear_clicked()
 
 void MainWindow::on_btn_filter_clicked()
 {
-    ui->widget->FilterIt();
-}
-
-void MainWindow::on_test_clicked()
-{
-    ui->widget->Reload();
-    ui->widget->updateSprintData();
+    ui->widget->FilterIt(currentFilterChooserIndex, ui->lineEdit->text());
 }
 
 void MainWindow::on_userComboBox_currentIndexChanged(int index)

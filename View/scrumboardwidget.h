@@ -16,8 +16,8 @@ public:
     explicit ScrumboardWidget(QWidget *parent = 0);
     ~ScrumboardWidget();
     void Reload();
-    void updateSprintData(int filter = -1, QString phrase = NULL);
-    void FilterIt();
+    void updateSprintData();
+    void FilterIt(int filter = -1, QString phrase = NULL);
     void ClearFilterOptions();
     QString compareLane(LaneUI *);
 

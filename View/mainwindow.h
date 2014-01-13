@@ -36,8 +36,6 @@ private slots:
 
     void on_btn_filter_clicked();
 
-    void on_test_clicked();
-
     void on_userComboBox_currentIndexChanged(int index);
 
 private:
