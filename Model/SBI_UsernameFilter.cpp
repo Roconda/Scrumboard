@@ -1,7 +1,6 @@
 #include "SBI_UsernameFilter.h"
 #include "../TFS/SprintBacklogItem.h"
 #include "../TFS/User.h"
-#include <QDebug>
 
 std::vector<WorkItem*> SBI_UsernameFilter::Filter(std::vector<WorkItem*> content, QString phrase)
 {

@@ -151,7 +151,7 @@ bool ScrumboardWidgetHandler::acceptStatus(QString currentLane, QString toLane){
  */
 SprintBacklogItem* ScrumboardWidgetHandler::getSBIForID(int id){
     SBIVisitor visitor;
-    for(int i = 0; i < TFSWrapper::instance().getSelectedSprint()->getWorkItemArray().size(); i++){
+    for(size_t i = 0; i < TFSWrapper::instance().getSelectedSprint()->getWorkItemArray().size(); i++){
         WorkItem *workitem = TFSWrapper::instance().getSelectedSprint()->getWorkItem(i);
         if(workitem)
             workitem->accept(visitor);
@@ -175,7 +175,7 @@ SprintBacklogItem* ScrumboardWidgetHandler::getSBIForID(int id){
  */
 Defect* ScrumboardWidgetHandler::getDefectForID(int id){
     DefectVisitor visitor;
-    for(int i = 0; i < TFSWrapper::instance().getSelectedSprint()->getWorkItemArray().size(); i++){
+    for(size_t i = 0; i < TFSWrapper::instance().getSelectedSprint()->getWorkItemArray().size(); i++){
         WorkItem *workitem = TFSWrapper::instance().getSelectedSprint()->getWorkItem(i);
         if(workitem)
             workitem->accept(visitor);

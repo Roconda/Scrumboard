@@ -1,11 +1,6 @@
 #include "View/mainwindow.h"
 #include <QApplication>
 
-#include <QSplitter>
-#include <QFileSystemModel>
-#include <QTreeView>
-#include <QListView>
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
