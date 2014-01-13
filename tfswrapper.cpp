@@ -41,7 +41,7 @@ void TFSWrapper::saveSelectedProject()
     TFSTransaction::remoteWriteProject(SELECTED_PROJECT);
 }
 
-Sprint *TFSWrapper::setSelectedSprint(size_t index)
+Sprint *TFSWrapper::setSelectedSprint(int index)
 {
     emit TFSWrapper::instance().remoteTFSDataChanged();
 
@@ -93,7 +93,7 @@ User *TFSWrapper::getSelectedUser()
     return selectedUser;
 }
 
-User *TFSWrapper::setSelectedUser(size_t index)
+User *TFSWrapper::setSelectedUser(int index)
 {
     User::ItemStorage::iterator uIter;
 
@@ -117,7 +117,7 @@ size_t TFSWrapper::getSelectedUserIndex()
             return std::distance(User::getStorage().begin(), uIter);
 }
 
-ProductBacklogItem *TFSWrapper::setSelectedPBI(size_t pbi)
+ProductBacklogItem *TFSWrapper::setSelectedPBI(int pbi)
 {
     this->selectedPBI = pbi;
     emit remoteTFSDataChanged();

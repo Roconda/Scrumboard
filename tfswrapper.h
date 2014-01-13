@@ -39,16 +39,16 @@ public:
    Project* getSelectedProject();
    void saveSelectedProject();
    /* sprint */
-   Sprint* setSelectedSprint(size_t index);
+   Sprint* setSelectedSprint(int index);
    Sprint* getSelectedSprint();
    size_t getSelectedSprintIndex();
    /* user */
    User* getSelectedUser();
    size_t getSelectedUserIndex();
-   User *setSelectedUser(size_t index);
+   User *setSelectedUser(int index);
    std::vector<User*> getAllUsers();
    /* PBI */
-   ProductBacklogItem *setSelectedPBI(size_t pbi);
+   ProductBacklogItem *setSelectedPBI(int pbi);
    ProductBacklogItem *getSelectedPBI();
    size_t getSelectedPBIIndex();
 
