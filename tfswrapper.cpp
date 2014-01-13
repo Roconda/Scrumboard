@@ -12,7 +12,6 @@
 #include "TFS/ProductBacklogItem.h"
 #include "TFS/User.h"
 
-#include "createtestdata.h"
 #include "TestData/TestData.h"
 #include "Visitors/pbivisitor.h"
 
@@ -24,8 +23,7 @@ TFSWrapper::TFSWrapper(QObject *parent) : QObject(parent), selectedSprint(0), se
 {
     // Reload testdata on startup
     //
-    // CreateTestData t; // Versie van Chris
-    // TestData t;       // Versie van Sander
+    // TestData t;
 
     this->selectedProject = TFSTransaction::remoteReadProject(SELECTED_PROJECT);
     this->selectedUser = this->getSelectedUser();

@@ -34,11 +34,11 @@ public:
     void setSBIItem(SprintBacklogItem* item);
 
 protected slots:
-    void onChangedTitle(const QString &text);
-    void onChangedDescription(const QString &text);
-    void onChangedRemainingHours(const QString &text);
-    void onChangedCompletedHours(const QString &text);
-    void onChangedCurrentUser(const QString &text);
+    void onChangedTitle();
+    void onChangedDescription();
+    void onChangedRemainingHours();
+    void onChangedCompletedHours();
+    void onChangedCurrentUser();
 
 private slots:
     void on_pushButton_clicked();

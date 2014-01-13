@@ -55,7 +55,6 @@ SOURCES += main.cpp \
     itemmimedata.cpp \
     tfswrapper.cpp \
     Model/sbilistmodel.cpp \
-    createtestdata.cpp \
     scrumboardwidgethandler.cpp \
     Model/pbilistmodel.cpp \
     Visitors/sbivisitor.cpp \
@@ -134,7 +133,6 @@ HEADERS  += View/mainwindow.h \
     itemmimedata.h \
     tfswrapper.h \
     Model/sbilistmodel.h \
-    createtestdata.h \
     Model/pbilistmodel.h \
     scrumboardwidgethandler.h \
     Visitors/sbivisitor.h \

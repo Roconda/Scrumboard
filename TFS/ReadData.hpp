@@ -2,9 +2,9 @@ template <class Class>
 void
 ReadData::readEveryObject( SocketPackage& cPackage )
 {
-    ItemStorageWithKey<Class,std::string>&  cStorage    = Class::getStorage();
+    //ItemStorageWithKey<Class,std::string>&  cStorage    = Class::getStorage();
     int                                     n, max;
-    std::string                             sID         = Class::ClassID();
+    //std::string                             sID         = Class::ClassID();
     TFSBasis*                               pObject;
 
     max     = cPackage.getInt();

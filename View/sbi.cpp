@@ -132,7 +132,7 @@ void SBI::setSBIItem(SprintBacklogItem *item)
  * @brief SBI::onChangedTitle           Handles the unsaved changes event after the title has been changed.
  * @param text                          Event arguments for the changed title.
  */
-void SBI::onChangedTitle(const QString &text)
+void SBI::onChangedTitle()
 {
     madeUnsavedChanges = true;
 }
@@ -141,7 +141,7 @@ void SBI::onChangedTitle(const QString &text)
  * @brief SBI::onChangedDescription     Handles the unsaved changes event after the description has been changed.
  * @param text                          Event arguments for the changed description.
  */
-void SBI::onChangedDescription(const QString &text)
+void SBI::onChangedDescription()
 {
     madeUnsavedChanges = true;
 }
@@ -150,7 +150,7 @@ void SBI::onChangedDescription(const QString &text)
  * @brief SBI::onChangedRemainingHours  Handles the unsaved changes event after the remaining working hours value has been changed.
  * @param text                          Event arguments for the changed remaining working hours value.
  */
-void SBI::onChangedRemainingHours(const QString &text)
+void SBI::onChangedRemainingHours()
 {
     madeUnsavedChanges = true;
 }
@@ -159,7 +159,7 @@ void SBI::onChangedRemainingHours(const QString &text)
  * @brief SBI::onChangedCompletedHours  Handles the unsaved changes event after the completed working hours value has been changed.
  * @param text                          Event arguments for the changed completed working hours value.
  */
-void SBI::onChangedCompletedHours(const QString &text)
+void SBI::onChangedCompletedHours()
 {
     madeUnsavedChanges = true;
 }
@@ -168,7 +168,7 @@ void SBI::onChangedCompletedHours(const QString &text)
  * @brief SBI::onChangedCurrentUser     Handles the unsaved changes event after the current user has been changed.
  * @param text                          Event arguments for the changed current user.
  */
-void SBI::onChangedCurrentUser(const QString &text)
+void SBI::onChangedCurrentUser()
 {
     madeUnsavedChanges = true;
 }
