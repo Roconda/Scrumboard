@@ -43,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // set UserListmodel to userComboBox
     UserListModel *ulm = new UserListModel();
     ui->userComboBox->setModel(ulm);
+    ui->userComboBox->setCurrentIndex(0);
     ui->userComboBox->setCurrentIndex(TFSWrapper::instance().getSelectedUserIndex());
 }
 

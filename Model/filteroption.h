@@ -2,6 +2,11 @@
 #define FILTEROPTION_H
 #include "filterdecorator.h"
 
+#include <QString>
+#include <vector>
+
+#include "../TFS/WorkItem.h"
+
 class FilterOption : public FilterDecorator
 {
 public:

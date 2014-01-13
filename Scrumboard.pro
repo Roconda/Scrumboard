@@ -78,7 +78,7 @@ SOURCES += main.cpp \
     Model/simplefilter.cpp \
     Model/filteroption.cpp \
     Model/filter_sbi_title.cpp \
-    Model/filter_sbi_username.cpp
+    Model/filter_sbi_username.cpp \
     Model/userlistmodel.cpp
 
 HEADERS  += View/mainwindow.h \
@@ -157,7 +157,7 @@ HEADERS  += View/mainwindow.h \
     Model/simplefilter.h \
     Model/filteroption.h \
     Model/filter_sbi_title.h \
-    Model/filter_sbi_username.h
+    Model/filter_sbi_username.h \
     Model/userlistmodel.h
 
 FORMS    += View/mainwindow.ui \
