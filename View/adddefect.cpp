@@ -72,12 +72,12 @@ void AddDefect::reject(){
  * @return boolean succeeded or not
  */
 bool AddDefect::save(){
-    QString *var1, *var2;
-    var1 = &ui->DefectTitle->text();
-    var2 = &ui->DefectDescription->toPlainText();
+    QString var1, var2;
+    var1 = ui->DefectTitle->text();
+    var2 = ui->DefectDescription->toPlainText();
 
     //check if all fields are filled correctly
-    if(var1->isEmpty() || var2->isEmpty()){
+    if(var1.isEmpty() || var2.isEmpty()){
         QMessageBox *box = new QMessageBox(this);
         box->setText("Niet alles is ingevuld!");
         box->exec();
@@ -89,11 +89,11 @@ bool AddDefect::save(){
     Defect* defect = new Defect();
 
     //set title
-    QByteArray title = var1->toUtf8();
+    QByteArray title = var1.toUtf8();
     defect->setTitle(title.constData());
 
     //set description
-    QByteArray description = var2->toUtf8();
+    QByteArray description = var2.toUtf8();
     defect->setDescription(description.constData());
 
     //add status
@@ -117,8 +117,9 @@ bool AddDefect::save(){
     //set user
     std::vector<User*> users;
     users = TFSWrapper::instance().getAllUsers();
+    QString selectedUser = ui->user->currentText();
     foreach(User* user, users){
-        if(user->getName() == ui->user->currentText()){
+        if(QString(user->getName()) == selectedUser){
             defect->setUser(user);
             break;
         }
