@@ -5,6 +5,8 @@
 #include "../itemmimedata.h"
 #include "../model/sbilistmodel.h"
 #include "scrumboardwidget.h"
+#include "../tfswrapper.h"
+#include "../TFS/User.h"
 
 LaneUI::LaneUI(QWidget *parent) :
     QWidget(parent),
@@ -41,6 +43,19 @@ void LaneUI::dropEvent(QDropEvent *event)
         if(item->parentWidget() != this){
             if(ScrumboardWidgetHandler::getInstance().setStatusForItem(item, this)){
                 item->setParent(this);
+
+                // stel user in, dit is een hack
+                QString idstring = item->getID();
+                idstring.remove(0, 1);
+                int sbiid = idstring.toInt(); // test
+                SprintBacklogItem *tempsbi = ScrumboardWidgetHandler::getInstance().getSBIForID(sbiid);
+                if (tempsbi) {
+                    tempsbi->setUser(TFSWrapper::instance().getSelectedUser());
+                    TFSWrapper::instance().saveSelectedProject();
+                    item->setUser(QString(TFSWrapper::instance().getSelectedUser()->getName()));
+                    item->update();
+                }
+
                 this->layout()->addWidget(item);
             }
         }else{
@@ -53,6 +68,19 @@ void LaneUI::dropEvent(QDropEvent *event)
         if(defect->parentWidget() != this){
             if(ScrumboardWidgetHandler::getInstance().setStatusForItem(defect, this)){
                 defect->setParent(this);
+
+                // stel user in, dit is een hack
+                QString idstring = defect->getID();
+                idstring.remove(0, 1);
+                int defectid = idstring.toInt(); // test
+                Defect *tempsbi = ScrumboardWidgetHandler::getInstance().getDefectForID(defectid);
+                if (tempsbi) {
+                    tempsbi->setUser(TFSWrapper::instance().getSelectedUser()); // stel user in
+                    TFSWrapper::instance().saveSelectedProject();
+                    defect->setUser(QString(TFSWrapper::instance().getSelectedUser()->getName()));
+                    defect->update();
+                }
+
                 this->layout()->addWidget(defect);
             }
         }else{
