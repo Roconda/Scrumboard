@@ -68,6 +68,10 @@ void BurndownChart::loadCustomPlot(){
                                 break;
                             }
                         }
+                    }else{
+                        if(x == 0){
+                            workremainingforday += SBIitem->getBaselineWork();
+                        }
                     }
                 }
             }
