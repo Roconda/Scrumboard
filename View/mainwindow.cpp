@@ -58,6 +58,7 @@ void MainWindow::updateSprintIndex(int newposition)
 
     QString msg = QString("Sprint #%1").arg(newposition+1);
 
+    ui->widget->Reload();
     ui->widget->updateSprintData();
     ui->sprint_titleLabel->setText(msg);
 }
