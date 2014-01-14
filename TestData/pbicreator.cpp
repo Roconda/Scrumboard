@@ -84,64 +84,64 @@ vector<ProductBacklogItem*> PBICreator::Create(vector<Sprint*> sprints)
 
     //=================================  SPRINT 3 ================================
     ProductBacklogItem *pbi13 = new ProductBacklogItem();
-    pbi1->setTitle("Klasse diagram");
-    pbi1->setPriority(92);
+    pbi13->setTitle("Klasse diagram");
+    pbi13->setPriority(92);
     sprints[2]->addWorkItem(*pbi13);
     pbis.push_back(pbi13);
 
     ProductBacklogItem *pbi14 = new ProductBacklogItem();
-    pbi2->setTitle("Realisatie");
-    pbi2->setPriority(100);
+    pbi14->setTitle("Realisatie");
+    pbi14->setPriority(100);
     sprints[2]->addWorkItem(*pbi14);
     pbis.push_back(pbi14);
 
     ProductBacklogItem *pbi15 = new ProductBacklogItem();
-    pbi5->setTitle("Documentatie");
-    pbi5->setPriority(88);
+    pbi15->setTitle("Documentatie");
+    pbi15->setPriority(88);
     sprints[2]->addWorkItem(*pbi15);
     pbis.push_back(pbi15);
 
     ProductBacklogItem *pbi16 = new ProductBacklogItem();
-    pbi6->setTitle("Testing");
-    pbi6->setPriority(84);
+    pbi16->setTitle("Testing");
+    pbi16->setPriority(84);
     sprints[2]->addWorkItem(*pbi16);
     pbis.push_back(pbi16);
 
     ProductBacklogItem *pbi17 = new ProductBacklogItem();
-    pbi7->setTitle("Presentatie");
-    pbi7->setPriority(100);
+    pbi17->setTitle("Presentatie");
+    pbi17->setPriority(100);
     sprints[2]->addWorkItem(*pbi17);
     pbis.push_back(pbi17);
 
 
     //=================================  SPRINT 4 ================================
     ProductBacklogItem *pbi18 = new ProductBacklogItem();
-    pbi1->setTitle("Klasse diagram");
-    pbi1->setPriority(92);
+    pbi18->setTitle("Klasse diagram");
+    pbi18->setPriority(92);
     sprints[3]->addWorkItem(*pbi18);
     pbis.push_back(pbi18);
 
     ProductBacklogItem *pbi19 = new ProductBacklogItem();
-    pbi2->setTitle("Realisatie");
-    pbi2->setPriority(100);
+    pbi19->setTitle("Realisatie");
+    pbi19->setPriority(100);
     sprints[3]->addWorkItem(*pbi19);
     pbis.push_back(pbi19);
 
     ProductBacklogItem *pbi20 = new ProductBacklogItem();
-    pbi5->setTitle("Documentatie");
-    pbi5->setPriority(88);
+    pbi20->setTitle("Documentatie");
+    pbi20->setPriority(88);
     sprints[3]->addWorkItem(*pbi20);
     pbis.push_back(pbi20);
 
     ProductBacklogItem *pbi21 = new ProductBacklogItem();
-    pbi6->setTitle("Testing");
-    pbi6->setPriority(84);
+    pbi21->setTitle("Testing");
+    pbi21->setPriority(84);
     sprints[3]->addWorkItem(*pbi21);
     pbis.push_back(pbi21);
 
     ProductBacklogItem *pbi22 = new ProductBacklogItem();
-    pbi7->setTitle("Presentatie");
-    pbi7->setPriority(100);
+    pbi22->setTitle("Presentatie");
+    pbi22->setPriority(100);
     sprints[3]->addWorkItem(*pbi22);
     pbis.push_back(pbi22);
 
