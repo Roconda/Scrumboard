@@ -150,15 +150,14 @@ bool ScrumboardWidgetHandler::acceptStatus(QString currentLane, QString toLane){
  * @return The SprintBacklogItem if found.
  */
 SprintBacklogItem* ScrumboardWidgetHandler::getSBIForID(int id){
-//    SBIVisitor visitor;
-//    for(size_t i = 0; i < TFSWrapper::instance().getSelectedSprint()->getWorkItemArray().size(); i++){
-//        WorkItem *workitem = TFSWrapper::instance().getSelectedSprint()->getWorkItem(i);
-//        if(workitem)
-//            workitem->accept(visitor);
-//    }
+    SBIVisitor visitor;
+    for(size_t i = 0; i < TFSWrapper::instance().getSelectedSprint()->getWorkItemArray().size(); i++){
+        WorkItem *workitem = TFSWrapper::instance().getSelectedSprint()->getWorkItem(i);
+        if(workitem)
+            workitem->accept(visitor);
+    }
 
-
-    vector<SprintBacklogItem*> SBIlist = TFSWrapper::instance().getSelectedPBI()->getBacklogItemArray();
+    vector<SprintBacklogItem*> &SBIlist = visitor.getList();
     for(vector<SprintBacklogItem*>::const_iterator it = SBIlist.begin(); it != SBIlist.end(); ++it){
         SprintBacklogItem *SBIitem = *it;
         if(SBIitem->getWorkItemNumber() == id){
