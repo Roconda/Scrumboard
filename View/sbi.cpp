@@ -38,6 +38,8 @@ SBI::SBI(QWidget *parent) :
 
     connect(ui->le_current_user, SIGNAL(textEdited(const QString)),
             this, SLOT(onChangedCurrentUser(const QString)));
+
+    ui->pushButton->hide();
 }
 
 /**
