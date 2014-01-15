@@ -21,7 +21,7 @@ PBIListModel::PBIListModel(QObject *parent)
 
 int PBIListModel::rowCount(const QModelIndex &parent) const
 {
-    return PBIList.size() + 1;
+    return PBIList.size();
 }
 
 QVariant PBIListModel::data(const QModelIndex &index, int role) const
@@ -30,10 +30,8 @@ QVariant PBIListModel::data(const QModelIndex &index, int role) const
         throw std::exception("Index is invalid");
 
     if (role == Qt::DisplayRole) {
-        if (index.row() == 0)
-            return QString("-----");
-        else if (!PBIList.empty() && (index.row() - 1) < PBIList.size() && PBIList.at((index.row() - 1)))
-            return QString(PBIList.at((index.row() - 1))->getTitle());
+        if (!PBIList.empty() && index.row() < PBIList.size())
+            return QString(PBIList.at((index.row()))->getTitle());
         return QVariant();
     } else
         return QVariant();

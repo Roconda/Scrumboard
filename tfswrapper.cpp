@@ -128,6 +128,9 @@ ProductBacklogItem *TFSWrapper::getSelectedPBI()
 {
     PBIVisitor pbivis;
 
+//    if(this->selectedPBI == 0)
+//        this->setSelectedPBI(pbivis.getList().at(1));
+
     auto wia = TFSWrapper::instance().getSelectedSprint()->getWorkItemArray();
     for (auto &pbi : wia)
         if (pbi)

@@ -28,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->setStyleSheet("QPushButton, QComboBox, QSlider, QLineEdit { padding: 8 8 8 8 } ");
 
+    ui->filterChooser->setCurrentIndex(0);
+
     // Edit scrollbar's item count to the amount of sprints
     int sprintSize = 0;
     for(Sprint* sprint : TFSWrapper::instance().getSelectedProject()->getSprintArray()) if(sprint != NULL) sprintSize++;
@@ -84,13 +86,14 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_sprintSlider_valueChanged(int value)
 {
     updateSprintIndex(value);
+    ui->PBIcombobox->setCurrentIndex(0);
     TFSWrapper::instance().setSelectedPBI(0);
     ui->PBIcombobox->update();
 }
 
 void MainWindow::on_PBIcombobox_currentIndexChanged(int index)
 {
-    TFSWrapper::instance().setSelectedPBI(index-1);
+    TFSWrapper::instance().setSelectedPBI(index);
     ui->widget->updateSprintData();
 }
 
